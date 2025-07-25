@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, User, Target, Zap, ArrowRight } from 'lucide-react';
+import { CheckCircle, Target, Zap, ArrowRight } from 'lucide-react';
 
 const About = () => {
   const features = [
@@ -55,27 +54,50 @@ const About = () => {
           <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-primary-300 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+          {/* Profile Picture */}
           <motion.div 
-            className="space-y-6"
+            className="w-full lg:w-1/3 flex justify-center lg:justify-end"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-primary-100 dark:border-primary-900/30 shadow-lg">
+              <img 
+                src="/samson-avatar.jpg" 
+                alt="Samson Akinsanya" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://via.placeholder.com/320x320?text=Add+samson-avatar.jpg+to+public+folder';
+                }}
+              />
+            </div>
+          </motion.div>
+
+          <motion.div 
+            className="w-full lg:w-2/3 space-y-6"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
             variants={container}
           >
-            <motion.div variants={item} className="flex items-center mb-6">
-              <div className="p-2 bg-primary-100 dark:bg-primary-900/30 rounded-lg mr-4">
-                <User className="text-primary-600 dark:text-primary-400" size={28} />
-              </div>
-              <h3 className="text-2xl font-semibold text-dark-900 dark:text-white">Samson Akinsanya</h3>
+            <motion.div variants={item} className="mb-6">
+              <h3 className="text-2xl font-semibold text-dark-900 dark:text-white mb-2">Samson Akinsanya</h3>
+              <p className="text-primary-600 dark:text-primary-400 font-medium">AI Automation Specialist & CRM Integration Expert</p>
             </motion.div>
             
             <motion.p variants={item} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              I'm a tech-savvy Executive Virtual Assistant who brings structure, clarity, and speed to growing teams.
+              With a strong background in executive support, I've transitioned into becoming an AI Automation Specialist and CRM Integration Expert. My journey has given me a unique perspective on both the operational and technical aspects of business, allowing me to create solutions that truly address real-world challenges.
             </motion.p>
             
             <motion.p variants={item} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              With a background in high-level administrative support and a passion for systems, I specialize in simplifying complex workflows and optimizing day-to-day business operations. From calendar control to CRM automation, I help decision-makers focus on <span className="text-primary-600 dark:text-primary-400 font-medium">what matters most</span> — while I handle the rest.
+              I transform business operations through intelligent automation and streamlined processes, bridging the gap between technology and productivity to help teams work smarter, not harder. My expertise in platforms like Zapier, Make.com, HubSpot, n8n, Airtable, Salesforce, and Asana enables me to design and implement custom automation solutions that eliminate repetitive tasks and enhance team efficiency.
+            </motion.p>
+            
+            <motion.p variants={item} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+              My passion lies in creating seamless integrations between CRMs, communication tools, and business applications, enabling data-driven decision making and <span className="text-primary-600 dark:text-primary-400 font-medium">scalable growth</span>. Let me handle the technical complexities while you focus on strategic initiatives.
             </motion.p>
 
             <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6">

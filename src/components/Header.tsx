@@ -80,7 +80,7 @@ const Header = () => {
               }`}
             >
               <span className="text-primary-500">SA</span>
-              <span className="hidden sm:inline">mpson Akinsanya</span>
+              <span className="hidden sm:inline">mson Akinsanya</span>
             </button>
           </motion.div>
           
