@@ -34,6 +34,52 @@ const Portfolio = () => {
 
   const projects: Project[] = [
     {
+      icon: <Zap className="text-indigo-500" size={20} />,
+      title: "Smart Email Intake & Routing System",
+      challenge: "Client was overwhelmed with a chaotic inbox containing sales leads, support requests, and meeting pings all mixed together in one Gmail thread.",
+      solution: "Built a multi-path automation system using Zapier as the central workflow engine, integrated with ChatGPT for intelligent email classification. The system automatically categorizes incoming emails and routes them to the appropriate team members and systems.",
+      result: "Dramatically improved email management with automated routing, ensuring no leads or support requests fall through the cracks while keeping the entire team in sync.",
+      metrics: [
+        { label: "Manual Handling", value: "-70%", icon: <Clock size={16} /> },
+        { label: "Lead Follow-up", value: "100%", icon: <TrendingUp size={16} /> },
+        { label: "Response Time", value: "4x faster", icon: <Users size={16} /> },
+        { label: "Systems Integrated", value: "5+", icon: <FileText size={16} /> }
+      ],
+      color: "text-indigo-500",
+      bgColor: "bg-indigo-50 dark:bg-indigo-900/20",
+      tags: ["Zapier", "ChatGPT", "Gmail", "HubSpot", "Asana", "Slack", "Automation", "AI"],
+      images: [
+        { 
+          url: "/Smart-Email intake-and-routing-system.png", 
+          alt: "Smart Email Intake & Routing System workflow" 
+        }
+      ],
+      demoUrl: "#"
+    },
+    {
+      icon: <TrendingUp className="text-teal-500" size={20} />,
+      title: "Automated Lead Nurture Workflow",
+      challenge: "Client needed to ensure no lead fell through the cracks and wanted to streamline their lead management process across multiple platforms.",
+      solution: "Built an end-to-end lead nurturing automation that connects HubSpot with Gmail, Asana, Slack, and Google Sheets using Make.com. The system automatically sends welcome emails, creates follow-up tasks, notifies the sales team, and maintains a centralized lead log.",
+      result: "Created a seamless lead management system that ensures every lead is properly nurtured and followed up with, while keeping the entire team aligned and informed.",
+      metrics: [
+        { label: "Time Saved", value: "Hours/Week", icon: <Clock size={16} /> },
+        { label: "Follow-up Speed", value: "Instant", icon: <TrendingUp size={16} /> },
+        { label: "Team Alignment", value: "100%", icon: <Users size={16} /> },
+        { label: "Tools Integrated", value: "6+", icon: <FileText size={16} /> }
+      ],
+      color: "text-teal-500",
+      bgColor: "bg-teal-50 dark:bg-teal-900/20",
+      tags: ["HubSpot", "Make.com", "Gmail", "Asana", "Slack", "Google Sheets", "Automation", "No-Code"],
+      images: [
+        { 
+          url: "/Hubspot-crm-integration.png", 
+          alt: "Lead Nurture Workflow automation" 
+        }
+      ],
+      demoUrl: "#"
+    },
+    {
       icon: <Zap className="text-green-500" size={20} />,
       title: "Multi-App Zapier Integration",
       challenge: "Client needed to streamline their data collection and communication processes across multiple platforms.",
