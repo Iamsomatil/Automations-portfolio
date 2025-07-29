@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import CVButton from './CVButton';
 
 const navItems = [
   { name: 'Services', id: 'services' },
@@ -125,6 +126,8 @@ const Header = () => {
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
             
+            <CVButton />
+            
             <motion.button
               onClick={() => scrollToSection('contact')}
               className="ml-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-colors"
@@ -191,6 +194,10 @@ const Header = () => {
                 >
                   {darkMode ? <Sun size={18} /> : <Moon size={18} />}
                 </button>
+              </div>
+              
+              <div className="px-3 py-2">
+                <CVButton />
               </div>
               
               <motion.button
