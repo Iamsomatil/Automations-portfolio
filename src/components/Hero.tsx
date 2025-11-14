@@ -113,7 +113,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <p>Virtual Assistant | Workflow Automation Specialist | Executive Operations Partner</p>
+            <p>Automation Architect | Systems Integration Expert | Technical Lead</p>
           </motion.div>
         </div>
       </div>

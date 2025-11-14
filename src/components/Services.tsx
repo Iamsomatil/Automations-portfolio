@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, Users, ArrowRight, Zap, CheckCircle, Clock, BarChart3, Mail, CalendarDays, FileText, Briefcase } from 'lucide-react';
+import { Users, ArrowRight, Zap, CheckCircle, Clock, BarChart3, Mail, FileText, RefreshCw, Code, Cpu } from 'lucide-react';
 
 interface ServiceFeature {
   text: string;
@@ -18,14 +18,14 @@ interface ServiceItem {
 const Services = () => {
   const services: ServiceItem[] = [
     {
-      icon: <Calendar className="text-purple-500" size={32} />,
-      title: "Executive Support",
-      description: "Complete administrative support to keep your business running smoothly.",
+      icon: <Zap className="text-purple-500" size={32} />,
+      title: "Systems Integration",
+      description: "Seamless integration of business applications and automation of cross-platform workflows.",
       features: [
-        { text: "Inbox & calendar management", icon: <Mail size={16} /> },
-        { text: "Meeting scheduling & reminders", icon: <CalendarDays size={16} /> },
-        { text: "Document formatting & email handling", icon: <FileText size={16} /> },
-        { text: "Travel coordination & client follow-ups", icon: <Briefcase size={16} /> }
+        { text: "API integrations & webhook setup", icon: <Zap size={16} /> },
+        { text: "Data synchronization across platforms", icon: <RefreshCw size={16} /> },
+        { text: "Custom middleware development", icon: <Code size={16} /> },
+        { text: "Legacy system modernization", icon: <Cpu size={16} /> }
       ],
       color: "from-purple-500/10 to-purple-500/5",
       buttonColor: "bg-purple-600 hover:bg-purple-700"

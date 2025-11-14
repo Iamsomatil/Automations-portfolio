@@ -178,6 +178,52 @@ const Portfolio = () => {
         }
       ],
       demoUrl: "#"
+    },
+    {
+      icon: <FileText className="text-blue-600" size={20} />,
+      title: "Federal Contract Opportunity Automation System",
+      challenge: "Client needed a faster, more reliable way to track federal contract opportunities. Manually checking SAM.gov, filtering NAICS codes, screening set-aside requirements, and logging opportunities into Google Sheets was extremely time-consuming and error-prone, causing them to miss valuable opportunities.",
+      solution: "Built a full federal contract sourcing automation using Make.com that pulls fresh opportunities directly from the SAM.gov API daily. The system cycles through NAICS codes, queries the SAM.gov API for new opportunities, filters by SBA set-aside & deadlines, cross-checks a Google Sheet for duplicates, and automatically logs new opportunities with all relevant details.",
+      result: "The client now receives a daily, hands-free stream of qualified federal opportunities, always up to date and structured for fast review. The solution ensures no relevant SAM.gov posting is missed, eliminates manual research, and enables faster bid/no-bid decisions.",
+      metrics: [
+        { label: "Manual Research", value: "-90%", icon: <Clock size={16} /> },
+        { label: "Daily Coverage", value: "100%", icon: <TrendingUp size={16} /> },
+        { label: "Data Entry Time", value: "0 minutes", icon: <FileText size={16} /> },
+        { label: "NAICS Codes", value: "20+", icon: <Users size={16} /> }
+      ],
+      color: "text-blue-600",
+      bgColor: "bg-blue-50 dark:bg-blue-900/20",
+      tags: ["Make.com", "SAM.gov API", "Google Sheets", "Automation", "API Integration", "Data Processing"],
+      images: [
+        { 
+          url: "/sam.png", 
+          alt: "Federal Contract Opportunity Automation workflow" 
+        }
+      ],
+      demoUrl: "#"
+    },
+    {
+      icon: <FileText className="text-cyan-500" size={20} />,
+      title: "Automated Regulation Update Generator",
+      challenge: "Client needed a consistent, accurate way to produce weekly 'Regulation Update' reports for their city-focused content. The manual process involved checking multiple data sources, gathering local events, pulling tourism/hospitality stats, and writing scripts, which took hours each week.",
+      solution: "Built a multi-stage automation system inside n8n that collects data, normalizes it, and automatically generates a complete weekly update package. The system sets the city + week automatically, pulls regulation updates from an external API, fetches tourism & hospitality metrics, retrieves local city events, and generates a polished 110-140 word script using GPT-4o.",
+      result: "Client now receives a fully generated weekly regulation package in minutes — including script, scenes, data files, and links. The solution eliminates manual research, ensures weekly consistency, and creates video-ready assets automatically.",
+      metrics: [
+        { label: "Manual Writing", value: "-85%", icon: <Clock size={16} /> },
+        { label: "Content Prep Time", value: "-90%", icon: <TrendingUp size={16} /> },
+        { label: "Script Consistency", value: "100%", icon: <FileText size={16} /> },
+        { label: "Data Sources", value: "3+", icon: <Users size={16} /> }
+      ],
+      color: "text-cyan-500",
+      bgColor: "bg-cyan-50 dark:bg-cyan-900/20",
+      tags: ["n8n", "OpenAI (GPT-4o)", "API Integration", "JavaScript", "Automation", "AI Content Generation", "Notion"],
+      images: [
+        { 
+          url: "/regulation.png", 
+          alt: "Automated Regulation Update Generator workflow" 
+        }
+      ],
+      demoUrl: "#"
     }
   ];
 

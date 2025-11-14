@@ -54,27 +54,54 @@ const About = () => {
           <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-primary-300 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Profile Picture */}
-          <motion.div 
-            className="w-full lg:w-1/3 flex justify-center lg:justify-end"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-primary-100 dark:border-primary-900/30 shadow-lg">
-              <img 
-                src="/samson-avatar.jpg" 
-                alt="Samson Akinsanya" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = 'https://via.placeholder.com/320x320?text=Add+samson-avatar.jpg+to+public+folder';
-                }}
-              />
-            </div>
-          </motion.div>
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="w-full lg:w-1/3 space-y-8">
+            {/* Profile Picture */}
+            <motion.div 
+              className="flex justify-center lg:justify-start"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-primary-100 dark:border-primary-900/30 shadow-lg">
+                <img 
+                  src="/samson-avatar.jpg" 
+                  alt="Samson Akinsanya" 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://via.placeholder.com/320x320?text=Add+samson-avatar.jpg+to+public+folder';
+                  }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Available for new projects card */}
+            <motion.div 
+              className="w-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl p-6 shadow-xl">
+                <div className="bg-white/10 rounded-lg p-5 backdrop-blur-sm">
+                  <div className="space-y-4">
+                    <div className="flex items-center text-white">
+                      <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                      <span className="text-sm font-medium">Available for new projects</span>
+                    </div>
+                    <div className="text-white/90 text-sm space-y-2">
+                      <p className="flex items-center"><span className="mr-2">🌍</span> Based in Lagos, Nigeria</p>
+                      <p className="flex items-center"><span className="mr-2">⏰</span> Working across multiple time zones</p>
+                      <p className="flex items-center"><span className="mr-2">🚀</span> Serving clients globally</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
 
           <motion.div 
             className="w-full lg:w-2/3 space-y-6"
@@ -85,19 +112,23 @@ const About = () => {
           >
             <motion.div variants={item} className="mb-6">
               <h3 className="text-2xl font-semibold text-dark-900 dark:text-white mb-2">Samson Akinsanya</h3>
-              <p className="text-primary-600 dark:text-primary-400 font-medium">AI Automation Specialist & CRM Integration Expert</p>
+              <p className="text-primary-600 dark:text-primary-400 font-medium">AI Automation Specialist · CRM Integration Architect · AWS Certified Cloud Practitioner</p>
             </motion.div>
             
             <motion.p variants={item} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              With a strong background in executive support, I've transitioned into becoming an AI Automation Specialist and CRM Integration Expert. My journey has given me a unique perspective on both the operational and technical aspects of business, allowing me to create solutions that truly address real-world challenges.
+              With a background in web development, I've evolved into an AI Automation Specialist focused on building intelligent, scalable systems across the modern business stack. My technical foundation allows me to approach automation with an engineer's mindset—designing solutions that are not only efficient but structurally sound and built for long-term growth.
             </motion.p>
             
             <motion.p variants={item} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              I transform business operations through intelligent automation and streamlined processes, bridging the gap between technology and productivity to help teams work smarter, not harder. My expertise in platforms like Zapier, Make.com, HubSpot, n8n, Airtable, Salesforce, and Asana enables me to design and implement custom automation solutions that eliminate repetitive tasks and enhance team efficiency.
+              As an AWS Certified Cloud Practitioner, I've strengthened my ability to architect reliable, cloud-powered automations that integrate securely, operate at scale, and optimize performance across distributed systems. This certification has deepened my understanding of infrastructure, data flows, and the importance of building automation that grows with the business—not against it.
             </motion.p>
             
             <motion.p variants={item} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              My passion lies in creating seamless integrations between CRMs, communication tools, and business applications, enabling data-driven decision making and <span className="text-primary-600 dark:text-primary-400 font-medium">scalable growth</span>. Let me handle the technical complexities while you focus on strategic initiatives.
+              I've owned automation systems end-to-end: mapping workflows, designing architecture, implementing integrations, managing performance and maintenance, and optimizing for long-term reliability. My expertise spans Zapier, Make.com, n8n, HubSpot, Airtable, Salesforce, Asana, and modern AI tools—enabling me to build custom, high-impact automations that remove bottlenecks, eliminate repetitive tasks, and empower teams to operate at their fullest potential.
+            </motion.p>
+            
+            <motion.p variants={item} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+              I specialize in creating seamless, data-driven workflows across CRMs, communication tools, and cloud platforms—bridging the gap between business operations and technical automation so companies can scale smarter, move faster, and focus on what truly drives growth. Let me handle the complexity behind your systems so your team can execute with clarity, speed, and confidence.
             </motion.p>
 
             <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6">
@@ -135,30 +166,6 @@ const About = () => {
                 View My Work
               </motion.a>
             </motion.div>
-          </motion.div>
-
-          <motion.div 
-            className="relative"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="relative z-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl p-8 shadow-2xl overflow-hidden">
-              <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm">
-                <div className="space-y-4">
-                  <div className="flex items-center text-white">
-                    <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-                    <span className="text-sm font-medium">Available for new projects</span>
-                  </div>
-                  <div className="text-white/90 text-sm">
-                    <p>🌍 Based in Lagos, Nigeria</p>
-                    <p>⏰ Working across multiple time zones</p>
-                    <p>🚀 Serving clients globally</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
