@@ -1,212 +1,115 @@
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Quote, Star, ChevronRight, ChevronLeft, Circle } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
+import SectionHeading from './shared/SectionHeading';
+import { testimonials } from '../data/portfolio';
 
-interface Testimonial {
-  id: number;
-  quote: string;
-  author: string;
-  role: string;
-  rating: number;
-  company: string;
-  avatar: string;
-}
+const avatarColors = [
+  'from-primary-500 to-primary-600',
+  'from-purple-500 to-purple-600',
+  'from-emerald-500 to-emerald-600',
+  'from-orange-500 to-orange-600',
+  'from-rose-500 to-rose-600',
+];
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const intervalRef = useRef<NodeJS.Timeout>();
+  const intervalRef = useRef<ReturnType<typeof setInterval>>();
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      quote: "Samson completely transformed how I run my backend systems. From lead automations to calendar control — I don't know how I ever worked without him.",
-      author: "Sarah Johnson",
-      role: "CEO",
-      company: "TechFlow Solutions",
-      rating: 5,
-      avatar: "SJ"
-    },
-    {
-      id: 2,
-      quote: "Efficient, proactive, and super easy to work with. He saved me hours each week just by fixing my workflows. The automations he built are incredibly reliable.",
-      author: "Michael Chen",
-      role: "Founder",
-      company: "Digital Marketing Agency",
-      rating: 5,
-      avatar: "MC"
-    },
-    {
-      id: 3,
-      quote: "Samson took our messy manual onboarding and turned it into a seamless, automated machine. Our team's productivity has skyrocketed since we started working with him.",
-      author: "Emily Rodriguez",
-      role: "Operations Manager",
-      company: "ConsultCorp",
-      rating: 5,
-      avatar: "ER"
-    },
-    {
-      id: 4,
-      quote: "The automation solutions Samson implemented saved us countless hours of manual work. His attention to detail and problem-solving skills are exceptional.",
-      author: "David Kim",
-      role: "CTO",
-      company: "StartUp X",
-      rating: 5,
-      avatar: "DK"
-    },
-    {
-      id: 5,
-      quote: "Working with Samson was a game-changer for our business. He understood our needs quickly and delivered solutions that exceeded our expectations.",
-      author: "Lisa Wong",
-      role: "Operations Director",
-      company: "Global Tech",
-      rating: 5,
-      avatar: "LW"
-    }
-  ];
-
-  // Auto-play functionality
-  useEffect(() => {
-    if (isAutoPlaying) {
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev === Math.ceil(testimonials.length / 3) - 1 ? 0 : prev + 1));
-      }, 8000);
-    }
-    return () => clearInterval(intervalRef.current);
-  }, [isAutoPlaying, testimonials.length]);
-
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev === Math.ceil(testimonials.length / 3) - 1 ? 0 : prev + 1));
-    if (isAutoPlaying) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev === Math.ceil(testimonials.length / 3) - 1 ? 0 : prev + 1));
-      }, 8000);
-    }
-  };
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev === 0 ? Math.ceil(testimonials.length / 3) - 1 : prev - 1));
-    if (isAutoPlaying) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev === Math.ceil(testimonials.length / 3) - 1 ? 0 : prev + 1));
-      }, 8000);
-    }
-  };
-
-  const goToSlide = (index: number) => {
-    setActiveIndex(index);
-    if (isAutoPlaying) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev === Math.ceil(testimonials.length / 3) - 1 ? 0 : prev + 1));
-      }, 8000);
-    }
-  };
-
-  // Group testimonials into chunks of 3 for carousel
-  const groupedTestimonials = [];
-  for (let i = 0; i < testimonials.length; i += 3) {
-    groupedTestimonials.push(testimonials.slice(i, i + 3));
+  const groupedTestimonials: typeof testimonials[] = [];
+  for (let index = 0; index < testimonials.length; index += 3) {
+    groupedTestimonials.push(testimonials.slice(index, index + 3));
   }
 
-  return (
-    <section id="testimonials" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-900 dark:to-dark-950 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="inline-block mb-4 text-sm font-medium text-primary-500 bg-primary-50 dark:bg-primary-900/30 px-3 py-1 rounded-full">
-            Client Love
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-dark-900 dark:text-white mb-4">
-            What Clients <span className="text-gradient">Are Saying</span>
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Don't just take my word for it — hear from the businesses I've helped transform.
-          </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-primary-300 mx-auto mt-4 rounded-full"></div>
-        </motion.div>
+  const totalSlides = groupedTestimonials.length;
 
-        <div 
+  useEffect(() => {
+    if (!isAutoPlaying) return undefined;
+
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((index) => (index + 1) % totalSlides);
+    }, 7000);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isAutoPlaying, totalSlides]);
+
+  const navigateTo = (index: number) => {
+    setActiveIndex(index);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+
+  return (
+    <section id="testimonials" className="py-24 bg-gray-50 dark:bg-dark-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-dot-pattern opacity-30 dark:opacity-15" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <SectionHeading
+            align="center"
+            eyebrow="Social Proof"
+            title="What People Say About My Work"
+            description="Feedback from founders, operators, and leaders I&apos;ve worked with to build and automate their systems."
+          />
+          <div className="section-divider mx-auto mt-5" />
+        </div>
+
+        <div
           className="relative"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
-          {/* Navigation Arrows */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-dark-800 shadow-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-700 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          
-          <button 
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-dark-800 shadow-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-700 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          {/* Testimonials Carousel */}
-          <div 
-            className="relative h-[600px] md:h-[400px] overflow-hidden"
-            ref={containerRef}
-          >
-            <motion.div 
-              className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
-              style={{
-                transform: `translateX(-${activeIndex * 100}%)`,
-                width: `${groupedTestimonials.length * 100}%`
-              }}
-              animate={{
-                x: `-${activeIndex * 100}%`,
-                transition: { type: 'spring', stiffness: 300, damping: 30 }
-              }}
+          <div className="overflow-hidden rounded-2xl">
+            <motion.div
+              className="flex"
+              animate={{ x: `-${activeIndex * 100}%` }}
+              transition={{ type: 'spring', stiffness: 280, damping: 30 }}
+              style={{ width: `${groupedTestimonials.length * 100}%` }}
             >
               {groupedTestimonials.map((group, groupIndex) => (
-                <div key={groupIndex} className="w-full flex-shrink-0 flex flex-col md:flex-row gap-8 px-2">
+                <div
+                  key={groupIndex}
+                  className="flex flex-col md:flex-row gap-5 px-1"
+                  style={{ width: `${100 / groupedTestimonials.length}%` }}
+                >
                   {group.map((testimonial, index) => (
-                    <motion.div 
+                    <motion.div
                       key={testimonial.id}
-                      className="bg-white dark:bg-dark-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-dark-700 flex-1 flex flex-col h-full"
+                      className="flex-1 bg-white dark:bg-dark-800/70 rounded-2xl p-6 border border-gray-100 dark:border-dark-700/50 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col backdrop-blur-sm"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1, duration: 0.5 }}
+                      whileHover={{ y: -4 }}
                     >
-                      <div className="flex items-center justify-between mb-6">
-                        <div className={`w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-lg`}>
+                      <div className="flex gap-1 mb-4">
+                        {[...Array(5)].map((_, ratingIndex) => (
+                          <Star
+                            key={ratingIndex}
+                            size={14}
+                            className={ratingIndex < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300 dark:text-dark-600'}
+                          />
+                        ))}
+                      </div>
+
+                      <Quote className="text-primary-500/25 mb-2" size={28} />
+                      <blockquote className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed italic flex-grow">
+                        &quot;{testimonial.quote}&quot;
+                      </blockquote>
+
+                      <div className="mt-5 pt-4 border-t border-gray-100 dark:border-dark-700 flex items-center gap-3">
+                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${avatarColors[(testimonial.id - 1) % avatarColors.length]} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
                           {testimonial.avatar}
                         </div>
-                        <div className="text-yellow-400 flex">
-                          {[...Array(5)].map((_, i) => (
-                            <Star 
-                              key={i} 
-                              size={16} 
-                              className={`${i < testimonial.rating ? 'fill-current' : 'text-gray-300 dark:text-gray-700'}`} 
-                            />
-                          ))}
+                        <div>
+                          <div className="font-semibold text-sm text-dark-900 dark:text-white">{testimonial.author}</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">
+                            {testimonial.role} · {testimonial.company}
+                          </div>
                         </div>
-                      </div>
-                      
-                      <blockquote className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed flex-1">
-                        <Quote className="text-gray-200 dark:text-dark-700 mb-4" size={32} />
-                        <p className="italic">"{testimonial.quote}"</p>
-                      </blockquote>
-                      
-                      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-dark-700">
-                        <div className="font-bold text-dark-900 dark:text-white">{testimonial.author}</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role} • {testimonial.company}</div>
                       </div>
                     </motion.div>
                   ))}
@@ -215,45 +118,55 @@ const Testimonials = () => {
             </motion.div>
           </div>
 
-          {/* Pagination Dots */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {groupedTestimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 focus:outline-none ${
-                  index === activeIndex 
-                    ? 'bg-primary-500 w-6 scale-125' 
-                    : 'bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
+          <div className="flex items-center justify-center mt-8 gap-4">
+            <button
+              onClick={() => navigateTo((activeIndex - 1 + totalSlides) % totalSlides)}
+              className="w-9 h-9 rounded-full border border-gray-200 dark:border-dark-700 bg-white dark:bg-dark-800 text-gray-600 dark:text-gray-300 hover:border-primary-500/40 hover:text-primary-400 transition-all flex items-center justify-center"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <div className="flex gap-2">
+              {groupedTestimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => navigateTo(index)}
+                  className={`rounded-full transition-all duration-300 ${
+                    index === activeIndex ? 'bg-primary-500 w-6 h-2.5' : 'bg-gray-300 dark:bg-dark-700 w-2.5 h-2.5 hover:bg-primary-300'
+                  }`}
+                  aria-label={`Slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() => navigateTo((activeIndex + 1) % totalSlides)}
+              className="w-9 h-9 rounded-full border border-gray-200 dark:border-dark-700 bg-white dark:bg-dark-800 text-gray-600 dark:text-gray-300 hover:border-primary-500/40 hover:text-primary-400 transition-all flex items-center justify-center"
+              aria-label="Next"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
         </div>
 
-        <motion.div 
-          className="mt-16 bg-white dark:bg-dark-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-dark-700 max-w-4xl mx-auto"
+        <motion.div
+          className="mt-14 max-w-2xl mx-auto bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-7 shadow-glow-blue flex flex-col sm:flex-row items-center justify-between gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          whileHover={{ y: -5 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
-              <h3 className="text-xl font-bold text-dark-900 dark:text-white mb-2">Ready to transform your business?</h3>
-              <p className="text-gray-600 dark:text-gray-300">Join 50+ businesses that trust me with their automation needs</p>
-            </div>
-            <motion.a
-              href="#contact"
-              className="whitespace-nowrap px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Get Started Today
-            </motion.a>
+          <div className="text-center sm:text-left">
+            <h3 className="text-lg font-heading font-bold text-white">Open to new opportunities?</h3>
+            <p className="text-primary-100 text-sm mt-1">Let&apos;s explore how I can contribute to your team or project.</p>
           </div>
+          <motion.a
+            href="#contact"
+            className="whitespace-nowrap px-6 py-3 bg-white text-primary-700 font-semibold text-sm rounded-xl hover:bg-primary-50 transition-colors shadow-sm"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Work With Me
+          </motion.a>
         </motion.div>
       </div>
     </section>

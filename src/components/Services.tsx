@@ -1,174 +1,135 @@
 import { motion } from 'framer-motion';
-import { Users, ArrowRight, Zap, CheckCircle, Clock, BarChart3, Mail, FileText, RefreshCw, Code, Cpu } from 'lucide-react';
+import { ArrowRight, Code2, Database, ShoppingCart, TrendingUp, Zap } from 'lucide-react';
+import SectionHeading from './shared/SectionHeading';
+import { expertiseAreas } from '../data/portfolio';
 
-interface ServiceFeature {
-  text: string;
-  icon: JSX.Element;
-}
+const iconMap = {
+  'Web Development': <Code2 size={26} />,
+  'E-commerce Systems': <ShoppingCart size={26} />,
+  'CRM Implementation': <Database size={26} />,
+  'Automation Systems': <Zap size={26} />,
+  'Funnels & Conversion Systems': <TrendingUp size={26} />,
+};
 
-interface ServiceItem {
-  icon: JSX.Element;
-  title: string;
-  description: string;
-  features: ServiceFeature[];
-  color: string;
-  buttonColor: string;
-}
+const styleMap = {
+  'Web Development': {
+    gradient: 'from-primary-500/15 to-primary-500/5',
+    iconBg: 'bg-primary-500/15 text-primary-400',
+  },
+  'E-commerce Systems': {
+    gradient: 'from-emerald-500/15 to-emerald-500/5',
+    iconBg: 'bg-emerald-500/15 text-emerald-400',
+  },
+  'CRM Implementation': {
+    gradient: 'from-blue-500/15 to-blue-500/5',
+    iconBg: 'bg-blue-500/15 text-blue-400',
+  },
+  'Automation Systems': {
+    gradient: 'from-purple-500/15 to-purple-500/5',
+    iconBg: 'bg-purple-500/15 text-purple-400',
+  },
+  'Funnels & Conversion Systems': {
+    gradient: 'from-orange-500/15 to-orange-500/5',
+    iconBg: 'bg-orange-500/15 text-orange-400',
+  },
+};
+
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+  hover: { y: -6, transition: { duration: 0.2 } },
+};
 
 const Services = () => {
-  const services: ServiceItem[] = [
-    {
-      icon: <Zap className="text-purple-500" size={32} />,
-      title: "Systems Integration",
-      description: "Seamless integration of business applications and automation of cross-platform workflows.",
-      features: [
-        { text: "API integrations & webhook setup", icon: <Zap size={16} /> },
-        { text: "Data synchronization across platforms", icon: <RefreshCw size={16} /> },
-        { text: "Custom middleware development", icon: <Code size={16} /> },
-        { text: "Legacy system modernization", icon: <Cpu size={16} /> }
-      ],
-      color: "from-purple-500/10 to-purple-500/5",
-      buttonColor: "bg-purple-600 hover:bg-purple-700"
-    },
-    {
-      icon: <Users className="text-blue-500" size={32} />,
-      title: "Project Coordination",
-      description: "Streamlined project management to keep your team organized and on track.",
-      features: [
-        { text: "Trello & Asana setup", icon: <CheckCircle size={16} /> },
-        { text: "Team task boards + due date tracking", icon: <Clock size={16} /> },
-        { text: "Weekly reporting & progress follow-up", icon: <BarChart3 size={16} /> },
-        { text: "Meeting notes & action item logs", icon: <FileText size={16} /> }
-      ],
-      color: "from-blue-500/10 to-blue-500/5",
-      buttonColor: "bg-blue-600 hover:bg-blue-700"
-    },
-    {
-      icon: <Zap className="text-indigo-500" size={32} />,
-      title: "Workflow Automation",
-      description: "Smart automation solutions that eliminate manual work and boost efficiency.",
-      features: [
-        { text: "Zapier & Make.com automations", icon: <Zap size={16} /> },
-        { text: "CRM lead pipelines (GHL, HubSpot, Salesforce)", icon: <Users size={16} /> },
-        { text: "Email sequences & auto-responders", icon: <Mail size={16} /> },
-        { text: "Calendar workflows & reporting dashboards", icon: <BarChart3 size={16} /> }
-      ],
-      color: "from-indigo-500/10 to-indigo-500/5",
-      buttonColor: "bg-indigo-600 hover:bg-indigo-700"
-    }
-  ];
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1]
-      } 
-    },
-    hover: {
-      y: -5,
-      transition: { duration: 0.2 }
-    }
-  };
-
   return (
-    <section id="services" className="py-20 bg-gray-50 dark:bg-dark-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="inline-block mb-4 text-sm font-medium text-primary-500 bg-primary-50 dark:bg-primary-900/30 px-3 py-1 rounded-full">
-            My Services
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-dark-900 dark:text-white mb-4">
-            How I <span className="text-gradient">Support You</span>
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Here's what I can take off your plate — and automate while I'm at it.
-          </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-primary-300 mx-auto mt-4 rounded-full"></div>
-        </motion.div>
+    <section id="services" className="py-24 bg-gray-50 dark:bg-dark-950/80 relative overflow-hidden">
+      <div className="absolute inset-0 bg-dot-pattern opacity-40 dark:opacity-20" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <SectionHeading
+            align="center"
+            eyebrow="Core Expertise"
+            title="What I Specialize In"
+            description="I design and build digital systems across five connected domains, each one aimed at clearer operations, stronger conversion, and less manual work."
+          />
+          <div className="section-divider mx-auto mt-5" />
+        </div>
+
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
-          {services.map((service, index) => (
-            <motion.div 
-              key={index} 
-              className="group relative h-full"
-              variants={item}
-              whileHover="hover"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl -rotate-1 group-hover:rotate-0 transition-transform duration-300`}></div>
-              <div className="relative h-full bg-white dark:bg-dark-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-dark-700 group-hover:shadow-lg transition-all duration-300 flex flex-col">
-                <div className="w-14 h-14 rounded-xl bg-opacity-10 flex items-center justify-center mb-6" style={{ backgroundColor: service.buttonColor.replace('hover:bg-', 'bg-').split(' ')[0] + '1a' }}>
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-dark-900 dark:text-white mb-3">{service.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6 flex-grow">{service.description}</p>
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-primary-500 mr-3 mt-0.5 flex-shrink-0">
-                        {feature.icon}
-                      </span>
-                      <span className="text-gray-700 dark:text-gray-300 text-sm">{feature.text}</span>
-                    </li>
-                  ))}
-                </ul>
-                <motion.button 
-                  className={`w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white ${service.buttonColor} transition-colors duration-200`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Learn more
-                  <ArrowRight className="ml-2" size={18} />
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          {expertiseAreas.map((area) => {
+            const styles = styleMap[area.title as keyof typeof styleMap];
+            return (
+              <motion.div
+                key={area.title}
+                className="group relative"
+                variants={item}
+                whileHover="hover"
+              >
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${styles.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm`} />
 
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          <p className="text-gray-600 dark:text-gray-300 mb-8">
-            Ready to streamline your workflow and reclaim your time?
-          </p>
-          <motion.a
-            href="#contact"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
+                <div className="relative h-full bg-white dark:bg-dark-800/70 rounded-2xl p-7 shadow-card border border-gray-100 dark:border-dark-700/50 group-hover:shadow-card-hover group-hover:border-primary-500/20 transition-all duration-300 flex flex-col backdrop-blur-sm">
+                  <div className={`w-12 h-12 rounded-xl ${styles.iconBg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-200`}>
+                    {iconMap[area.title as keyof typeof iconMap]}
+                  </div>
+
+                  <h3 className="text-lg font-heading font-bold text-dark-900 dark:text-white mb-2 group-hover:text-primary-400 transition-colors">
+                    {area.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-5 leading-relaxed flex-grow">
+                    {area.description}
+                  </p>
+
+                  <ul className="space-y-2">
+                    {area.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2.5 text-sm text-gray-600 dark:text-gray-300">
+                        <span className="mt-1.5 w-1.5 h-1.5 bg-primary-400 rounded-full flex-shrink-0" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            );
+          })}
+
+          <motion.div
+            className="group relative md:col-span-2 lg:col-span-3"
+            variants={item}
           >
-            Book a Free Consultation
-            <ArrowRight className="ml-2" size={18} />
-          </motion.a>
+            <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-glow-blue">
+              <div>
+                <h3 className="text-xl font-heading font-bold text-white mb-1">
+                  Ready to build something powerful?
+                </h3>
+                <p className="text-primary-100 text-sm">
+                  Let&apos;s design the system your business actually needs.
+                </p>
+              </div>
+              <motion.a
+                href="#contact"
+                className="flex-shrink-0 flex items-center gap-2 px-7 py-3.5 bg-white text-primary-700 font-semibold text-sm rounded-xl hover:bg-primary-50 transition-colors whitespace-nowrap"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Start a Conversation
+                <ArrowRight size={16} />
+              </motion.a>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
