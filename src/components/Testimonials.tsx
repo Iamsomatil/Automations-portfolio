@@ -55,9 +55,19 @@ const Testimonials = () => {
               </blockquote>
 
               <div className="mt-5 pt-4 border-t border-gray-100 dark:border-dark-700 flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${avatarColors[(testimonial.id - 1) % avatarColors.length]} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
-                  {testimonial.avatar}
-                </div>
+                {testimonial.logoUrl ? (
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white p-1.5 dark:border-dark-700 dark:bg-dark-900">
+                    <img
+                      src={testimonial.logoUrl}
+                      alt={`${testimonial.company} logo`}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${avatarColors[(testimonial.id - 1) % avatarColors.length]} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                    {testimonial.avatar}
+                  </div>
+                )}
                 <div>
                   <div className="font-semibold text-sm text-dark-900 dark:text-white">{testimonial.author}</div>
                   <div className="text-xs text-gray-500 dark:text-gray-400">

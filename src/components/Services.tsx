@@ -120,7 +120,7 @@ const Services = () => {
                 </p>
               </div>
               <motion.a
-                href="#contact"
+                href="#portfolio"
                 className="flex-shrink-0 flex items-center gap-2 px-7 py-3.5 bg-white text-primary-700 font-semibold text-sm rounded-xl hover:bg-primary-50 transition-colors whitespace-nowrap"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}

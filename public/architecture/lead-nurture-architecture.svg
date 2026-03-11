@@ -1,0 +1,70 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1200" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071523"/>
+      <stop offset="1" stop-color="#10263A"/>
+    </linearGradient>
+    <linearGradient id="card5" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#12314C"/>
+      <stop offset="1" stop-color="#0B2135"/>
+    </linearGradient>
+    <filter id="glow5" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow5" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" rx="32" fill="url(#bg5)"/>
+  <text x="70" y="78" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Lead Nurture Workflow Architecture</text>
+  <text x="70" y="112" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Lead capture, team alerts, task creation, and follow-up coordinated through one orchestration layer.</text>
+
+  <rect x="70" y="190" width="250" height="150" rx="24" fill="url(#card5)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="110" y="234" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">HubSpot Intake</text>
+  <text x="110" y="268" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">New lead captured</text>
+  <text x="110" y="296" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">CRM source of truth</text>
+  <text x="110" y="324" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Trigger event</text>
+
+  <rect x="450" y="140" width="300" height="240" rx="28" fill="url(#card5)" stroke="#22C55E" stroke-opacity="0.4"/>
+  <text x="525" y="184" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Make.com Core</text>
+  <text x="490" y="232" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Lead trigger</text>
+  <text x="490" y="260" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Orchestration logic</text>
+  <text x="490" y="288" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Task fan-out</text>
+  <text x="490" y="316" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Messaging and tracking</text>
+  <text x="490" y="344" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Team visibility steps</text>
+
+  <rect x="880" y="120" width="250" height="120" rx="24" fill="url(#card5)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="955" y="164" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Gmail</text>
+  <text x="916" y="198" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Instant welcome email</text>
+
+  <rect x="880" y="280" width="250" height="120" rx="24" fill="url(#card5)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="952" y="324" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Asana</text>
+  <text x="928" y="358" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Owner task creation</text>
+
+  <rect x="880" y="440" width="250" height="120" rx="24" fill="url(#card5)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="970" y="484" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Slack</text>
+  <text x="918" y="518" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Team notification and handoff</text>
+
+  <rect x="450" y="500" width="300" height="150" rx="24" fill="#081726" stroke="#22C55E" stroke-opacity="0.3"/>
+  <text x="520" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Google Sheets</text>
+  <text x="490" y="580" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Tracking log</text>
+  <text x="490" y="608" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Lead handling visibility</text>
+  <text x="490" y="636" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Lightweight audit trail</text>
+
+  <rect x="70" y="500" width="250" height="150" rx="24" fill="#081726" stroke="#38BDF8" stroke-opacity="0.25"/>
+  <text x="104" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Ops Outcome</text>
+  <text x="104" y="578" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Faster first response</text>
+  <text x="104" y="606" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Clear ownership</text>
+  <text x="104" y="634" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Less manual follow-up drag</text>
+
+  <path d="M320 265H430" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow5)" filter="url(#glow5)"/>
+  <path d="M750 200H860" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow5)" filter="url(#glow5)"/>
+  <path d="M750 340H860" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow5)" filter="url(#glow5)"/>
+  <path d="M750 500C830 500 830 500 860 500" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow5)" filter="url(#glow5)"/>
+  <path d="M600 390V480" stroke="#22C55E" stroke-width="4" marker-end="url(#arrow5)" filter="url(#glow5)"/>
+</svg>

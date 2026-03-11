@@ -1,0 +1,62 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg8" x1="0" y1="0" x2="1200" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08121B"/>
+      <stop offset="1" stop-color="#10263A"/>
+    </linearGradient>
+    <linearGradient id="card8" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#12304B"/>
+      <stop offset="1" stop-color="#0B2034"/>
+    </linearGradient>
+    <filter id="glow8" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow8" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" rx="32" fill="url(#bg8)"/>
+  <text x="70" y="78" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Weekly Regulation Report Architecture</text>
+  <text x="70" y="112" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Scheduled data collection, normalization, AI-assisted drafting, and delivery for recurring weekly reports.</text>
+
+  <rect x="70" y="190" width="250" height="180" rx="24" fill="url(#card8)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="98" y="234" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">API Source Layer</text>
+  <text x="98" y="268" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Regulation updates</text>
+  <text x="98" y="296" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Tourism metrics</text>
+  <text x="98" y="324" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Local event data</text>
+  <text x="98" y="352" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Weekly time window</text>
+
+  <rect x="430" y="140" width="340" height="250" rx="28" fill="url(#card8)" stroke="#22C55E" stroke-opacity="0.4"/>
+  <text x="530" y="184" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">n8n Pipeline</text>
+  <text x="470" y="232" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Scheduled run</text>
+  <text x="470" y="260" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Source ingestion</text>
+  <text x="470" y="288" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Normalization logic</text>
+  <text x="470" y="316" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Structured payload creation</text>
+  <text x="470" y="344" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Delivery preparation</text>
+
+  <rect x="880" y="170" width="250" height="140" rx="24" fill="url(#card8)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="953" y="214" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">GPT-4o</text>
+  <text x="922" y="248" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Script generation</text>
+  <text x="922" y="276" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Polished weekly output</text>
+
+  <rect x="430" y="500" width="340" height="150" rx="24" fill="#081726" stroke="#22C55E" stroke-opacity="0.3"/>
+  <text x="515" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Final Report</text>
+  <text x="470" y="580" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Ready-to-use weekly package</text>
+  <text x="470" y="608" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Reduced manual prep</text>
+  <text x="470" y="636" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">More consistent outputs</text>
+
+  <rect x="70" y="500" width="250" height="150" rx="24" fill="#081726" stroke="#38BDF8" stroke-opacity="0.25"/>
+  <text x="104" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Content Benefit</text>
+  <text x="104" y="578" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Reliable weekly cadence</text>
+  <text x="104" y="606" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Less manual research</text>
+  <text x="104" y="634" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Higher script consistency</text>
+
+  <path d="M320 280H410" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow8)" filter="url(#glow8)"/>
+  <path d="M770 240H860" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow8)" filter="url(#glow8)"/>
+  <path d="M600 400V480" stroke="#22C55E" stroke-width="4" marker-end="url(#arrow8)" filter="url(#glow8)"/>
+</svg>

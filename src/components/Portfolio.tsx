@@ -79,7 +79,10 @@ const Portfolio = () => {
     };
 
     window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
+    return () => {
+      window.removeEventListener('keydown', handler);
+      document.body.style.overflow = '';
+    };
   }, [goToNext, goToPrev, selectedProject]);
 
   return (
@@ -102,7 +105,7 @@ const Portfolio = () => {
         </div>
 
         <motion.div
-          className="flex justify-center gap-2 mb-10"
+          className="mb-10 flex flex-wrap justify-center gap-2"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -238,7 +241,7 @@ const Portfolio = () => {
             </button>
 
             <motion.div
-              className="relative max-w-6xl w-full max-h-[92vh] overflow-y-auto"
+              className="relative w-full max-w-6xl max-h-[92vh] overflow-y-auto overscroll-contain pr-1"
               onClick={(event) => event.stopPropagation()}
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -375,7 +378,7 @@ const Portfolio = () => {
                           <img
                             src={selectedProject.architectureDiagram.url}
                             alt={selectedProject.architectureDiagram.alt}
-                            className="w-full h-auto"
+                            className="h-auto max-h-[540px] w-full object-contain bg-slate-950/30"
                           />
                         </div>
                       ) : null}

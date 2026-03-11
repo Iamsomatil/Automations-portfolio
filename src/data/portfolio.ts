@@ -58,6 +58,7 @@ export type Testimonial = {
   company: string;
   rating: number;
   avatar: string;
+  logoUrl?: string;
 };
 
 export type FAQItem = {
@@ -295,7 +296,7 @@ export const projects: Project[] = [
     category: 'web-crm',
     featured: true,
     description:
-      'Built the traveler-facing website and the Airtable-based backend system used to manage traveler, advisor, and follow-up workflows across a travel platform.',
+      'Built the traveler-facing website and the Airtable operations layer used to manage traveler, advisor, and follow-up workflows.',
     challenge:
       'Traveler records, advisor workflows, and follow-up actions needed to stay synchronized across a fast-moving service business.',
     solution:
@@ -356,7 +357,7 @@ export const projects: Project[] = [
     category: 'web-crm',
     featured: true,
     description:
-      'Built the website and the integration layer between form submissions, HubSpot records, and Make.com workflows so inbound lead handling behaved like one system.',
+      'Built the website and the integration layer between forms, HubSpot, and Make.com so inbound lead handling behaved like one system.',
     challenge:
       'Website submissions and CRM workflows were creating duplicate work, inconsistent records, and extra manual cleanup for the team.',
     solution:
@@ -477,7 +478,7 @@ export const projects: Project[] = [
     title: 'Automated Lead Nurture Workflow',
     category: 'automation',
     description:
-      'End-to-end lead nurturing system connecting HubSpot, Gmail, Asana, Slack, and Google Sheets via Make.com.',
+      'End-to-end lead nurture workflow connecting HubSpot, Gmail, Asana, Slack, and Google Sheets through Make.com.',
     challenge:
       'The client needed every lead captured, acknowledged, assigned, and tracked without relying on manual follow-up discipline.',
     solution:
@@ -490,6 +491,45 @@ export const projects: Project[] = [
       'Connected 6+ tools in one workflow',
       'Saved hours of weekly manual coordination',
     ],
+    metrics: [
+      { label: 'Systems Connected', value: '6+' },
+      { label: 'Primary Trigger', value: 'New lead intake' },
+      { label: 'Main Outcome', value: 'Faster lead handoff' },
+    ],
+    roleSummary:
+      'Designed the lead intake flow, orchestration logic, and cross-tool handoffs that moved new leads from capture to follow-up without manual coordination.',
+    architectureSummary:
+      'HubSpot captured the lead, Make.com orchestrated the nurture steps, Gmail handled acknowledgements, Asana and Slack coordinated the team response, and Google Sheets preserved lightweight tracking visibility.',
+    architectureDiagram: {
+      url: '/architecture/lead-nurture-architecture.svg',
+      alt: 'Architecture diagram showing HubSpot lead capture, Make.com orchestration, Gmail outreach, Asana tasks, Slack notifications, and Google Sheets tracking',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'Every new lead needed acknowledgement, assignment, and tracking with no dropped steps.',
+          'The workflow crossed communication, tasking, and visibility tools used by different stakeholders.',
+          'The client needed fast follow-up without creating more admin overhead for the team.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Used Make.com as the orchestration layer so one intake event could fan out into email, tasking, messaging, and tracking actions.',
+          'Kept HubSpot as the lead source while using downstream tools only for the actions they handled best.',
+          'Structured the workflow so each automation step created a visible artifact, not just a background state change.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Multi-tool notifications reduced the chance of a lead being captured but not acted on.',
+          'Centralized orchestration made it easier to update logic when the team process changed.',
+          'Tracking outputs gave the client a lightweight audit trail for lead handling.',
+        ],
+      },
+    ],
     tags: ['HubSpot', 'Make.com', 'Gmail', 'Asana', 'Slack'],
     images: [{ url: '/Hubspot-crm-integration.png', alt: 'Lead nurture workflow' }],
   },
@@ -497,7 +537,7 @@ export const projects: Project[] = [
     title: 'Federal Contract Opportunity Automation',
     category: 'automation',
     description:
-      'Built a federal contract sourcing system using Make.com that pulls new SAM.gov opportunities daily, filters by NAICS codes, and logs qualified opportunities automatically.',
+      'Built a federal contract sourcing workflow that pulls SAM.gov opportunities daily, filters by NAICS code, and logs qualified matches automatically.',
     challenge:
       'Manually checking SAM.gov and logging opportunities was taking hours daily and still causing missed bids.',
     solution:
@@ -516,6 +556,40 @@ export const projects: Project[] = [
       { label: 'Data Entry', value: '0 min' },
       { label: 'NAICS Codes', value: '20+' },
     ],
+    roleSummary:
+      'Built the daily ingestion, filtering, deduplication, and logging workflow that turned federal opportunity monitoring into a repeatable system.',
+    architectureSummary:
+      'A scheduled Make.com scenario queried SAM.gov, filtered opportunities by target NAICS codes, removed duplicates, and wrote qualified results into Google Sheets for review and downstream tracking.',
+    architectureDiagram: {
+      url: '/architecture/federal-contract-architecture.svg',
+      alt: 'Architecture diagram showing scheduled Make.com pulls from SAM.gov, NAICS filtering, deduplication, and Google Sheets logging',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'The opportunity set changed daily, so refresh cadence had to be dependable.',
+          'The client only wanted qualified contract opportunities, not a raw firehose of public data.',
+          'Duplicate logging would reduce trust in the system quickly because the output was used for active bid review.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Scheduled API pulls replaced manual searching so the workflow could run consistently without user intervention.',
+          'Applied NAICS-based filtering inside the automation layer before results were logged downstream.',
+          'Used Google Sheets as the client-facing review surface because it matched the way the team already tracked opportunities.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Deduplication preserved confidence in the logged opportunity list over repeated daily runs.',
+          'A scheduled workflow reduced the risk of missed bid windows caused by inconsistent manual checks.',
+          'The system separated data retrieval from review, making it easier to extend later with alerts or scoring.',
+        ],
+      },
+    ],
     tags: ['Make.com', 'SAM.gov API', 'Google Sheets', 'API Integration'],
     images: [{ url: '/sam.png', alt: 'Federal contract opportunity automation' }],
   },
@@ -523,7 +597,7 @@ export const projects: Project[] = [
     title: 'GoHighLevel Seminar Automation',
     category: 'automation',
     description:
-      'Automated seminar attendance tracking and post-event follow-up in GoHighLevel using tags, cleanup logic, and targeted messaging sequences.',
+      'Automated seminar attendance tracking and post-event follow-up in GoHighLevel with tagging, cleanup logic, and targeted sequences.',
     challenge:
       'Seminar tracking and follow-up were entirely manual, creating missed contacts and inconsistent communication after each event.',
     solution:
@@ -536,6 +610,45 @@ export const projects: Project[] = [
       'Automated 5+ follow-up steps',
       'Consistent contact tagging across attendees',
     ],
+    metrics: [
+      { label: 'Time Saved', value: '4+ hrs/event' },
+      { label: 'Follow-up Steps', value: '5+' },
+      { label: 'Core Platform', value: 'GoHighLevel' },
+    ],
+    roleSummary:
+      'Owned the seminar attendance model, tagging logic, and post-event follow-up automation inside GoHighLevel.',
+    architectureSummary:
+      'Seminar attendance inputs updated contact records in GoHighLevel, tagging and cleanup logic normalized attendee state, and follow-up sequences handled segmented post-event messaging automatically.',
+    architectureDiagram: {
+      url: '/architecture/ghl-seminar-architecture.svg',
+      alt: 'Architecture diagram showing seminar attendance intake, GoHighLevel contact records, tagging logic, follow-up sequences, and team visibility',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'Event attendance data had to be organized quickly enough for timely post-seminar outreach.',
+          'The same contact could appear across multiple events, which made consistent tagging important.',
+          'Follow-up quality depended on segmenting contacts correctly after each seminar.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Used GoHighLevel as both the contact system and the follow-up engine to keep event state and outreach logic together.',
+          'Added cleanup and tagging logic before sequence enrollment so downstream messaging stayed relevant.',
+          'Modeled the workflow around seminar participation states rather than one-off broadcast sends.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Consistent tagging reduced the chance of missed or mis-segmented attendees.',
+          'Automated follow-up eliminated repetitive manual steps after each event.',
+          'Keeping tracking and messaging in one platform made the flow easier to maintain between seminars.',
+        ],
+      },
+    ],
     tags: ['GoHighLevel', 'Email Automation', 'Marketing Automation'],
     images: [{ url: '/GHL-Onboarding.png', alt: 'GoHighLevel seminar automation' }],
   },
@@ -543,7 +656,7 @@ export const projects: Project[] = [
     title: 'Automated Weekly Regulation Report',
     category: 'automation',
     description:
-      'Multi-stage n8n automation that pulls regulation updates, tourism metrics, and local event data, then generates a polished weekly script with GPT-4o.',
+      'Built an n8n workflow that collects regulation updates, tourism metrics, and local event data, then generates a weekly script with GPT-4o.',
     challenge:
       'Weekly research, writing, and packaging was consuming hours of manual work across multiple data sources.',
     solution:
@@ -556,6 +669,46 @@ export const projects: Project[] = [
       'Improved script consistency across weekly reports',
       'Automated 3+ data sources end-to-end',
     ],
+    metrics: [
+      { label: 'Writing Time', value: '-85%' },
+      { label: 'Prep Time', value: '-90%' },
+      { label: 'Data Sources', value: '3+' },
+      { label: 'Core Stack', value: 'n8n + GPT-4o' },
+    ],
+    roleSummary:
+      'Designed the weekly reporting pipeline, from data ingestion and normalization through AI-assisted script generation and final delivery.',
+    architectureSummary:
+      'n8n scheduled the reporting run, collected tourism and regulation data from multiple APIs, normalized the source material, and passed a structured payload into GPT-4o to generate a polished weekly script for delivery.',
+    architectureDiagram: {
+      url: '/architecture/weekly-regulation-architecture.svg',
+      alt: 'Architecture diagram showing n8n scheduling, multi-source API ingestion, data normalization, GPT-4o script generation, and final report delivery',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'The report relied on multiple source types that needed to be aligned to the same weekly reporting window.',
+          'Generated output had to feel usable, not just technically complete.',
+          'Manual research and packaging time was the main operational bottleneck the client wanted to remove.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Used n8n to coordinate the schedule and data normalization before the AI generation step.',
+          'Structured the reporting payload so GPT-4o received cleaner context instead of raw source fragments.',
+          'Kept the workflow modular so source inputs or output formatting could be updated independently.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Normalizing source data before generation improved consistency across weekly outputs.',
+          'A scheduled pipeline reduced the risk of missed reporting cycles.',
+          'Separating ingestion from generation made the system easier to debug when one source changed.',
+        ],
+      },
+    ],
     tags: ['n8n', 'OpenAI GPT-4o', 'API Integration', 'JavaScript', 'Notion'],
     images: [{ url: '/regulation.png', alt: 'Automated regulation report generator' }],
   },
@@ -563,7 +716,7 @@ export const projects: Project[] = [
     title: 'Social Media Posting Automation',
     category: 'automation',
     description:
-      'Integrated Airtable with Buffer for automated social media posting, using Make.com routers and Slack notifications for visibility.',
+      'Integrated Airtable with Buffer for automated social posting, using Make.com routing and Slack notifications for team visibility.',
     challenge:
       'Social scheduling required repetitive data gathering, manual posting setup, and too much room for publishing errors.',
     solution:
@@ -575,6 +728,46 @@ export const projects: Project[] = [
       'Reduced publishing errors by 90%',
       'Connected 5+ platforms together',
       'Automated 20+ workflow steps',
+    ],
+    metrics: [
+      { label: 'Time Saved', value: '8+ hrs/week' },
+      { label: 'Publishing Errors', value: '-90%' },
+      { label: 'Workflow Steps', value: '20+' },
+      { label: 'Core Stack', value: 'Airtable + Make + Buffer' },
+    ],
+    roleSummary:
+      'Built the content operations workflow that moved planned posts from Airtable into Buffer with routing logic, visibility steps, and team notifications.',
+    architectureSummary:
+      'Airtable acted as the content planning source, Make.com handled routing and posting logic, Buffer scheduled the outbound posts, and Slack notifications kept the team aware of publishing activity and exceptions.',
+    architectureDiagram: {
+      url: '/architecture/social-posting-architecture.svg',
+      alt: 'Architecture diagram showing Airtable content planning, Make.com routing, Buffer scheduling, and Slack team notifications',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'Publishing required coordination across planning, scheduling, and team visibility tools.',
+          'Manual posting setup introduced avoidable errors and repetitive operational work.',
+          'The client needed a workflow that could support recurring content volume without becoming fragile.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Used Airtable as the planning source so content state stayed visible before scheduling.',
+          'Placed Make.com in the middle as the router between content readiness, publishing actions, and notifications.',
+          'Used Slack as an operational visibility layer so the team knew what had been scheduled or needed attention.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Structured routing reduced repetitive copy-paste work that often causes publishing mistakes.',
+          'Separating content planning from scheduling made it easier to troubleshoot failures without losing the content source.',
+          'Notifications helped the team trust the automation while still staying aware of live publishing activity.',
+        ],
+      },
     ],
     tags: ['Make.com', 'Airtable', 'Buffer', 'Slack'],
     images: [{ url: '/Make-Airtable.png', alt: 'Social media posting automation' }],
@@ -591,6 +784,7 @@ export const testimonials: Testimonial[] = [
     company: 'Hosvi LLC',
     rating: 5,
     avatar: 'HL',
+    logoUrl: '/hosvi-logo.jpeg',
   },
   {
     id: 2,
@@ -601,6 +795,7 @@ export const testimonials: Testimonial[] = [
     company: 'AdviTravel',
     rating: 5,
     avatar: 'AT',
+    logoUrl: '/advitrave-logo.jpeg',
   },
   {
     id: 3,
@@ -611,6 +806,7 @@ export const testimonials: Testimonial[] = [
     company: 'Sunlife Housing Corp',
     rating: 5,
     avatar: 'SH',
+    logoUrl: '/Sunlife-logo.jpeg',
   },
   {
     id: 4,
