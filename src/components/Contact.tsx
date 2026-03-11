@@ -13,7 +13,7 @@ const Contact = () => {
     name: '',
     email: '',
     company: '',
-    opportunityType: 'Project Inquiry',
+    opportunityType: 'Automation / Integrations Role',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,7 +23,7 @@ const Contact = () => {
   useEffect(() => {
     if (state.succeeded) {
       setSubmitStatus({ success: true, message: "Message received! I'll respond within 24 hours." });
-      setFormData({ name: '', email: '', company: '', opportunityType: 'Project Inquiry', message: '' });
+      setFormData({ name: '', email: '', company: '', opportunityType: 'Automation / Integrations Role', message: '' });
       const timeout = setTimeout(() => setSubmitStatus(null), 6000);
       return () => clearTimeout(timeout);
     }
@@ -55,25 +55,25 @@ const Contact = () => {
 
   const contactMethods = [
     {
-      icon: <Calendar className="text-primary-400" size={22} />,
-      title: 'Book a Strategy Call',
-      description: 'Schedule a 30-minute discovery call to talk through your goals and bottlenecks.',
-      cta: 'Book on Calendly',
-      href: profile.calendly,
-    },
-    {
       icon: <Mail className="text-primary-400" size={22} />,
       title: 'Email Me Directly',
-      description: 'Send a message and I&apos;ll reply as soon as I can during the work week.',
+      description: 'Best for recruiter outreach, hiring conversations, and end-to-end systems or automation-focused opportunities.',
       cta: profile.email,
       href: `mailto:${profile.email}`,
     },
     {
       icon: <MessageSquare className="text-primary-400" size={22} />,
       title: 'WhatsApp',
-      description: 'Best for quick questions or real-time back-and-forth during business hours.',
+      description: 'Useful for quick follow-up and lightweight async communication during business hours.',
       cta: 'Start a Chat',
       href: profile.whatsapp,
+    },
+    {
+      icon: <Calendar className="text-primary-400" size={22} />,
+      title: 'Schedule a Call',
+      description: 'If a live conversation is useful, you can book time directly on my calendar.',
+      cta: 'Book on Calendly',
+      href: profile.calendly,
     },
   ];
 
@@ -88,10 +88,10 @@ const Contact = () => {
         <div className="text-center mb-14">
           <SectionHeading
             align="center"
-            eyebrow="Get In Touch"
-            title="Let's Work Together"
+            eyebrow="Opportunities"
+            title="Interested in Working Together?"
             titleClassName="text-white"
-            description="Whether you&apos;re hiring, fixing an operations bottleneck, or planning a new automation build, I&apos;d love to hear what you&apos;re working on."
+            description="I&apos;m open to automation, integrations, CRM systems, and end-to-end digital operations opportunities where website, backend logic, and workflow ownership all matter."
           />
           <div className="section-divider mx-auto mt-5" />
         </div>
@@ -159,8 +159,8 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <div className="glass-card p-7 bg-white/3">
-              <h3 className="text-lg font-heading font-bold text-white mb-1">Send Me a Message</h3>
-              <p className="text-sm text-gray-400 mb-6">Tell me about your project, role, or opportunity and I&apos;ll get back to you shortly.</p>
+              <h3 className="text-lg font-heading font-bold text-white mb-1">Start the Conversation</h3>
+              <p className="text-sm text-gray-400 mb-6">Tell me about the role, team, workflow, or systems challenge and I&apos;ll get back to you shortly.</p>
 
               {submitStatus ? (
                 <motion.div
@@ -200,9 +200,9 @@ const Contact = () => {
                         Opportunity Type <span className="text-red-400">*</span>
                       </label>
                       <select id="opportunityType" name="opportunityType" value={formData.opportunityType} onChange={handleChange} className={inputClasses} required>
-                        <option>Project Inquiry</option>
-                        <option>Job Opportunity</option>
-                        <option>Contract / Freelance Role</option>
+                        <option>Automation / Integrations Role</option>
+                        <option>Contract Automation Work</option>
+                        <option>Integrations / Automation Role</option>
                         <option>Collaboration</option>
                         <option>General Question</option>
                       </select>
@@ -221,7 +221,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={inputClasses}
-                      placeholder="Describe your project, role, or what you&apos;re looking for..."
+                      placeholder="Describe the role, system, team, or opportunity you&apos;d like to discuss..."
                     />
                   </div>
 

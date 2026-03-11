@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ExternalLink, TrendingUp, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Layers3, TrendingUp, X } from 'lucide-react';
 import SectionHeading from './shared/SectionHeading';
 import { projects, type Project } from '../data/portfolio';
 
@@ -93,9 +93,12 @@ const Portfolio = () => {
             align="center"
             eyebrow="Selected Work"
             title="Systems I've Built"
-            description="A selection of websites, CRM deployments, and automation infrastructures delivered for real businesses."
+            description="A selection of systems shipped for real businesses, with emphasis on architecture, workflow design, and operational reliability."
           />
           <div className="section-divider mx-auto mt-5" />
+          <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+            Most of this work was delivered inside private client environments, so the strongest proof here is architecture, implementation detail, and system design context rather than public source code.
+          </p>
         </div>
 
         <motion.div
@@ -155,7 +158,7 @@ const Portfolio = () => {
                     >
                       <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                         <span className="px-4 py-2 bg-white/10 backdrop-blur-md text-white text-xs font-semibold rounded-lg border border-white/20">
-                          View Screenshot
+                          Open Case Study
                         </span>
                       </div>
                       <img
@@ -235,18 +238,18 @@ const Portfolio = () => {
             </button>
 
             <motion.div
-              className="relative max-w-4xl w-full"
+              className="relative max-w-6xl w-full max-h-[92vh] overflow-y-auto"
               onClick={(event) => event.stopPropagation()}
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
             >
-              <div className="relative bg-dark-900 rounded-2xl overflow-hidden">
+              <div className="relative bg-dark-900 rounded-2xl overflow-hidden border border-white/10">
                 <motion.img
                   key={currentImageIndex}
                   src={selectedProject.images[currentImageIndex]?.url}
                   alt={selectedProject.images[currentImageIndex]?.alt}
-                  className="w-full max-h-[75vh] object-contain"
+                  className="w-full max-h-[55vh] object-contain bg-black/20"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.2 }}
@@ -276,17 +279,135 @@ const Portfolio = () => {
                 ) : null}
               </div>
 
-              <div className="mt-3 text-center">
-                <p className="text-white font-semibold text-base">{selectedProject.title}</p>
-                {selectedProject.metrics?.length ? (
-                  <div className="mt-3 flex flex-wrap justify-center gap-2">
-                    {selectedProject.metrics.map((metric) => (
-                      <span key={metric.label} className="text-xs text-gray-300 bg-white/5 border border-white/10 rounded-full px-3 py-1">
-                        {metric.label}: {metric.value}
-                      </span>
-                    ))}
+              <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(280px,0.75fr)]">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                  <div className="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                      <p className="text-white font-semibold text-xl">{selectedProject.title}</p>
+                      <p className="mt-2 max-w-3xl text-sm leading-7 text-gray-300">{selectedProject.description}</p>
+                    </div>
+                    {selectedProject.liveUrl ? (
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-xl border border-primary-500/25 bg-primary-500/10 px-4 py-2 text-sm font-semibold text-primary-300 transition-colors hover:border-primary-400/40 hover:text-primary-200"
+                      >
+                        <ExternalLink size={15} />
+                        Visit Live Site
+                      </a>
+                    ) : null}
                   </div>
-                ) : null}
+
+                  <div className="mt-6 grid gap-4 md:grid-cols-3">
+                    {selectedProject.challenge ? (
+                      <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-300">Problem</p>
+                        <p className="mt-2 text-sm leading-6 text-gray-300">{selectedProject.challenge}</p>
+                      </div>
+                    ) : null}
+                    {selectedProject.solution ? (
+                      <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-300">What I Built</p>
+                        <p className="mt-2 text-sm leading-6 text-gray-300">{selectedProject.solution}</p>
+                      </div>
+                    ) : null}
+                    {selectedProject.result ? (
+                      <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-300">Outcome</p>
+                        <p className="mt-2 text-sm leading-6 text-gray-300">{selectedProject.result}</p>
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {selectedProject.detailSections?.length ? (
+                    <div className="mt-6 space-y-4">
+                      {selectedProject.detailSections.map((section) => (
+                        <div key={section.title} className="rounded-2xl border border-white/10 bg-black/10 p-5">
+                          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-300">
+                            {section.title}
+                          </p>
+                          <ul className="mt-4 space-y-2.5">
+                            {section.points.map((point) => (
+                              <li key={point} className="flex items-start gap-3 text-sm leading-6 text-gray-300">
+                                <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary-400" />
+                                <span>{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+
+                <div className="space-y-4">
+                  {selectedProject.metrics?.length ? (
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-300">Impact</p>
+                      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                        {selectedProject.metrics.map((metric) => (
+                          <div key={metric.label} className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                            <p className="text-xs uppercase tracking-[0.14em] text-gray-500">{metric.label}</p>
+                            <p className="mt-2 text-lg font-semibold text-white">{metric.value}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {selectedProject.roleSummary ? (
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-300">My Role</p>
+                      <p className="mt-3 text-sm leading-6 text-gray-300">{selectedProject.roleSummary}</p>
+                    </div>
+                  ) : null}
+
+                  {selectedProject.architectureSummary ? (
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary-300">
+                        <Layers3 size={14} />
+                        Architecture
+                      </div>
+                      <p className="mt-3 text-sm leading-6 text-gray-300">{selectedProject.architectureSummary}</p>
+                      {selectedProject.architectureDiagram ? (
+                        <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-black/10">
+                          <img
+                            src={selectedProject.architectureDiagram.url}
+                            alt={selectedProject.architectureDiagram.alt}
+                            className="w-full h-auto"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : null}
+
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-300">Stack</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {selectedProject.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/10 bg-black/10 px-3 py-1.5 text-xs font-medium text-gray-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-300">Key Outcomes</p>
+                    <ul className="mt-4 space-y-2.5">
+                      {selectedProject.impactBullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-3 text-sm leading-6 text-gray-300">
+                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary-400" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>

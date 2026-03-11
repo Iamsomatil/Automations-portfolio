@@ -18,7 +18,7 @@ const FAQ = () => {
             align="center"
             eyebrow="FAQ"
             title="Frequently Asked Questions"
-            description="Common questions from recruiters, hiring managers, and companies interested in working with me."
+            description="Common questions from recruiters and hiring managers evaluating my fit for automation, integrations, and systems-focused roles."
           />
           <div className="section-divider mx-auto mt-5" />
         </div>

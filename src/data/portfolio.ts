@@ -26,6 +26,11 @@ export type ProjectMetric = {
   value: string;
 };
 
+export type ProjectDetailSection = {
+  title: string;
+  points: string[];
+};
+
 export type Project = {
   title: string;
   category: 'web-crm' | 'automation';
@@ -35,6 +40,10 @@ export type Project = {
   result?: string;
   impactBullets: string[];
   metrics?: ProjectMetric[];
+  roleSummary?: string;
+  architectureSummary?: string;
+  architectureDiagram?: { url: string; alt: string };
+  detailSections?: ProjectDetailSection[];
   tags: string[];
   images: { url: string; alt: string }[];
   liveUrl?: string;
@@ -60,7 +69,7 @@ export const profile = {
   name: 'Samson Akinsanya',
   shortName: 'Samson',
   initials: 'SA',
-  title: 'Automation, CRM & Web Systems Specialist',
+  title: 'Automation Engineer & Full-Stack Systems Builder',
   location: 'Lagos, Nigeria',
   timezone: 'GMT',
   email: 'samsonoakinsanya@gmail.com',
@@ -89,69 +98,69 @@ export const heroStats: HeroStat[] = [
   { value: 100, suffix: '+', label: 'Automations Built' },
   { value: 5, suffix: '+', label: 'Years Experience' },
   { value: 50, suffix: '+', label: 'Businesses Helped' },
-  { value: 99, suffix: '%', label: 'Uptime Delivered' },
+  { value: 20, suffix: '+', label: 'Production Systems Shipped' },
 ];
 
 export const trustPoints = [
-  'High-converting websites connected to CRM and workflow logic',
-  'GoHighLevel, HubSpot, n8n, Make.com, Zapier, Airtable, and Stripe',
-  'Experience supporting U.S.-based businesses and distributed teams',
+  'Workflow automation across n8n, Make.com, Zapier, HubSpot, GoHighLevel, and Stripe',
+  'Websites, CRM, intake, billing, routing, and reporting systems connected end to end',
+  'Built for U.S.-based businesses, distributed teams, and real operational complexity',
 ];
 
 export const expertiseAreas: ExpertiseArea[] = [
   {
-    title: 'Web Development',
-    description:
-      'Custom business websites engineered for performance, conversions, and seamless CRM integration.',
-    bullets: [
-      'High-converting frontend development',
-      'React, Next.js, and TypeScript builds',
-      'CRM-integrated and automation-ready architecture',
-      'SEO-structured and performance-optimized',
-    ],
-  },
-  {
-    title: 'E-commerce Systems',
-    description:
-      'End-to-end e-commerce platforms built for conversion, with automated backend order and customer workflows.',
-    bullets: [
-      'Shopify and WooCommerce development',
-      'Automated order and fulfillment workflows',
-      'Platform integrations and data syncing',
-      'Conversion-focused UX and checkout flows',
-    ],
-  },
-  {
-    title: 'CRM Implementation',
-    description:
-      'Full GoHighLevel and HubSpot setup, including custom pipelines, lead routing, and onboarding flows.',
-    bullets: [
-      'GoHighLevel and HubSpot configuration',
-      'Custom sales pipelines and deal stages',
-      'Automated lead capture and onboarding flows',
-      'CRM data hygiene and deduplication logic',
-    ],
-  },
-  {
     title: 'Automation Systems',
     description:
-      'Workflow automation across n8n, Make.com, and Zapier that eliminates manual work and scales operations.',
+      'Multi-step automation systems that coordinate routing, onboarding, follow-up, billing, and internal operations across multiple tools.',
     bullets: [
-      'Multi-step workflows with n8n, Make.com, and Zapier',
-      'Lead routing and appointment automation',
-      'Billing, invoicing, and contract automations',
-      'Error handling and reliability engineering',
+      'n8n, Make.com, and Zapier orchestration',
+      'Workflow triggers, branching, and handoff logic',
+      'Operational automation across teams and tools',
+      'Systems built for maintainability and real-world use',
     ],
   },
   {
-    title: 'Funnels & Conversion Systems',
+    title: 'API Integrations',
     description:
-      'Intake forms, booking flows, and lead funnels connected to automated customer journeys end-to-end.',
+      'API and webhook integrations that keep systems synchronized across CRMs, forms, billing tools, and internal workflows.',
     bullets: [
-      'Intake forms and qualification flows',
-      'Booking and scheduling automations',
-      'Lead magnet and nurture funnels',
-      'Automated follow-up and re-engagement sequences',
+      'REST APIs and webhook-based flows',
+      'Authentication, mapping, and payload normalization',
+      'Cross-platform data synchronization',
+      'CRM, billing, and ops tool integrations',
+    ],
+  },
+  {
+    title: 'CRM & Operational Systems',
+    description:
+      'Operational data models and CRM workflows designed for clean lifecycle tracking, routing logic, and team visibility.',
+    bullets: [
+      'Lead lifecycle and pipeline design',
+      'Deduplication and data hygiene logic',
+      'Operational workflows in HubSpot, Airtable, and GoHighLevel',
+      'Structured handoffs across teams and tools',
+    ],
+  },
+  {
+    title: 'AI-Assisted Workflows',
+    description:
+      'AI-assisted workflows that classify, enrich, route, or generate outputs while staying connected to operational systems.',
+    bullets: [
+      'Classification and routing flows',
+      'AI-assisted reporting and content generation',
+      'Human-in-the-loop operational workflows',
+      'Structured outputs tied to downstream actions',
+    ],
+  },
+  {
+    title: 'Reliability & Operations',
+    description:
+      'Systems designed with maintainability, edge cases, and operational trust in mind so they hold up under real usage.',
+    bullets: [
+      'Fallback logic for edge cases and bad input',
+      'Clear triggers, validation, and safe handoffs',
+      'Maintainable workflows for distributed teams',
+      'Operational visibility across connected systems',
     ],
   },
 ];
@@ -225,18 +234,57 @@ export const projects: Project[] = [
     category: 'web-crm',
     featured: true,
     description:
-      'End-to-end CRM and automation infrastructure for a U.S. case placement company, including the frontend website, GoHighLevel backend, automated billing logic, and contract-signing pipelines.',
+      'Designed and shipped a connected operating system spanning the marketing site, CRM workflows, billing timing, and contract execution for a U.S. case placement business.',
     challenge:
-      'The business needed marketing, intake, billing, and contract execution to work as one operating system instead of disconnected tools.',
+      'Marketing, intake, billing, and contract execution lived across disconnected tools, which created brittle handoffs and avoidable admin work.',
     solution:
-      'Built the frontend experience, configured GoHighLevel, automated invoice timing with Stripe, and connected contract workflows into one dependable path.',
+      'Built the frontend experience, modeled the CRM flow in GoHighLevel, automated invoice timing in Stripe, and connected contract generation and signature handoffs into one path.',
     result:
-      'The business could scale placements without increasing admin overhead or introducing manual billing mistakes.',
+      'The team could handle higher placement volume without adding the same level of coordination overhead or introducing billing timing errors.',
     impactBullets: [
-      'Fully automated client onboarding pipeline',
-      'Zero-error 14-day invoice buffer with Stripe',
-      'Automated contract placement and e-signature flow',
-      'GoHighLevel CRM configured from scratch',
+      'Automated client onboarding from lead capture to signed paperwork',
+      'Stripe billing logic aligned to a 14-day operational buffer',
+      'Contract creation and e-signature moved into the main workflow',
+      'GoHighLevel pipeline and lifecycle stages configured end to end',
+    ],
+    metrics: [
+      { label: 'Systems Connected', value: '4' },
+      { label: 'Billing Delay Logic', value: '14 days' },
+      { label: 'Primary Stack', value: 'React + GHL + Stripe' },
+    ],
+    roleSummary:
+      'Owned the system design across frontend, CRM workflow modeling, billing automation, and contract handoff logic.',
+    architectureSummary:
+      'Marketing site and intake forms fed GoHighLevel, which coordinated onboarding state. Stripe handled delayed invoicing, and contract-signing tools were triggered at the right lifecycle stage.',
+    architectureDiagram: {
+      url: '/architecture/hosvi-architecture.svg',
+      alt: 'Architecture diagram showing HOSVI frontend, GoHighLevel CRM, Stripe billing, and contract workflow connections',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'The same customer journey crossed marketing, intake, billing, and legal workflows.',
+          'The team needed reliable handoffs without adding manual tracking steps.',
+          'Invoice timing had to respect a real-world waiting period before charging clients.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Used GoHighLevel as the operational source of truth for lead and client state transitions.',
+          'Separated website presentation from CRM state so customer experience and internal workflows could evolve independently.',
+          'Encoded billing timing directly into the workflow to reduce human error during handoff.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Designed the workflow around explicit stage transitions instead of informal team memory.',
+          'Reduced timing-related billing mistakes by making the delay logic system-enforced.',
+          'Kept contract generation attached to the lifecycle state so execution happened in the right order.',
+        ],
+      },
     ],
     tags: ['React', 'GoHighLevel', 'n8n', 'Stripe', 'Zapier'],
     images: [{ url: '/hosvi-system-thumbnail.png', alt: 'HOSVI LLC website and chatbot system' }],
@@ -247,7 +295,7 @@ export const projects: Project[] = [
     category: 'web-crm',
     featured: true,
     description:
-      'Customer-facing website and robust backend CRM system in Airtable for managing complex traveler and advisor relationships across a U.S. travel platform.',
+      'Built the traveler-facing website and the Airtable-based backend system used to manage traveler, advisor, and follow-up workflows across a travel platform.',
     challenge:
       'Traveler records, advisor workflows, and follow-up actions needed to stay synchronized across a fast-moving service business.',
     solution:
@@ -260,6 +308,45 @@ export const projects: Project[] = [
       'Higher-converting traveler inquiry funnels',
       'Airtable CRM with Make.com automation bridges',
     ],
+    metrics: [
+      { label: 'Frontend + Ops', value: 'Unified flow' },
+      { label: 'System Core', value: 'Airtable + Make' },
+      { label: 'Primary Outcome', value: 'Coordinated traveler/advisor ops' },
+    ],
+    roleSummary:
+      'Owned the customer-facing web layer and the backend operating structure used to coordinate traveler and advisor workflows.',
+    architectureSummary:
+      'The website captured traveler demand, Airtable modeled the operational relationships, and Make.com handled the routing and synchronization steps needed to keep advisor workflows aligned.',
+    architectureDiagram: {
+      url: '/architecture/advitravel-architecture.svg',
+      alt: 'Architecture diagram showing Advitravel website, Airtable operations core, advisor workflow, and Make.com routing',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'Traveler and advisor relationships needed to stay synchronized across a service-heavy workflow.',
+          'The customer-facing experience and backend coordination model had to evolve together.',
+          'Operational visibility mattered because multiple stakeholders touched the same lifecycle.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Used Airtable as the operational model for traveler, advisor, and follow-up state instead of spreading the workflow across disconnected spreadsheets.',
+          'Kept the website focused on clean intake and user flow while Make.com handled orchestration and handoffs behind the scenes.',
+          'Designed routing steps to preserve context as records moved between traveler interest, advisor assignment, and next actions.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Centralizing operational state reduced the chance of traveler and advisor records drifting apart.',
+          'Automation removed repetitive coordination work that would otherwise depend on manual record updates.',
+          'The system made the backend workflow easier to reason about as the service operation grew.',
+        ],
+      },
+    ],
     tags: ['Next.js', 'Airtable', 'Make.com', 'HubSpot'],
     images: [{ url: '/advitravel-thumbnail.png', alt: 'Advitravel website homepage' }],
     liveUrl: 'https://advitravel.com',
@@ -269,18 +356,57 @@ export const projects: Project[] = [
     category: 'web-crm',
     featured: true,
     description:
-      'High-converting website paired with automation workflows connected to HubSpot using Make.com to reduce manual operations and improve CRM accuracy.',
+      'Built the website and the integration layer between form submissions, HubSpot records, and Make.com workflows so inbound lead handling behaved like one system.',
     challenge:
-      'Inbound leads were creating avoidable operational drag because the website and CRM were not behaving like one coordinated system.',
+      'Website submissions and CRM workflows were creating duplicate work, inconsistent records, and extra manual cleanup for the team.',
     solution:
-      'Built the website from scratch, wired forms and logic into HubSpot, and added Make.com automation for cleaner lead handling and deduplication.',
+      'Rebuilt the website flow, connected the frontend to HubSpot, and added Make.com automation to handle routing, deduplication, and bidirectional updates.',
     result:
-      'The team spent significantly less time on manual operations while maintaining better CRM hygiene and reporting confidence.',
+      'The team spent much less time cleaning up records and gained more confidence in the CRM as a reliable source of lead and reporting data.',
     impactBullets: [
       'Reduced manual operations by more than 50%',
       'Improved HubSpot CRM data hygiene',
-      'Flawless deduplication and lead pipeline logic',
+      'Automated deduplication and lead pipeline routing',
       'Bi-directional data sync between site and CRM',
+    ],
+    metrics: [
+      { label: 'Manual Ops', value: '-50%+' },
+      { label: 'Core Systems', value: 'Website + HubSpot + Make' },
+      { label: 'Key Outcome', value: 'Cleaner CRM state' },
+    ],
+    roleSummary:
+      'Owned the frontend implementation, HubSpot integration flow, and the automation logic that kept inbound lead data clean.',
+    architectureSummary:
+      'The website acted as the lead entry point, HubSpot held lifecycle state, and Make.com handled routing, synchronization, and deduplication between touchpoints.',
+    architectureDiagram: {
+      url: '/architecture/sunlife-architecture.svg',
+      alt: 'Architecture diagram showing Sunlife website forms, HubSpot CRM, Make.com orchestration, and team workflow',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'The CRM needed to stay clean even when users submitted overlapping or incomplete information.',
+          'The team relied on HubSpot for downstream reporting, so bad record quality had operational cost.',
+          'Lead capture needed to feel simple on the frontend while still feeding structured backend workflows.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Treated HubSpot as the operational record instead of letting form tools create isolated data silos.',
+          'Added Make.com as the orchestration layer for conditional routing and record hygiene tasks.',
+          'Designed the sync path so the website and CRM stayed aligned without requiring manual reconciliation.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Deduplication logic reduced repeated downstream actions against the same lead.',
+          'Automation removed fragile spreadsheet-style cleanup steps from the team workflow.',
+          'The system improved reporting quality by preserving cleaner lifecycle state in HubSpot.',
+        ],
+      },
     ],
     tags: ['React', 'Make.com', 'HubSpot', 'Zapier'],
     images: [{ url: '/sunlife-thumbnail.png', alt: 'Sunlife Housing Corp website homepage' }],
@@ -289,25 +415,60 @@ export const projects: Project[] = [
   {
     title: 'Smart Email Intake & Routing System',
     category: 'automation',
+    featured: true,
     description:
-      'Built a multi-path automation system using Zapier and ChatGPT to intelligently classify and route incoming emails across sales, support, and scheduling.',
+      'Built a multi-path routing workflow that classified inbound email and triggered the correct downstream owner, task flow, and response path across multiple tools.',
     challenge:
-      'A chaotic inbox was mixing sales leads, support requests, and meeting pings in one place, slowing down follow-up.',
+      'A shared inbox mixed sales leads, support requests, and scheduling traffic together, making triage slow and easy to miss.',
     solution:
-      'Created a multi-path Zapier workflow using AI classification to route each message to the right team member and downstream system.',
+      'Created a Zapier workflow that used AI classification, conditional routing, and downstream tool actions to assign each message to the right owner and workflow.',
     result:
-      'Leads and support requests stopped slipping through the cracks, and the team gained a much faster response rhythm.',
+      'The inbox shifted from manual triage to a structured routing system, improving response speed and reducing dropped follow-up.',
     impactBullets: [
       'Reduced manual email handling by 70%',
-      'Achieved a 100% lead follow-up rate',
+      'Established complete lead routing coverage',
       'Improved response time by 4x',
       'Connected 5+ systems in one routing flow',
     ],
     metrics: [
       { label: 'Manual Handling', value: '-70%' },
-      { label: 'Lead Follow-up', value: '100%' },
+      { label: 'Routing Coverage', value: 'Full inbox coverage' },
       { label: 'Response Time', value: '4x faster' },
       { label: 'Tools Integrated', value: '5+' },
+    ],
+    roleSummary:
+      'Designed the classification logic, routing branches, and tool integrations that turned one inbox into a structured intake system.',
+    architectureSummary:
+      'Inbound email events triggered Zapier, classification logic determined intent, and downstream actions updated the appropriate systems for sales, support, or scheduling.',
+    architectureDiagram: {
+      url: '/architecture/smart-email-routing-architecture.svg',
+      alt: 'Architecture diagram showing shared inbox intake, Zapier orchestration, classification branches, and downstream routing flows',
+    },
+    detailSections: [
+      {
+        title: 'Constraints',
+        points: [
+          'Different message types needed different owners, SLAs, and downstream systems.',
+          'The workflow had to be fast enough to keep response-time improvements visible to the team.',
+          'Classification mistakes needed to be low because the system affected live customer communication.',
+        ],
+      },
+      {
+        title: 'Technical Decisions',
+        points: [
+          'Used AI classification only as one step in a broader routing workflow, not as the entire system.',
+          'Mapped message intent to deterministic branches so each class triggered known downstream actions.',
+          'Connected email handling to tasking and CRM tools so routing resulted in actual follow-through, not just labels.',
+        ],
+      },
+      {
+        title: 'Reliability Considerations',
+        points: [
+          'Structured routing reduced the odds of leads or support requests being lost in a shared inbox.',
+          'The workflow standardized follow-up behavior instead of depending on manual triage habits.',
+          'Branch-based logic made it easier to extend the workflow as new email categories appeared.',
+        ],
+      },
     ],
     tags: ['Zapier', 'ChatGPT', 'Gmail', 'HubSpot', 'Asana'],
     images: [{ url: '/Smart-Email intake-and-routing-system.png', alt: 'Smart email routing system' }],
@@ -325,7 +486,7 @@ export const projects: Project[] = [
       'Every lead is captured, nurtured, and handed off instantly with clear team visibility.',
     impactBullets: [
       'Instant lead follow-up across tools',
-      '100% team alignment on new leads',
+      'Consistent team visibility on new leads',
       'Connected 6+ tools in one workflow',
       'Saved hours of weekly manual coordination',
     ],
@@ -345,13 +506,13 @@ export const projects: Project[] = [
       'The client now receives a daily, hands-free stream of qualified federal opportunities with no manual research process.',
     impactBullets: [
       'Cut manual research by 90%',
-      'Maintained 100% daily coverage',
+      'Maintained daily coverage of target opportunities',
       'Reduced data entry to zero minutes',
       'Monitored 20+ NAICS codes automatically',
     ],
     metrics: [
       { label: 'Manual Research', value: '-90%' },
-      { label: 'Daily Coverage', value: '100%' },
+      { label: 'Refresh Cadence', value: 'Daily' },
       { label: 'Data Entry', value: '0 min' },
       { label: 'NAICS Codes', value: '20+' },
     ],
@@ -371,9 +532,9 @@ export const projects: Project[] = [
       'The client gained reliable seminar tracking with fully automated follow-up and no missed contacts.',
     impactBullets: [
       'Saved 4+ hours per seminar',
-      'Reached a 100% follow-up rate',
+      'Standardized follow-up for every tracked attendee',
       'Automated 5+ follow-up steps',
-      'Delivered 100% contact tagging consistency',
+      'Consistent contact tagging across attendees',
     ],
     tags: ['GoHighLevel', 'Email Automation', 'Marketing Automation'],
     images: [{ url: '/GHL-Onboarding.png', alt: 'GoHighLevel seminar automation' }],
@@ -392,7 +553,7 @@ export const projects: Project[] = [
     impactBullets: [
       'Reduced manual writing time by 85%',
       'Cut content prep time by 90%',
-      'Maintained 100% script consistency',
+      'Improved script consistency across weekly reports',
       'Automated 3+ data sources end-to-end',
     ],
     tags: ['n8n', 'OpenAI GPT-4o', 'API Integration', 'JavaScript', 'Notion'],
@@ -424,9 +585,9 @@ export const testimonials: Testimonial[] = [
   {
     id: 1,
     quote:
-      'Samson brought our website, CRM, intake flow, and billing logic into one connected system. The result was a much smoother onboarding experience and far less manual back-and-forth for our team.',
-    author: 'Project Lead',
-    role: 'Operations',
+      'Samson connected our website, CRM, intake flow, and billing logic into one system. The onboarding experience became much smoother and the team spent far less time coordinating handoffs manually.',
+    author: 'Hosea V Barnwell',
+    role: 'CEO',
     company: 'Hosvi LLC',
     rating: 5,
     avatar: 'HL',
@@ -434,9 +595,9 @@ export const testimonials: Testimonial[] = [
   {
     id: 2,
     quote:
-      'He understood both the traveler-facing experience and the backend workflow structure we needed. The website and Airtable-based operations now feel much more coordinated and scalable.',
-    author: 'Platform Stakeholder',
-    role: 'Product',
+      'He understood both the traveler-facing experience and the backend workflow structure we needed. The website and Airtable-based operations feel much more coordinated and scalable now.',
+    author: 'Percy Smith',
+    role: 'CEO',
     company: 'AdviTravel',
     rating: 5,
     avatar: 'AT',
@@ -444,9 +605,9 @@ export const testimonials: Testimonial[] = [
   {
     id: 3,
     quote:
-      'Samson helped remove a lot of operational friction between the website and HubSpot. Lead handling became cleaner, faster, and much easier for the team to trust.',
-    author: 'Operations Manager',
-    role: 'Client Operations',
+      'Samson removed a lot of operational friction between the website and HubSpot. Lead handling became cleaner, faster, and much easier for the team to trust.',
+    author: 'Troy Austria',
+    role: 'Operations Manager',
     company: 'Sunlife Housing Corp',
     rating: 5,
     avatar: 'SH',
@@ -455,8 +616,8 @@ export const testimonials: Testimonial[] = [
     id: 4,
     quote:
       'What stood out was how practical the systems were. The automation work reduced repetitive admin tasks and gave us a setup the team could actually use day to day.',
-    author: 'Operations Coordinator',
-    role: 'Systems & Admin',
+    author: 'Client Reference',
+    role: 'Systems Coordinator',
     company: 'Purchasing Choice',
     rating: 5,
     avatar: 'PC',
@@ -465,43 +626,38 @@ export const testimonials: Testimonial[] = [
 
 export const faqs: FAQItem[] = [
   {
-    question: 'What kind of systems do you build?',
+    question: 'What roles are you best suited for?',
     answer:
-      'I build websites, CRM pipelines, automation workflows, onboarding systems, lead routing logic, billing flows, and connected operational infrastructure that reduces manual work.',
+      'I am strongest in automation, integrations, CRM systems, and internal tools roles where workflows, data, and operational handoffs need to run reliably across multiple platforms.',
   },
   {
-    question: 'Do you work with GoHighLevel, HubSpot, n8n, Make.com, and Zapier?',
+    question: 'How do you use code inside automation and systems work?',
     answer:
-      'Yes. Those are some of the core platforms I use most often when implementing CRM and automation systems for real business workflows.',
+      'I use code where it improves control and reliability, whether that means custom frontend work, API logic, webhook handling, data transformation, or automation steps that need more than drag-and-drop tooling alone.',
   },
   {
-    question: 'Can you connect websites to CRM and automation systems?',
+    question: 'What parts of projects do you usually own?',
     answer:
-      'Yes. A big part of my work is making sure the frontend experience connects cleanly to the backend systems that handle leads, onboarding, billing, and follow-up.',
+      'I often own the frontend implementation, integration design, workflow logic, CRM or operational data modeling, and the end-to-end path that connects user actions to backend systems.',
   },
   {
-    question: 'Have you worked with U.S.-based businesses?',
+    question: 'Do you work with production systems and private codebases?',
     answer:
-      'Yes. Several of the systems highlighted in this portfolio were built for U.S.-based companies and designed around distributed communication and dependable operational handoffs.',
+      'Yes. Much of my strongest work has been inside live business systems, which is why some project details are presented as case studies rather than public repositories.',
   },
   {
-    question: 'Do you build onboarding, billing, and lead routing workflows?',
+    question: 'How do you approach reliability in integrations and workflows?',
     answer:
-      'Yes. Those workflows are some of the most valuable places to automate because they directly affect team efficiency, conversion, and customer experience.',
+      'I design around clear triggers, validation, fallback paths, deduplication, and explicit lifecycle states so workflows remain understandable and resilient when real-world edge cases show up.',
   },
   {
-    question: 'What types of projects are the best fit for your skills?',
+    question: 'What kinds of systems are the best fit for your background?',
     answer:
-      "I'm strongest on projects that combine web development with CRM or automation backend work. If a business needs a website plus connected lead flows or cleaner operational infrastructure across multiple tools, that's exactly my wheelhouse.",
+      'The best fit is work that combines product-facing software with integrations, workflow orchestration, or internal tooling where reliability and operational clarity matter.',
   },
   {
-    question: 'Are you available for remote roles or contract work?',
+    question: 'Are you open to remote roles or contract work?',
     answer:
-      'Yes. This portfolio is positioned for both contract opportunities and conversations around remote systems, automation, or CRM-focused roles.',
-  },
-  {
-    question: 'How do you approach automation reliability and error handling?',
-    answer:
-      'I design around clear triggers, validation, fallback logic, data integrity, and maintainability so the workflow still behaves predictably when real-world edge cases show up.',
+      'Yes. I am open to remote roles, contract work, and systems-focused opportunities involving integrations, automation, CRM systems, and internal tools.',
   },
 ];

@@ -33,7 +33,7 @@ const Footer = () => {
               <span className="text-xl font-heading font-bold text-white">{profile.name}</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              I build high-converting websites, CRM systems, and automation infrastructures that help businesses eliminate manual work and scale operations.
+              Automation engineer and full-stack systems builder focused on websites, CRM, integrations, and internal tools that reduce operational complexity.
             </p>
             <div className="space-y-2.5 text-sm text-gray-500">
               <div className="flex items-center gap-2">
@@ -136,7 +136,7 @@ const Footer = () => {
               whileTap={{ scale: 0.97 }}
             >
               <Mail size={14} />
-              Book a Call
+              Schedule a Call
             </motion.a>
           </motion.div>
         </div>
@@ -153,7 +153,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-5">
             <a href={profile.calendly} target="_blank" rel="noopener noreferrer" className="text-xs text-gray-600 hover:text-primary-400 transition-colors">
-              Schedule a Call
+              Calendly
             </a>
             <a href={`mailto:${profile.email}`} className="text-xs text-gray-600 hover:text-primary-400 transition-colors">
               Email

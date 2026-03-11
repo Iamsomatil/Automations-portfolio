@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, ChevronDown, Database, GitBranch, Globe, Zap } from 'lucide-react';
+import { ArrowRight, ChevronDown, Database, Download, GitBranch, Globe, Zap } from 'lucide-react';
 import ParticleBackground from './ui/ParticleBackground';
 import CountUpStat from './shared/CountUpStat';
 import { heroStats, profile, trustPoints } from '../data/portfolio';
@@ -76,7 +76,16 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55, duration: 0.7 }}
           >
-            I design and implement high-converting websites, CRM pipelines, and workflow automations that eliminate manual work and drive measurable business results.
+            I design and ship full-stack systems for agencies and service businesses, connecting websites, CRM workflows, automation logic, and API integrations into one reliable operating system.
+          </motion.p>
+
+          <motion.p
+            className="text-sm sm:text-base text-primary-200/90 mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.62, duration: 0.7 }}
+          >
+            Best fit for automation, integrations, CRM systems, and end-to-end digital operations roles.
           </motion.p>
 
           <motion.div
@@ -118,25 +127,34 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.6 }}
           >
-            <motion.a
-              href={profile.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              onClick={() => scrollToSection('portfolio')}
               className="group flex items-center gap-2 px-7 py-3.5 bg-primary-600 hover:bg-primary-500 text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-glow-blue"
               whileHover={{ y: -3, boxShadow: '0 0 30px rgba(14, 165, 233, 0.5)' }}
               whileTap={{ scale: 0.97 }}
             >
-              <Calendar size={17} />
-              Book a Strategy Call
-            </motion.a>
-            <motion.button
-              onClick={() => scrollToSection('portfolio')}
+              View Case Studies
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+            <motion.a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-2 px-7 py-3.5 border border-white/15 hover:border-primary-500/40 text-gray-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/5"
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.97 }}
             >
-              View My Work
+              See GitHub
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+            <motion.button
+              onClick={() => window.open(profile.resumeUrl, '_blank', 'noopener,noreferrer')}
+              className="group flex items-center gap-2 px-7 py-3.5 border border-white/15 hover:border-primary-500/40 text-gray-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/5"
+              whileHover={{ y: -3 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <Download size={16} />
+              Download Resume
             </motion.button>
           </motion.div>
 

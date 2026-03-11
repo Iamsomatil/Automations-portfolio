@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, Zap } from 'lucide-react';
-import CVButton from './CVButton';
 import { navItems, profile } from '../data/portfolio';
 
 const Header = () => {
@@ -121,17 +120,6 @@ const Header = () => {
               >
                 {darkMode ? <Sun size={17} /> : <Moon size={17} />}
               </motion.button>
-
-              <CVButton />
-
-              <motion.button
-                onClick={() => scrollToSection('contact')}
-                className="px-5 py-2 bg-primary-600 hover:bg-primary-500 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-glow-blue"
-                whileHover={{ y: -2, boxShadow: '0 0 25px rgba(14, 165, 233, 0.5)' }}
-                whileTap={{ scale: 0.97 }}
-              >
-                Let's Talk
-              </motion.button>
             </div>
           </div>
 
@@ -187,18 +175,6 @@ const Header = () => {
                   </motion.button>
                 );
               })}
-              <div className="pt-3 pb-1 space-y-2">
-                <div className="px-2">
-                  <CVButton />
-                </div>
-                <motion.button
-                  onClick={() => scrollToSection('contact')}
-                  className="w-full px-4 py-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-xl text-sm transition-all"
-                  whileTap={{ scale: 0.97 }}
-                >
-                  Let's Talk
-                </motion.button>
-              </div>
             </div>
           </motion.div>
         )}

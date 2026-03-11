@@ -7,47 +7,55 @@ const traits = [
   {
     icon: <CheckCircle2 className="text-emerald-400" size={16} />,
     label: 'Reliable Systems',
-    desc: 'Built for clean handoffs, stability, and maintainability.',
+    desc: 'Designed for maintainability, clean handoffs, and dependable production behavior.',
   },
   {
     icon: <Target className="text-primary-400" size={16} />,
-    label: 'Business-First',
-    desc: 'Designed around real operational bottlenecks, not vanity features.',
+    label: 'Systems Thinking',
+    desc: 'Focused on boundaries, data flow, and the real operational constraints behind a product.',
   },
   {
     icon: <Zap className="text-amber-400" size={16} />,
-    label: 'Automation-Led',
-    desc: 'Focused on removing repeated manual work wherever possible.',
+    label: 'Execution Depth',
+    desc: 'Comfortable owning frontend, integrations, workflow logic, and delivery details together.',
   },
 ];
 
 const proofPoints = [
-  'Websites connected directly to CRM, onboarding, and billing flows',
-  'GoHighLevel and HubSpot systems configured around real team operations',
-  'Automation workflows built across n8n, Make.com, Zapier, Airtable, and Stripe',
+  'Production automations connecting intake, CRM, onboarding, billing, and follow-up systems',
+  'API and webhook integrations built around real team operations and messy data flows',
+  'End-to-end systems shipped across websites, HubSpot, GoHighLevel, n8n, Make.com, Zapier, Stripe, React, and TypeScript',
 ];
 
 const certifications = [
   'AWS Certified Cloud Practitioner',
   'AWS Solutions Architect',
   'HubSpot CRM',
+  'Make.com',
   'n8n',
   'GoHighLevel Certified',
 ];
 
 const workStyle = [
   {
-    title: 'Diagnose the bottleneck',
-    text: 'I identify where leads, data, approvals, or follow-up are slowing the business down.',
+    title: 'Define the system boundaries',
+    text: 'I start by understanding the actors, data flow, failure points, and operational constraints in the system.',
   },
   {
-    title: 'Design the connected system',
-    text: 'Then I map the website, CRM, and automation layers into one usable operating flow.',
+    title: 'Design the integration path',
+    text: 'Then I map the frontend, APIs, CRM, automation logic, and handoff points into a coherent flow.',
   },
   {
-    title: 'Ship for real usage',
-    text: 'I build with edge cases, maintenance, and team adoption in mind so the system lasts.',
+    title: 'Ship for production reality',
+    text: 'I build with validation, edge cases, maintainability, and team adoption in mind so the system holds up.',
   },
+];
+
+const roleFit = [
+  'Automation Engineer',
+  'Integrations Engineer',
+  'CRM Systems Engineer',
+  'Internal Tools Engineer',
 ];
 
 const portraitParticles = [
@@ -67,9 +75,9 @@ const About = () => {
         <div className="mb-12 text-center">
           <SectionHeading
             align="center"
-            eyebrow="About Me"
-            title="I Build the Systems Behind Modern Service Businesses"
-            description="I help businesses replace fragile manual processes with connected digital infrastructure that is easier to operate, scale, and trust."
+            eyebrow="How I Think"
+            title="I Build Automation Systems That Make Operations Simpler"
+            description="My work sits at the intersection of full-stack delivery, workflow automation, CRM systems, and internal operations, where reliability matters as much as speed."
           />
           <div className="section-divider mx-auto mt-5" />
         </div>
@@ -139,15 +147,15 @@ const About = () => {
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700 dark:border-primary-500/20 dark:bg-primary-500/10 dark:text-primary-300">
                   <Sparkles size={11} />
-                  Systems Engineer
+                  Engineer
                 </span>
               </div>
 
               <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-500">
-                Automation Specialist · CRM Integration Architect
+                Automation · Full-Stack Systems · CRM Architecture
               </p>
               <h3 className="mt-2 text-2xl font-heading font-bold leading-tight text-slate-950 dark:text-white sm:text-3xl lg:text-4xl">
-                I turn messy workflows into systems teams can trust.
+                I turn fragmented tools and manual workflows into dependable automation systems.
               </h3>
               <div className="mt-3 flex flex-wrap gap-2.5">
                 <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-dark-800 dark:text-slate-200">
@@ -161,10 +169,10 @@ const About = () => {
               </div>
               <div className="mt-5 space-y-3 text-[15px] leading-7 text-slate-600 dark:text-slate-300">
                 <p>
-                  I build connected systems across websites, CRM architecture, and workflow automation so teams can move faster without relying on fragile manual processes.
+                  I build across workflow automation, backend integrations, CRM architecture, and frontend systems so teams can operate with less friction and more confidence.
                 </p>
                 <p>
-                  My strongest work happens when the frontend, lead flow, backend tools, and operational logic all need to function as one dependable system.
+                  My strongest work shows up when the website, lead flow, CRM, operational tooling, APIs, and downstream workflows all need to function as one reliable system.
                 </p>
               </div>
             </div>
@@ -174,10 +182,10 @@ const About = () => {
             <div className="space-y-6">
               <div className="space-y-3 text-[15px] leading-7 text-slate-600 dark:text-slate-300">
                 <p>
-                  I work at the intersection of <span className="font-semibold text-slate-900 dark:text-white">web development, CRM architecture, and workflow automation</span>. That means I am not just designing a polished frontend. I am connecting the lead flow, backend tools, operational logic, and follow-up experience into one dependable system.
+                  I work at the intersection of <span className="font-semibold text-slate-900 dark:text-white">automation, full-stack delivery, integrations, and operational systems</span>. That means I am not only wiring tools together. I am also building the interfaces, shaping the data flow, and making sure the entire system is usable day to day.
                 </p>
                 <p>
-                  Over the past 5+ years, I have built delivery systems for businesses across housing, travel, staffing, and service operations. My best work usually happens when the problem is not just &quot;build a website,&quot; but &quot;make the whole thing work together.&quot;
+                  Over the past 5+ years, I have built systems for businesses across housing, travel, staffing, and service operations. The common thread is end-to-end ownership: website, CRM, automation, and backend logic designed to work as one operating setup.
                 </p>
               </div>
 
@@ -200,7 +208,7 @@ const About = () => {
               <div className="rounded-[24px] bg-slate-950 p-5 text-white shadow-[0_25px_60px_-40px_rgba(15,23,42,0.8)] dark:bg-dark-950">
                 <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary-300">
                   <Award size={15} />
-                  Proof of Practice
+                  Engineering Throughline
                 </div>
                 <div className="mt-4 space-y-3">
                   {proofPoints.map((point) => (
@@ -209,6 +217,44 @@ const About = () => {
                       <p className="text-sm leading-6 text-slate-300">{point}</p>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[24px] border border-amber-100 bg-gradient-to-br from-amber-50 to-white p-5 shadow-sm dark:border-white/10 dark:from-dark-900 dark:to-dark-900">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700 dark:text-amber-300">What Clients Get</p>
+                  <p className="mt-3 text-lg font-heading font-bold text-slate-900 dark:text-white">
+                    Cleaner operations, less manual drag
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+                    I focus on reducing hidden admin load so teams move faster and stop relying on fragile workarounds.
+                  </p>
+                </div>
+
+                <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.35)] dark:border-white/10 dark:bg-dark-900">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-500">Let&apos;s Build</p>
+                  <h4 className="mt-3 text-xl font-heading font-bold text-slate-950 dark:text-white">
+                    If you need someone who can own automations from trigger to downstream outcome, let&apos;s talk.
+                  </h4>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <motion.a
+                      href="#contact"
+                      className="btn btn-primary text-sm"
+                      whileHover={{ y: -2 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      Get in Touch
+                      <ArrowRight className="ml-2" size={16} />
+                    </motion.a>
+                    <motion.a
+                      href="#portfolio"
+                      className="btn border border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-dark-600 dark:text-gray-200 dark:hover:bg-dark-800 text-sm"
+                      whileHover={{ y: -2 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      View My Projects
+                    </motion.a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -251,47 +297,21 @@ const About = () => {
                 <div className="rounded-[24px] border border-sky-100 bg-gradient-to-br from-sky-50 to-white p-5 shadow-sm dark:border-white/10 dark:from-dark-900 dark:to-dark-900">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 dark:text-primary-300">Best Fit</p>
                   <p className="mt-3 text-lg font-heading font-bold text-slate-900 dark:text-white">
-                    Website plus backend systems
+                    End-to-end systems for agencies and service teams
                   </p>
                   <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
-                    The strongest projects combine frontend work with CRM setup, automation logic, and operational workflow design.
+                    The strongest matches combine website delivery, CRM setup, automation design, and backend operational logic.
                   </p>
-                </div>
-
-                <div className="rounded-[24px] border border-amber-100 bg-gradient-to-br from-amber-50 to-white p-5 shadow-sm dark:border-white/10 dark:from-dark-900 dark:to-dark-900">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700 dark:text-amber-300">What Clients Get</p>
-                  <p className="mt-3 text-lg font-heading font-bold text-slate-900 dark:text-white">
-                    Cleaner operations, less manual drag
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
-                    I focus on reducing hidden admin load so teams move faster and stop relying on fragile workarounds.
-                  </p>
-                </div>
-              </div>
-
-              <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.35)] dark:border-white/10 dark:bg-dark-900">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-500">Let&apos;s Build</p>
-                <h4 className="mt-3 text-xl font-heading font-bold text-slate-950 dark:text-white">
-                  If your business needs the frontend and backend to finally work as one system, I can help.
-                </h4>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <motion.a
-                    href="#contact"
-                    className="btn btn-primary text-sm"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    Get in Touch
-                    <ArrowRight className="ml-2" size={16} />
-                  </motion.a>
-                  <motion.a
-                    href="#portfolio"
-                    className="btn border border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-dark-600 dark:text-gray-200 dark:hover:bg-dark-800 text-sm"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    View My Projects
-                  </motion.a>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {roleFit.map((role) => (
+                      <span
+                        key={role}
+                        className="rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1.5 text-xs font-medium text-primary-500 dark:text-primary-300"
+                      >
+                        {role}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

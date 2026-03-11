@@ -1,34 +1,34 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Code2, Database, ShoppingCart, TrendingUp, Zap } from 'lucide-react';
+import { ArrowRight, Code2, Database, ShieldCheck, TrendingUp, Zap } from 'lucide-react';
 import SectionHeading from './shared/SectionHeading';
 import { expertiseAreas } from '../data/portfolio';
 
 const iconMap = {
-  'Web Development': <Code2 size={26} />,
-  'E-commerce Systems': <ShoppingCart size={26} />,
-  'CRM Implementation': <Database size={26} />,
   'Automation Systems': <Zap size={26} />,
-  'Funnels & Conversion Systems': <TrendingUp size={26} />,
+  'API Integrations': <TrendingUp size={26} />,
+  'CRM & Operational Systems': <Database size={26} />,
+  'AI-Assisted Workflows': <Code2 size={26} />,
+  'Reliability & Operations': <ShieldCheck size={26} />,
 };
 
 const styleMap = {
-  'Web Development': {
+  'Automation Systems': {
     gradient: 'from-primary-500/15 to-primary-500/5',
     iconBg: 'bg-primary-500/15 text-primary-400',
   },
-  'E-commerce Systems': {
+  'API Integrations': {
     gradient: 'from-emerald-500/15 to-emerald-500/5',
     iconBg: 'bg-emerald-500/15 text-emerald-400',
   },
-  'CRM Implementation': {
+  'CRM & Operational Systems': {
     gradient: 'from-blue-500/15 to-blue-500/5',
     iconBg: 'bg-blue-500/15 text-blue-400',
   },
-  'Automation Systems': {
+  'AI-Assisted Workflows': {
     gradient: 'from-purple-500/15 to-purple-500/5',
     iconBg: 'bg-purple-500/15 text-purple-400',
   },
-  'Funnels & Conversion Systems': {
+  'Reliability & Operations': {
     gradient: 'from-orange-500/15 to-orange-500/5',
     iconBg: 'bg-orange-500/15 text-orange-400',
   },
@@ -55,9 +55,9 @@ const Services = () => {
         <div className="text-center mb-16">
           <SectionHeading
             align="center"
-            eyebrow="Core Expertise"
-            title="What I Specialize In"
-            description="I design and build digital systems across five connected domains, each one aimed at clearer operations, stronger conversion, and less manual work."
+            eyebrow="Automation Strengths"
+            title="What I Build in Production"
+            description="My strongest work combines full-stack delivery, automation design, CRM workflows, and operational reliability so systems hold up beyond the demo."
           />
           <div className="section-divider mx-auto mt-5" />
         </div>
@@ -113,10 +113,10 @@ const Services = () => {
             <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-glow-blue">
               <div>
                 <h3 className="text-xl font-heading font-bold text-white mb-1">
-                  Ready to build something powerful?
+                  Looking for automation ownership?
                 </h3>
                 <p className="text-primary-100 text-sm">
-                  Let&apos;s design the system your business actually needs.
+                  I&apos;m strongest where the website, CRM, automations, and operations all need to work together.
                 </p>
               </div>
               <motion.a
@@ -125,7 +125,7 @@ const Services = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
-                Start a Conversation
+                Explore My Work
                 <ArrowRight size={16} />
               </motion.a>
             </div>
