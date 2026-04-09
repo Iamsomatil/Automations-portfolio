@@ -1,0 +1,62 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1200" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111F"/>
+      <stop offset="1" stop-color="#102438"/>
+    </linearGradient>
+    <linearGradient id="card6" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#112C45"/>
+      <stop offset="1" stop-color="#0B1F33"/>
+    </linearGradient>
+    <filter id="glow6" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow6" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" rx="32" fill="url(#bg6)"/>
+  <text x="70" y="78" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Federal Contract Automation Architecture</text>
+  <text x="70" y="112" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Scheduled opportunity retrieval, qualification filtering, and deduplicated logging for daily bid review.</text>
+
+  <rect x="70" y="210" width="260" height="150" rx="24" fill="url(#card6)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="126" y="254" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">SAM.gov API</text>
+  <text x="106" y="288" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Daily contract feed</text>
+  <text x="106" y="316" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Opportunity metadata</text>
+  <text x="106" y="344" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Public source input</text>
+
+  <rect x="450" y="150" width="310" height="230" rx="28" fill="url(#card6)" stroke="#22C55E" stroke-opacity="0.4"/>
+  <text x="515" y="194" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Make.com Pipeline</text>
+  <text x="490" y="242" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Scheduled API pull</text>
+  <text x="490" y="270" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">NAICS code filtering</text>
+  <text x="490" y="298" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Qualification rules</text>
+  <text x="490" y="326" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Deduplication checks</text>
+  <text x="490" y="354" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Output formatting</text>
+
+  <rect x="880" y="210" width="250" height="150" rx="24" fill="url(#card6)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="940" y="254" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Qualified Set</text>
+  <text x="916" y="288" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Targeted opportunities</text>
+  <text x="916" y="316" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">No duplicate entries</text>
+  <text x="916" y="344" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Ready for review</text>
+
+  <rect x="450" y="500" width="310" height="150" rx="24" fill="#081726" stroke="#22C55E" stroke-opacity="0.3"/>
+  <text x="516" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Google Sheets Log</text>
+  <text x="488" y="580" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Daily tracking surface</text>
+  <text x="488" y="608" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Client review workflow</text>
+  <text x="488" y="636" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Persistent opportunity history</text>
+
+  <rect x="70" y="500" width="260" height="150" rx="24" fill="#081726" stroke="#38BDF8" stroke-opacity="0.25"/>
+  <text x="104" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Bid Outcome</text>
+  <text x="104" y="578" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Daily qualified pipeline</text>
+  <text x="104" y="606" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Less manual research</text>
+  <text x="104" y="634" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">More dependable review cadence</text>
+
+  <path d="M330 285H430" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow6)" filter="url(#glow6)"/>
+  <path d="M760 285H860" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow6)" filter="url(#glow6)"/>
+  <path d="M605 390V480" stroke="#22C55E" stroke-width="4" marker-end="url(#arrow6)" filter="url(#glow6)"/>
+</svg>

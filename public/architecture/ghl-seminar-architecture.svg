@@ -1,0 +1,65 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg7" x1="0" y1="0" x2="1200" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071523"/>
+      <stop offset="1" stop-color="#11253A"/>
+    </linearGradient>
+    <linearGradient id="card7" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#12314D"/>
+      <stop offset="1" stop-color="#0B2236"/>
+    </linearGradient>
+    <filter id="glow7" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow7" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" rx="32" fill="url(#bg7)"/>
+  <text x="70" y="78" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">GoHighLevel Seminar Automation Architecture</text>
+  <text x="70" y="112" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Attendance updates, contact cleanup, segmented follow-up, and post-event visibility inside one CRM workflow.</text>
+
+  <rect x="70" y="200" width="250" height="150" rx="24" fill="url(#card7)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="112" y="244" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Seminar Intake</text>
+  <text x="112" y="278" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Attendance list</text>
+  <text x="112" y="306" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Check-in updates</text>
+  <text x="112" y="334" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Post-event trigger</text>
+
+  <rect x="430" y="140" width="340" height="250" rx="28" fill="url(#card7)" stroke="#22C55E" stroke-opacity="0.4"/>
+  <text x="485" y="184" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">GoHighLevel CRM Logic</text>
+  <text x="470" y="232" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Contact record update</text>
+  <text x="470" y="260" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Tagging and cleanup</text>
+  <text x="470" y="288" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Seminar participation state</text>
+  <text x="470" y="316" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Sequence enrollment logic</text>
+  <text x="470" y="344" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Team visibility</text>
+
+  <rect x="880" y="150" width="250" height="120" rx="24" fill="url(#card7)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="918" y="194" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Tagged Contacts</text>
+  <text x="915" y="228" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Clean attendee state</text>
+
+  <rect x="880" y="320" width="250" height="120" rx="24" fill="url(#card7)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="926" y="364" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Follow-up Flow</text>
+  <text x="920" y="398" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Segmented messaging</text>
+
+  <rect x="430" y="500" width="340" height="150" rx="24" fill="#081726" stroke="#22C55E" stroke-opacity="0.3"/>
+  <text x="520" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Outcome</text>
+  <text x="470" y="580" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Reliable seminar follow-up</text>
+  <text x="470" y="608" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Less manual cleanup</text>
+  <text x="470" y="636" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">More consistent contact state</text>
+
+  <rect x="70" y="500" width="250" height="150" rx="24" fill="#081726" stroke="#38BDF8" stroke-opacity="0.25"/>
+  <text x="104" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Event Control</text>
+  <text x="104" y="578" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Attendance normalized</text>
+  <text x="104" y="606" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Post-event timing preserved</text>
+  <text x="104" y="634" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Cleaner outreach handoff</text>
+
+  <path d="M320 275H410" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow7)" filter="url(#glow7)"/>
+  <path d="M770 220H860" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow7)" filter="url(#glow7)"/>
+  <path d="M770 380H860" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow7)" filter="url(#glow7)"/>
+  <path d="M600 400V480" stroke="#22C55E" stroke-width="4" marker-end="url(#arrow7)" filter="url(#glow7)"/>
+</svg>

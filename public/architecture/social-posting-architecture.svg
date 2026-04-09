@@ -1,0 +1,66 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg9" x1="0" y1="0" x2="1200" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07131F"/>
+      <stop offset="1" stop-color="#102439"/>
+    </linearGradient>
+    <linearGradient id="card9" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#12314D"/>
+      <stop offset="1" stop-color="#0B2035"/>
+    </linearGradient>
+    <filter id="glow9" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow9" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" rx="32" fill="url(#bg9)"/>
+  <text x="70" y="78" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Social Posting Automation Architecture</text>
+  <text x="70" y="112" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Content planning, routing, publishing, and team notifications coordinated across Airtable, Buffer, and Slack.</text>
+
+  <rect x="70" y="210" width="260" height="150" rx="24" fill="url(#card9)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="118" y="254" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Airtable Plan</text>
+  <text x="106" y="288" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Content calendar</text>
+  <text x="106" y="316" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Post readiness state</text>
+  <text x="106" y="344" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Publishing source</text>
+
+  <rect x="450" y="150" width="310" height="230" rx="28" fill="url(#card9)" stroke="#22C55E" stroke-opacity="0.4"/>
+  <text x="515" y="194" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Make.com Router</text>
+  <text x="490" y="242" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Ready-content trigger</text>
+  <text x="490" y="270" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Publishing logic</text>
+  <text x="490" y="298" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Multi-step workflow</text>
+  <text x="490" y="326" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Notification branch</text>
+  <text x="490" y="354" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="17">Status updates</text>
+
+  <rect x="880" y="170" width="250" height="140" rx="24" fill="url(#card9)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="956" y="214" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Buffer</text>
+  <text x="925" y="248" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Scheduled post queue</text>
+  <text x="925" y="276" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Publishing destination</text>
+
+  <rect x="880" y="380" width="250" height="140" rx="24" fill="url(#card9)" stroke="#38BDF8" stroke-opacity="0.35"/>
+  <text x="972" y="424" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Slack</text>
+  <text x="925" y="458" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Team notifications</text>
+  <text x="925" y="486" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Publishing visibility</text>
+
+  <rect x="450" y="520" width="310" height="130" rx="24" fill="#081726" stroke="#22C55E" stroke-opacity="0.3"/>
+  <text x="520" y="564" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Outcome</text>
+  <text x="490" y="598" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Faster scheduling</text>
+  <text x="490" y="626" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Fewer publishing errors</text>
+
+  <rect x="70" y="500" width="260" height="150" rx="24" fill="#081726" stroke="#38BDF8" stroke-opacity="0.25"/>
+  <text x="104" y="544" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Team Benefit</text>
+  <text x="104" y="578" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Cleaner publishing handoff</text>
+  <text x="104" y="606" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Better schedule visibility</text>
+  <text x="104" y="634" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18">Less manual posting setup</text>
+
+  <path d="M330 285H430" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow9)" filter="url(#glow9)"/>
+  <path d="M760 240H860" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow9)" filter="url(#glow9)"/>
+  <path d="M760 450H860" stroke="#38BDF8" stroke-width="4" marker-end="url(#arrow9)" filter="url(#glow9)"/>
+  <path d="M605 390V500" stroke="#22C55E" stroke-width="4" marker-end="url(#arrow9)" filter="url(#glow9)"/>
+</svg>
