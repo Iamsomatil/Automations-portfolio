@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Zap } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { navItems, profile } from '../data/portfolio';
 
 const Header = () => {
@@ -68,16 +68,16 @@ const Header = () => {
           {/* Logo / Name */}
           <motion.button
             onClick={() => scrollToSection('hero')}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center group"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
+            aria-label={`${profile.name} home`}
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-glow-blue">
-              <Zap className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-lg font-heading font-bold text-white hidden sm:inline">
-              {profile.name}
-            </span>
+            <img
+              src="/SA-logo.jpeg"
+              alt={profile.name}
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain"
+            />
           </motion.button>
 
           {/* Desktop Nav */}
