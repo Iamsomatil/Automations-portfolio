@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ExternalLink, Layers3, TrendingUp, X } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Layers3, LockKeyhole, TrendingUp, X } from 'lucide-react';
 import SectionHeading from './shared/SectionHeading';
 import { projects, type Project } from '../data/portfolio';
 
@@ -38,6 +38,9 @@ const item = {
   hover: { y: -6, transition: { duration: 0.2 } },
 };
 
+const getDetailGridClass = (columns?: 'two' | 'three') =>
+  columns === 'three' ? 'md:grid-cols-2 xl:grid-cols-3' : 'md:grid-cols-2';
+
 const Portfolio = () => {
   const [filter, setFilter] = useState<Filter>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -57,6 +60,13 @@ const Portfolio = () => {
   const closeGallery = () => {
     setSelectedProject(null);
     document.body.style.overflow = '';
+  };
+
+  const scrollToCaseStudyCta = (sectionId: string) => {
+    closeGallery();
+    window.setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
   };
 
   const goToNext = useCallback(() => {
@@ -137,6 +147,7 @@ const Portfolio = () => {
           >
             {filteredProjects.map((project) => {
               const palette = colorMap[project.category];
+              const categoryLabel = project.categoryLabel ?? palette.label;
               return (
                 <motion.article
                   key={project.title}
@@ -154,6 +165,14 @@ const Portfolio = () => {
                       </div>
                     ) : null}
 
+                    {project.statusLabel ? (
+                      <div className="absolute top-3 right-3 z-10">
+                        <span className="flex items-center gap-1 px-2.5 py-1 bg-dark-950/80 text-white text-[10px] font-bold rounded-full uppercase tracking-wide shadow-md backdrop-blur-sm border border-white/10">
+                          <LockKeyhole size={9} /> {project.statusLabel}
+                        </span>
+                      </div>
+                    ) : null}
+
                     <button
                       type="button"
                       className="relative h-44 overflow-hidden bg-dark-800 text-left"
@@ -167,15 +186,25 @@ const Portfolio = () => {
                       <img
                         src={project.images[0].url}
                         alt={project.images[0].alt}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
+                          project.imageFit === 'contain' ? 'object-contain bg-white p-6' : 'object-cover'
+                        }`}
                       />
                     </button>
 
                     <div className="p-6 flex flex-col flex-grow">
-                      <div className="flex items-center justify-between mb-3">
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
                         <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${palette.bg} ${palette.text} border ${palette.border}`}>
-                          {palette.label}
+                          {categoryLabel}
                         </span>
+                        {project.cardBadges?.slice(0, 2).map((badge) => (
+                          <span
+                            key={badge}
+                            className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
+                          >
+                            {badge}
+                          </span>
+                        ))}
                       </div>
 
                       <h3 className="text-base font-heading font-bold text-dark-900 dark:text-white mb-2 group-hover:text-primary-400 transition-colors leading-snug">
@@ -213,6 +242,15 @@ const Portfolio = () => {
                           <ExternalLink size={12} />
                           Visit Live Website
                         </a>
+                      ) : project.ctaLabel ? (
+                        <button
+                          type="button"
+                          onClick={() => openGallery(project)}
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-400 hover:text-primary-300 transition-colors mt-auto"
+                        >
+                          <ArrowRight size={12} />
+                          {project.ctaLabel}
+                        </button>
                       ) : null}
                     </div>
                   </div>
@@ -286,8 +324,26 @@ const Portfolio = () => {
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
+                      <div className="mb-3 flex flex-wrap items-center gap-2">
+                        {selectedProject.statusLabel ? (
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-gray-200">
+                            <LockKeyhole size={12} />
+                            {selectedProject.statusLabel}
+                          </span>
+                        ) : null}
+                        {selectedProject.tags.slice(0, 5).map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-xs font-medium text-primary-200"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                       <p className="text-white font-semibold text-xl">{selectedProject.title}</p>
-                      <p className="mt-2 max-w-3xl text-sm leading-7 text-gray-300">{selectedProject.description}</p>
+                      <p className="mt-2 max-w-3xl text-sm leading-7 text-gray-300">
+                        {selectedProject.subtitle ?? selectedProject.description}
+                      </p>
                     </div>
                     {selectedProject.liveUrl ? (
                       <a
@@ -299,6 +355,15 @@ const Portfolio = () => {
                         <ExternalLink size={15} />
                         Visit Live Site
                       </a>
+                    ) : selectedProject.caseStudyCta ? (
+                      <button
+                        type="button"
+                        onClick={() => scrollToCaseStudyCta(selectedProject.caseStudyCta!.sectionId)}
+                        className="inline-flex items-center gap-2 rounded-xl border border-primary-500/25 bg-primary-500/10 px-4 py-2 text-sm font-semibold text-primary-300 transition-colors hover:border-primary-400/40 hover:text-primary-200"
+                      >
+                        <ArrowRight size={15} />
+                        {selectedProject.caseStudyCta.label}
+                      </button>
                     ) : null}
                   </div>
 
@@ -330,14 +395,32 @@ const Portfolio = () => {
                           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-300">
                             {section.title}
                           </p>
-                          <ul className="mt-4 space-y-2.5">
-                            {section.points.map((point) => (
-                              <li key={point} className="flex items-start gap-3 text-sm leading-6 text-gray-300">
-                                <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary-400" />
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
+                          {section.intro ? (
+                            <p className="mt-3 text-sm leading-6 text-gray-300">{section.intro}</p>
+                          ) : null}
+                          {section.points?.length ? (
+                            <ul className="mt-4 space-y-2.5">
+                              {section.points.map((point) => (
+                                <li key={point} className="flex items-start gap-3 text-sm leading-6 text-gray-300">
+                                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary-400" />
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          ) : null}
+                          {section.items?.length ? (
+                            <div className={`mt-4 grid gap-3 ${getDetailGridClass(section.columns)}`}>
+                              {section.items.map((sectionItem) => (
+                                <div
+                                  key={`${section.title}-${sectionItem.label}`}
+                                  className="rounded-xl border border-white/10 bg-white/[0.03] p-4"
+                                >
+                                  <p className="break-words text-sm font-semibold text-white">{sectionItem.label}</p>
+                                  <p className="mt-2 text-sm leading-6 text-gray-300">{sectionItem.description}</p>
+                                </div>
+                              ))}
+                            </div>
+                          ) : null}
                         </div>
                       ))}
                     </div>

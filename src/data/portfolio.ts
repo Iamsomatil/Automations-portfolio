@@ -26,14 +26,26 @@ export type ProjectMetric = {
   value: string;
 };
 
+export type ProjectDetailItem = {
+  label: string;
+  description: string;
+};
+
 export type ProjectDetailSection = {
   title: string;
-  points: string[];
+  intro?: string;
+  points?: string[];
+  items?: ProjectDetailItem[];
+  columns?: 'two' | 'three';
 };
 
 export type Project = {
   title: string;
+  slug?: string;
   category: 'web-crm' | 'automation';
+  categoryLabel?: string;
+  subtitle?: string;
+  statusLabel?: string;
   description: string;
   challenge?: string;
   solution?: string;
@@ -45,7 +57,11 @@ export type Project = {
   architectureDiagram?: { url: string; alt: string };
   detailSections?: ProjectDetailSection[];
   tags: string[];
+  cardBadges?: string[];
+  ctaLabel?: string;
+  caseStudyCta?: { label: string; sectionId: string };
   images: { url: string; alt: string }[];
+  imageFit?: 'cover' | 'contain';
   liveUrl?: string;
   featured?: boolean;
 };
@@ -230,6 +246,475 @@ export const platformGroups: PlatformGroup[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    title: 'SunLife GovCon Operations CRM',
+    slug: 'sunlife-govcon-operations-crm',
+    category: 'web-crm',
+    categoryLabel: 'Operations CRM',
+    featured: true,
+    statusLabel: 'Private / Internal System',
+    subtitle:
+      'A lean Base44 operations command center built to replace spreadsheet-based GovCon workflows with role-specific CRM modules, controlled pipeline stages, quick logging, activity history, permissions, and operational intelligence.',
+    description:
+      'Built a lean Base44 GovCon operations command center to replace a spreadsheet-based workflow with a role-specific CRM for opportunities, vendors, outreach, calls, quotes, pricing, proposals, submissions, results, notes, tasks, permissions, and performance intelligence.',
+    challenge:
+      'SunLife was running GovCon operations across multiple spreadsheet tabs, creating duplicate workflows, scattered notes, inconsistent statuses, weak ownership, missing activity history, and financial visibility risks.',
+    solution:
+      'Converted the workbook logic into a Base44 command center with Opportunity Pipeline, Vendor Outreach, CallLog, Quote Intake, Pricing, Proposal, Submission, Result, ActivityLog, Follow-Up Task, and role-specific dashboard modules.',
+    result:
+      'The spreadsheet workflow became a lean operating system with controlled stages, quick logging, activity history, follow-up tasks, role-specific visibility, and restricted financial views.',
+    impactBullets: [
+      'Replaced spreadsheet-based active tracking with a Base44 operating system',
+      'Created a main Opportunity Pipeline for PL workflow replacement',
+      'Added role-specific dashboards and restricted financial views',
+      'Unified duplicate call tracking workflows into one CallLog system',
+    ],
+    metrics: [
+      { label: 'Spreadsheet Tabs Replaced', value: '9' },
+      { label: 'Core Modules', value: '14' },
+      { label: 'Quick Logging Target', value: '30-60 seconds' },
+      { label: 'Pipeline Statuses', value: '9 controlled stages' },
+      { label: 'Primary Platform', value: 'Base44' },
+      { label: 'Support Window', value: '7-14 days' },
+      { label: 'Build Principle', value: 'Lean daily adoption' },
+    ],
+    roleSummary:
+      'Owned the Base44 structure, data model, workflow logic, permissions strategy, role-specific workspaces, and testing approach for a private internal GovCon operations system.',
+    architectureSummary:
+      'Opportunity is the parent record. Vendors, contacts, outreach, calls, quotes, pricing, proposals, submissions, results, notes, activity logs, and follow-up tasks connect back to each opportunity. Role dashboards sit on top of the shared model, ActivityLog acts as the audit spine, FollowUpTask acts as the action engine, financial fields are restricted by role, and mobile quick actions support outreach, calls, notes, and task completion.',
+    detailSections: [
+      {
+        title: 'Overview',
+        intro:
+          'SunLife needed a Base44-built GovCon Operations CRM to replace its Excel / Google Sheet operating system. The workbook was not just storage; it represented the team process across multiple tabs.',
+        points: [
+          'The product metaphor was GovCon Operations Command Center, not just a generic CRM.',
+          'The build centralized opportunity tracking, vendor activity, quote readiness, pricing, proposal flow, submission status, results, tasks, notes, permissions, and lightweight intelligence.',
+          'The goal was not a large enterprise CRM. The goal was the simplest working Base44 operating system the team would actually use daily.',
+        ],
+      },
+      {
+        title: 'Problem',
+        intro:
+          'GovCon operations were spread across spreadsheet tabs that created duplicate work, status ambiguity, and weak ownership of next actions.',
+        points: [
+          'Duplicate workflows existed across tabs.',
+          'There was no reliable activity history.',
+          'Pipeline movement was not enforced.',
+          'Next-action ownership was unclear.',
+          'There was no central vendor record.',
+          'Sensitive financial data was exposed in spreadsheet views.',
+          'GMass, Quo, WhatsApp, and manual notes were not consistently reflected in one system.',
+          'Leadership had to infer status from scattered fields instead of seeing an actionable workflow.',
+          'Mobile usage was not structured for quick updates from team members.',
+          'Spreadsheet rows did not create proper relationships between opportunities, vendors, quotes, tasks, and results.',
+          'VAs and callers risked being slowed down if the system copied spreadsheet complexity instead of simplifying daily workflows.',
+        ],
+        items: [
+          { label: 'PL', description: 'Pipeline and opportunity tracking.' },
+          { label: 'HL', description: 'Leadership-level opportunity summary.' },
+          { label: 'VO', description: 'Vendor outreach tracking.' },
+          { label: 'CALLS / CALLS 2', description: 'Separate call logging workflows that needed to become one CallLog system.' },
+          { label: 'G-Sheet', description: 'Quick vendor and contact collection.' },
+          { label: 'QIS!', description: 'Quote and quote compliance intake.' },
+          { label: 'Proposals', description: 'Proposal, submission, pricing, and result tracking.' },
+          { label: 'TEAM', description: 'Internal notes and shared updates.' },
+        ],
+        columns: 'two',
+      },
+      {
+        title: 'Build Principle and Goals',
+        intro: 'Primary V1 build principle: build the simplest working Base44 operating system the team will actually use daily.',
+        points: [
+          'Keep the system fast, clean, usable, organized, role-specific, and practical for daily adoption.',
+          'Avoid building a flat spreadsheet clone inside Base44.',
+          'Replace Excel / Google Sheet tracking after Base44 goes live.',
+          'Centralize opportunities, vendors, outreach, calls, quotes, pricing, proposals, submissions, results, and notes.',
+          'Give each team member a role-specific workspace.',
+          'Enforce pipeline stages, required fields, and ownership of next actions.',
+          'Capture every important action in ActivityLog.',
+          'Protect sensitive financial fields from VAs and callers.',
+          'Preserve useful workflow logic while cleaning up the structure.',
+          'Support practical mobile-friendly usage.',
+          'Keep V1 fast and easy to update, especially for VAs and callers.',
+        ],
+      },
+      {
+        title: 'Before / After Workflow',
+        items: [
+          {
+            label: 'Before',
+            description:
+              'Spreadsheet tabs, duplicated work, scattered notes, inconsistent statuses, unclear ownership, exposed financial fields, and weak activity history.',
+          },
+          {
+            label: 'After',
+            description:
+              'Base44 command center with controlled statuses, role dashboards, ActivityLog history, FollowUpTask ownership, quote readiness, proposal flow, submission tracking, and restricted financial visibility.',
+          },
+        ],
+        columns: 'two',
+      },
+      {
+        title: 'Core Workflow',
+        items: [
+          {
+            label: '1. Opportunity Intake',
+            description:
+              'Opportunities are manually added from HigherGov or SAM.gov with solicitation number, due date/time, contract type, location, NAICS, PSC, source link, site visit status, and site visit date. New opportunities start as New.',
+          },
+          {
+            label: '2. Qualification',
+            description:
+              'Hosea / Troy decide Bid, Pass, or Hold. Bid moves to Vendor Sourcing, Pass moves to Passed, and Hold keeps the opportunity visible but paused or flagged. Bid opportunities require VA and caller assignment or a task to assign them.',
+          },
+          {
+            label: '3. Vendor Outreach',
+            description:
+              'VAs send outreach through GMass, callers make calls through Quo, and activity is manually logged in Base44. Outreach statuses track Contacted, Followed up, Responded, Interested, and Not Interested.',
+          },
+          {
+            label: '4. Quote Collection',
+            description:
+              'Maria logs quote information including price, scope, deposit, red flags, compliance, Net 30, wages, certifications, and licenses. Quote data gates pricing readiness.',
+          },
+          {
+            label: '5. Pricing',
+            description:
+              'Hosea / Troy select a vendor, apply markup and contingency, and calculate final bid price and estimated profit. Pricing is restricted from VAs and callers.',
+          },
+          {
+            label: '6. Proposal',
+            description:
+              'Troy builds proposals and confirms compliance. Proposal statuses are Not Started, In Progress, Compliance Review, Ready to Submit, Submitted, and Blocked.',
+          },
+          {
+            label: '7. Submission',
+            description:
+              'Troy logs submissions through Email, Portal, PIEE, FEDCON, or Other with submitted date, submitted price, method, CO information, notes, and status.',
+          },
+          {
+            label: '8. Results',
+            description:
+              'Hosea / Maria update Won, Lost, or Cancelled outcomes. Won maps to Awarded, Lost maps to Lost, and Cancelled is archived/inactive without adding a new active pipeline column.',
+          },
+          {
+            label: '9. Intelligence',
+            description:
+              'Tracks lightweight operational intelligence including win/loss, pricing vs award, vendor performance, quote responsiveness, vendor interest rate, awarded price vs our price, and estimated profit vs actual profit where available.',
+          },
+        ],
+        columns: 'three',
+      },
+      {
+        title: 'Controlled Values',
+        items: [
+          {
+            label: 'Pipeline Statuses',
+            description: 'New, Vendor Sourcing, Quotes Incoming, Pricing, Proposal, Submitted, Awarded, Lost, Passed.',
+          },
+          {
+            label: 'Qualification Decisions',
+            description: 'Bid, Pass, Hold.',
+          },
+          {
+            label: 'Result Outcomes',
+            description: 'Won, Lost, Cancelled.',
+          },
+        ],
+        columns: 'three',
+      },
+      {
+        title: 'Core Modules',
+        points: [
+          'Opportunities: main pipeline',
+          'Vendors: vendor database',
+          'Outreach: email/form outreach logging',
+          'Calls: call tracking and caller workspace',
+          'Quotes: quote intake and compliance',
+          'Pricing: bid calculator / pricing workflow',
+          'Proposals: proposal preparation and compliance tracking',
+          'Submissions: submission tracking',
+          'Results: award/loss/cancellation tracking',
+          'Intelligence: simple performance learning',
+          'Activity Logs: full audit trail',
+          'Follow-Up Tasks: action ownership and reminders',
+          'Team Notes: important internal updates',
+          'User Roles and Permissions: access control',
+        ],
+      },
+      {
+        title: 'Spreadsheet-to-CRM Mapping',
+        intro:
+          'The workbook logic was extracted and rebuilt cleaner inside Base44. The system did not copy the tabs; it turned them into structured modules and role-specific workspaces.',
+        items: [
+          { label: 'PL', description: 'Became the Opportunity Pipeline.' },
+          { label: 'HL', description: 'Became a Leadership Opportunity Summary saved view.' },
+          { label: 'VO', description: 'Became the Vendor Outreach Workspace.' },
+          { label: 'CALLS', description: 'Became the Call Log / Caller Workspace.' },
+          { label: 'G-Sheet', description: 'Became Quick Vendor Intake feeding the Vendor Database.' },
+          { label: 'CALLS 2', description: 'Merged into the unified CallLog system.' },
+          { label: 'QIS!', description: 'Became Quote Intake and Quote Compliance.' },
+          { label: 'Proposals', description: 'Became Pricing, Proposal, Submission, and Result workflows.' },
+          { label: 'TEAM', description: 'Became Internal Notes and Team Updates tied to opportunities where possible.' },
+        ],
+        columns: 'three',
+      },
+      {
+        title: 'Entity / Data Model',
+        intro:
+          'Opportunity acts as the parent record. Related entities connect vendor activity, quote readiness, pricing, proposals, submissions, results, notes, audit history, and task ownership back to each opportunity.',
+        items: [
+          {
+            label: 'Opportunity',
+            description:
+              'Central parent record with opportunity name, solicitation number, due date/time, new due date, contract type, location, NAICS, PSC, source link, site visit fields, qualification decision, pipeline status, assigned VA, assigned caller, project type, needs called, quote status, pricing status, submitted status, notes, and active status.',
+          },
+          {
+            label: 'Vendor',
+            description:
+              'Master vendor database with company name, website, phone, email, contact method, do-not-contact, vendor status, notes, and duplicate warning by company name, email, phone, or website.',
+          },
+          {
+            label: 'VendorContact',
+            description:
+              'Individual vendor contact with vendor ID, name, title, email, phone, contact URL, and preferred method.',
+          },
+          {
+            label: 'OutreachActivity',
+            description:
+              'GMass/form/email outreach log with opportunity ID, vendor ID, contact ID, method, status, sender email, initial contact date, last follow-up date, next follow-up date, follow-up count, response received, email template ID, and notes.',
+          },
+          {
+            label: 'CallLog',
+            description:
+              'Quo call activity log with opportunity ID, vendor ID, contact name, email or phone, date called, reason for call, outcome, notes, follow-up date, and caller.',
+          },
+          {
+            label: 'Quote',
+            description:
+              'Vendor quote and compliance intake with opportunity ID, vendor ID, quote date, price, scope, deposit, Net 30, prevailing wages, certification/license, compliant, C-priced, message sent, caller, VA, red flags, and quote status.',
+          },
+          {
+            label: 'PricingRecord',
+            description:
+              'Bid calculator / pricing workflow with opportunity ID, selected vendor ID, vendor price, subcontractor price, markup percent, contingency, final bid price, estimated profit, markup amount, and pricing notes.',
+          },
+          {
+            label: 'ProposalRecord',
+            description:
+              'Proposal tracking with opportunity ID, solicitation number, proposal lead, proposal status, compliance status, proposal due date, proposal notes, prime/sub, subcontractor, agency, project type, and readiness.',
+          },
+          {
+            label: 'SubmissionRecord',
+            description:
+              'Submission log with opportunity ID, solicitation number, submitted date, submitted price, method, CO name, CO email, CO phone, notes, and status.',
+          },
+          {
+            label: 'ResultRecord',
+            description:
+              'Final result with opportunity ID, outcome, awarded price, profit, result date, reason lost, cancellation reason, and notes.',
+          },
+          {
+            label: 'TeamMember / UserRole',
+            description: 'Access control with name, email, role, active status, and permissions.',
+          },
+          {
+            label: 'ActivityLog',
+            description: 'Audit history with entity type, entity ID, action type, old value, new value, actor, timestamp, and notes.',
+          },
+          {
+            label: 'FollowUpTask',
+            description: 'Action ownership with opportunity ID, vendor ID, assigned to, task type, due date, priority, status, and notes.',
+          },
+          {
+            label: 'InternalNote',
+            description:
+              'Team notes and WhatsApp updates with opportunity ID, author, note type, note, status, acknowledgement required, acknowledged by, and created at.',
+          },
+        ],
+        columns: 'two',
+      },
+      {
+        title: 'Roles and Permissions',
+        intro: 'Role-specific dashboards were designed so every user could answer: What should I do next?',
+        items: [
+          {
+            label: 'Hosea Barnwell',
+            description:
+              'CEO / Admin responsible for qualification, pricing decisions, results, and full oversight. Full access and all financial visibility.',
+          },
+          {
+            label: 'Troy',
+            description:
+              'Proposal Lead responsible for qualification support, pricing, proposals, submissions, and compliance. Access to active opportunities, quotes, pricing, proposals, and submissions.',
+          },
+          {
+            label: 'Maria',
+            description:
+              'Admin / Compliance responsible for vendors, quote collection, quote compliance, proposal tracking, and results support.',
+          },
+          {
+            label: 'VAs such as Florita and Christy',
+            description:
+              'Outreach Operators responsible for GMass outreach and vendor follow-up logging. Assigned opportunities and outreach only. No pricing or profit visibility. Fast quick-update screens required.',
+          },
+          {
+            label: 'Callers such as Noelle and Marteena',
+            description:
+              'Call Operators responsible for Quo calls, call outcomes, and follow-ups. No pricing or profit visibility. Fast quick-call logging required.',
+          },
+          {
+            label: 'Samson Akinsanya',
+            description:
+              'Developer / System Owner responsible for Base44 structure, data model, workflow logic, permissions, and testing. Full system access.',
+          },
+        ],
+        columns: 'two',
+      },
+      {
+        title: 'Financial Visibility Restrictions',
+        intro:
+          'Sensitive financial data was role-restricted. Only Hosea, Troy, and Samson can edit pricing. Maria may view limited pricing only if approved. VAs and callers cannot see pricing or profit fields.',
+        points: [
+          'Vendor cost / subcontractor price',
+          'Sub price',
+          'Our price / final bid price',
+          'Submitted price',
+          'Awarded price',
+          'Markup',
+          'Contingency',
+          'Estimated profit',
+          'Actual profit',
+          'Delta percentage',
+          'Awarded profit',
+          'Pricing notes containing sensitive margins',
+        ],
+      },
+      {
+        title: 'Workflow Automation Rules',
+        points: [
+          'When opportunity is created, pipeline_status = New.',
+          'When Bid is selected, move to Vendor Sourcing.',
+          'When Pass is selected, move to Passed.',
+          'When Hold is selected, keep visible with hold_flag = true.',
+          'When VA and caller are assigned, create outreach/call follow-up tasks.',
+          'When outreach activity is logged, create ActivityLog entry.',
+          'When call activity is logged, create ActivityLog entry.',
+          'When first quote is received, opportunity can move to Quotes Incoming.',
+          'When quote compliance fields are completed, mark quote as Ready for Pricing Review.',
+          'When pricing fields are completed, opportunity can move to Pricing.',
+          'When proposal is created, opportunity can move to Proposal.',
+          'When submitted, opportunity moves to Submitted.',
+          'When result is entered: Won becomes Awarded, Lost becomes Lost, Cancelled becomes archived/inactive with result outcome Cancelled.',
+          'Every stage change creates an ActivityLog entry.',
+          'Every manually logged action creates or appears in ActivityLog.',
+          'Duplicate vendor warning triggers on company name, email, phone, or website match.',
+          'Missing quote warning triggers before Pricing.',
+          'Upcoming due date warning triggers as deadline approaches.',
+          'Overdue indicator shows on follow-up tasks.',
+          'Permission checks run before financial fields are displayed or updated.',
+          'Automation avoids forcing VAs and callers through slow multi-step processes.',
+        ],
+      },
+      {
+        title: 'Pricing, Proposal, and Submission Workflows',
+        items: [
+          {
+            label: 'Pricing Workflow',
+            description:
+              'Tracks selected vendor, vendor price / subcontractor price, markup, contingency, final bid price / our price, estimated profit, awarded price when known, delta percentage, markup percentage, and pricing notes. Recommended calculations include estimated_profit = final_bid_price - vendor_price - contingency_amount, markup_percent = (final_bid_price - vendor_price) / vendor_price, and delta_percent = (our_price - awarded_price) / awarded_price when awarded price exists.',
+          },
+          {
+            label: 'Proposal Workflow',
+            description:
+              'Tracks solicitation number, assigned proposal lead, proposal status, compliance status/check, proposal due date if available, proposal notes, submission readiness, prime/sub designation, subcontractor, agency, and project type. Proposal statuses are Not Started, In Progress, Compliance Review, Ready to Submit, Submitted, and Blocked.',
+          },
+          {
+            label: 'Submission Workflow',
+            description:
+              'Tracks solicitation number, submitted date, submitted price, submission method, CO name, CO email, CO phone, notes, and status Submitted. Allowed methods are Email, Portal, PIEE, FEDCON, and Other. Submitted date, submitted price, submission method, and CO information are required unless an admin override explains why unavailable.',
+          },
+        ],
+        columns: 'three',
+      },
+      {
+        title: 'Results and Lightweight Intelligence',
+        intro:
+          'The intelligence layer was operational and lightweight, not a bloated BI dashboard. It focused on helping the team make better daily decisions.',
+        points: [
+          'Results tracked Won, Lost, Cancelled, awarded price, profit, result date, reason lost, cancellation reason, and notes.',
+          'Tracked win/loss rate, pricing vs award, vendor quote responsiveness, vendor interest rate, vendor compliance issues, awarded price vs our price, and estimated profit vs actual profit where available.',
+          'Helped the team see which vendors respond, quote, decline, no-show, or perform well.',
+          'Made it easier to answer what needs action, who owns it, what stage it is in, what vendor activity happened, what quotes are available, what is blocking the bid, whether it has been submitted, and what the result was.',
+        ],
+      },
+      {
+        title: 'UI / UX and Mobile Requirements',
+        points: [
+          'Designed around action-first workflows, pipeline-driven operations, fast logging, role-specific visibility, clear ownership, clear next steps, and minimal clutter.',
+          'Avoided Excel-style overload, generic KPI walls, decorative charts without operational use, and unnecessary CRM bloat.',
+          'Mobile views prioritize assigned opportunities, assigned tasks, short forms, stacked fields, clear action buttons, and minimal table overload.',
+          'VAs can log outreach and follow-up status quickly.',
+          'Callers can log call outcome, notes, and next follow-up quickly.',
+          'Maria, Troy, and Hosea can review key status information and notes on mobile.',
+          'Financial fields remain hidden from restricted roles on mobile and desktop.',
+        ],
+      },
+      {
+        title: 'Phase Structure',
+        items: [
+          {
+            label: 'Phase 1',
+            description:
+              'Opportunity Pipeline, Opportunity Intake, Opportunity Detail, Vendor Database, Vendor Outreach Workspace, Call Log / Caller Workspace, Quote Intake / Quote Compliance, Activity Logs, Follow-Up Tasks, basic role dashboard, and mobile-friendly quick logging for outreach and calls.',
+          },
+          {
+            label: 'Phase 2',
+            description:
+              'Pricing Calculator / Pricing Workflow, Proposal Tracking, Submission Tracking, User Roles and Permissions, and financial visibility restrictions.',
+          },
+          {
+            label: 'Phase 3',
+            description:
+              'Results Tracking, Awarded / Lost / Cancelled outcomes, awarded price, profit, pricing vs award, vendor performance, role-specific dashboards, and operational metrics.',
+          },
+        ],
+        columns: 'three',
+      },
+      {
+        title: 'Non-Goals / Scope Discipline',
+        points: [
+          'No full HigherGov integration / automated ingestion in V1 unless separately scoped.',
+          'No full SAM.gov integration / automated ingestion in V1 unless separately scoped.',
+          'No full GMass sync in V1 unless separately scoped.',
+          'No full Quo sync in V1 unless separately scoped.',
+          'No ChatGPT API integration in V1 unless separately scoped.',
+          'No WhatsApp replacement or automated sync in V1.',
+          'No Excel tracking after Base44 is live.',
+          'No complex analytics dashboard in Phase 1.',
+          'No overbuilt automation.',
+          'No accounting system.',
+          'No duplicate call modules.',
+          'No duplicate vendor intake module.',
+          'No flat spreadsheet clone inside Base44.',
+          'No custom native mobile app.',
+          'No long, forced VA/caller forms that slow daily work.',
+        ],
+      },
+    ],
+    tags: ['Base44', 'GovCon', 'CRM', 'Operations System', 'Workflow Automation', 'Spreadsheet Migration', 'Role-Based Permissions'],
+    cardBadges: ['Base44 Build'],
+    ctaLabel: 'View Case Study',
+    caseStudyCta: { label: 'Need a system like this?', sectionId: 'contact' },
+    images: [
+      {
+        url: '/Sunlife-logo.jpeg',
+        alt: 'SunLife GovCon Operations CRM private internal system visual using the SunLife logo',
+      },
+    ],
+    imageFit: 'contain',
+  },
   {
     title: 'HOSVI LLC',
     category: 'web-crm',

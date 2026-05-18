@@ -15,6 +15,8 @@ const toolTags = [
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [firstName, ...lastNameParts] = profile.name.split(' ');
+  const lastName = lastNameParts.join(' ');
 
   useEffect(() => {
     setIsMounted(true);
@@ -59,19 +61,20 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.35 }}
             className="mb-6"
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.08] tracking-tight mb-3">
+            <h1 className="mx-auto max-w-[20rem] text-4xl sm:max-w-none sm:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.08] tracking-tight mb-3 break-words">
               Hi, I&apos;m{' '}
-              <span className="text-gradient-purple bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-primary-300 to-purple-400">
-                {profile.name}
+              <span className="block sm:inline text-gradient-purple bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-primary-300 to-purple-400">
+                <span className="block sm:inline">{firstName}</span>
+                {lastName ? <span className="block sm:inline sm:ml-2">{lastName}</span> : null}
               </span>
             </h1>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-semibold text-gray-300 mt-4 leading-snug">
+            <h2 className="mx-auto max-w-[20rem] text-xl sm:max-w-none sm:text-2xl lg:text-3xl font-heading font-semibold text-gray-300 mt-4 leading-snug">
               {profile.title}
             </h2>
           </motion.div>
 
           <motion.p
-            className="text-base sm:text-lg text-gray-400 mb-6 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg text-gray-400 mb-6 max-w-[20rem] sm:max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55, duration: 0.7 }}
@@ -80,7 +83,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.p
-            className="text-sm sm:text-base text-primary-200/90 mb-8 max-w-2xl mx-auto"
+            className="text-sm sm:text-base text-primary-200/90 mb-8 max-w-[20rem] sm:max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.62, duration: 0.7 }}
@@ -89,7 +92,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap gap-2 justify-center mb-10"
+            className="flex max-w-[20rem] flex-wrap gap-2 justify-center mb-10 mx-auto sm:max-w-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.65, duration: 0.6 }}
@@ -97,7 +100,7 @@ const Hero = () => {
             {trustPoints.map((point) => (
               <span
                 key={point}
-                className="inline-flex items-center px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300 font-medium"
+                className="inline-flex w-full max-w-full items-center justify-center break-words px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-center text-xs leading-snug text-gray-300 font-medium sm:w-auto"
               >
                 {point}
               </span>
@@ -105,7 +108,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="flex flex-wrap gap-2 justify-center mb-10"
+            className="flex max-w-[20rem] flex-wrap gap-2 justify-center mb-10 mx-auto sm:max-w-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.75, duration: 0.6 }}
@@ -159,7 +162,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-[20rem] sm:max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
