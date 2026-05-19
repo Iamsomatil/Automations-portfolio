@@ -92,7 +92,7 @@ export const profile = {
   email: 'samsonoakinsanya@gmail.com',
   phone: '+234 816 882 9686',
   whatsapp: 'https://wa.me/2348168829686',
-  calendly: 'https://calendly.com/somatil024/30min',
+  calendly: 'https://calendly.com/samsonoakinsanya/30min',
   linkedin: 'https://www.linkedin.com/in/samsonakinsanya/',
   github: 'https://github.com/Iamsomatil',
   twitter: 'https://x.com/Somatill',
