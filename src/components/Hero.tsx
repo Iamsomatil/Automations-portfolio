@@ -1,191 +1,185 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown, Database, Download, GitBranch, Globe, Zap } from 'lucide-react';
-import ParticleBackground from './ui/ParticleBackground';
-import CountUpStat from './shared/CountUpStat';
-import { heroStats, profile, trustPoints } from '../data/portfolio';
+import { motion, useReducedMotion } from 'framer-motion';
+import {
+  ArrowRight,
+  CalendarClock,
+  CheckCircle2,
+  Database,
+  Download,
+  GitBranch,
+  Globe2,
+  MessageSquareText,
+  ShieldCheck,
+  Workflow,
+} from 'lucide-react';
+import { profile } from '../data/portfolio';
+import { heroContainer, heroItem, transitions } from '../lib/motion';
 
-const toolTags = [
-  { icon: <Zap size={13} />, label: 'n8n' },
-  { icon: <GitBranch size={13} />, label: 'Make.com' },
-  { icon: <Database size={13} />, label: 'GoHighLevel' },
-  { icon: <Globe size={13} />, label: 'HubSpot' },
-  { icon: <Zap size={13} />, label: 'Zapier' },
+const proofPoints = [
+  'CRM and lifecycle architecture',
+  'APIs, webhooks, and orchestration',
+  'Production-ready handoffs and fallbacks',
 ];
 
-const Hero = () => {
-  const [isMounted, setIsMounted] = useState(false);
-  const [firstName, ...lastNameParts] = profile.name.split(' ');
-  const lastName = lastNameParts.join(' ');
+const flowNodes = [
+  { label: 'Lead captured', detail: 'Website · form · ads', icon: Globe2 },
+  { label: 'Validate + route', detail: 'Rules · tags · ownership', icon: GitBranch },
+  { label: 'CRM updated', detail: 'Pipeline · data · next step', icon: Database },
+  { label: 'Follow-up runs', detail: 'Call · SMS · email', icon: MessageSquareText },
+] as const;
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+const Hero = () => {
+  const shouldReduceMotion = useReducedMotion();
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth' });
   };
 
-  if (!isMounted) return null;
-
   return (
-    <section id="hero" className="min-h-screen relative overflow-hidden bg-dark-950">
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-[#0a0f1e] to-dark-950" />
-      <div className="absolute inset-0 hero-mesh opacity-60" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-600/10 rounded-full blur-[100px] animate-glow-pulse" />
-      <div
-        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-600/8 rounded-full blur-[100px] animate-glow-pulse"
-        style={{ animationDelay: '1.5s' }}
-      />
+    <section id="hero" className="relative isolate overflow-hidden border-b border-white/10 bg-dark-950 pt-24 text-white sm:pt-28">
+      <div className="container pb-14 sm:pb-16 lg:pb-20">
+        <motion.div
+          className="grid items-center gap-14 lg:min-h-[650px] lg:grid-cols-[1.02fr_0.98fr] lg:gap-16"
+          variants={heroContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <div className="max-w-3xl">
+            <motion.div variants={heroItem} className="mb-6 flex flex-wrap items-center gap-3">
+              <span className="inline-flex min-h-11 items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-200">
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                {profile.availability}
+              </span>
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-slate-500">Lagos · Global delivery</span>
+            </motion.div>
 
-      <ParticleBackground />
+            <motion.p variants={heroItem} className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-primary-300">
+              {profile.name} · Automation Engineer
+            </motion.p>
+            <motion.h1
+              variants={heroItem}
+              className="max-w-3xl text-balance text-[clamp(2.65rem,7vw,5.7rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-white"
+            >
+              I build the systems behind{' '}
+              <span className="text-primary-300">
+                smoother operations.
+              </span>
+            </motion.h1>
+            <motion.p variants={heroItem} className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+              Websites, CRM workflows, APIs, and automation logic designed as one dependable operating system, not a pile of disconnected tools.
+            </motion.p>
 
-      <div className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-        <div className="max-w-6xl mx-auto w-full text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/25 text-primary-300 text-sm font-medium">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              {profile.availability}
+            <motion.div variants={heroItem} className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <motion.button
+                type="button"
+                onClick={() => scrollToSection('portfolio')}
+                className="btn btn-primary min-h-12 gap-2 px-7 text-base focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950"
+                whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                View selected systems
+                <ArrowRight size={18} />
+              </motion.button>
+              <motion.a
+                href={profile.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn min-h-12 gap-2 border border-white/15 bg-white/[0.045] px-7 text-base text-white hover:border-white/30 hover:bg-white/[0.08] focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-950"
+                whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <CalendarClock size={18} />
+                Book a conversation
+              </motion.a>
+            </motion.div>
+
+            <motion.div variants={heroItem} className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-semibold text-slate-300 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300"
+              >
+                <Download size={16} />
+                Download résumé
+              </a>
+              <span className="hidden h-4 w-px bg-white/15 sm:block" />
+              <span className="text-sm text-slate-500">{profile.markets}</span>
+            </motion.div>
+          </div>
+
+          <motion.div variants={heroItem} className="relative mx-auto w-full max-w-xl lg:max-w-none">
+            <div className="overflow-hidden rounded-2xl border border-white/15 bg-slate-950">
+              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/5 text-primary-300">
+                    <Workflow size={18} />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-white">Connected operations</p>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500">Live system map</p>
+                  </div>
+                </div>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-emerald-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  Running
+                </span>
+              </div>
+
+              <div className="relative p-5 sm:p-7">
+                <div aria-hidden="true" className="absolute bottom-8 left-[2.45rem] top-9 w-px bg-white/20 sm:left-[3.45rem]" />
+                <div className="space-y-3.5">
+                  {flowNodes.map((node, index) => {
+                    const Icon = node.icon;
+                    return (
+                      <motion.div
+                        key={node.label}
+                        className="relative flex items-center gap-4 rounded-xl border border-white/10 bg-dark-900 p-3.5 sm:p-4"
+                        initial={shouldReduceMotion ? false : { opacity: 0, x: 18 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ ...transitions.smooth, delay: 0.55 + index * 0.13 }}
+                      >
+                        <div className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-primary-400/25 bg-dark-950 text-primary-300">
+                          <Icon size={18} />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-semibold text-white">{node.label}</p>
+                          <p className="mt-0.5 text-sm text-slate-400">{node.detail}</p>
+                        </div>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-slate-600">0{index + 1}</span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  <div className="rounded-xl border border-white/10 bg-dark-900 p-4">
+                    <ShieldCheck className="mb-3 text-primary-300" size={19} />
+                    <p className="text-sm font-semibold text-white">Fallbacks built in</p>
+                    <p className="mt-1 text-xs leading-5 text-slate-500">Validation, retries, and clear human handoffs.</p>
+                  </div>
+                  <div className="rounded-xl border border-white/10 bg-dark-900 p-4">
+                    <CheckCircle2 className="mb-3 text-emerald-300" size={19} />
+                    <p className="text-sm font-semibold text-white">One visible flow</p>
+                    <p className="mt-1 text-xs leading-5 text-slate-500">Every trigger has an owner and an outcome.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="mb-6"
-          >
-            <h1 className="mx-auto max-w-[20rem] text-4xl sm:max-w-none sm:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.08] tracking-tight mb-3 break-words">
-              Hi, I&apos;m{' '}
-              <span className="block sm:inline text-gradient-purple bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-primary-300 to-purple-400">
-                <span className="block sm:inline">{firstName}</span>
-                {lastName ? <span className="block sm:inline sm:ml-2">{lastName}</span> : null}
-              </span>
-            </h1>
-            <h2 className="mx-auto max-w-[20rem] text-xl sm:max-w-none sm:text-2xl lg:text-3xl font-heading font-semibold text-gray-300 mt-4 leading-snug">
-              {profile.title}
-            </h2>
-          </motion.div>
-
-          <motion.p
-            className="text-base sm:text-lg text-gray-400 mb-6 max-w-[20rem] sm:max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.7 }}
-          >
-            I design and ship full-stack systems for agencies and service businesses, connecting websites, CRM workflows, automation logic, and API integrations into one reliable operating system.
-          </motion.p>
-
-          <motion.p
-            className="text-sm sm:text-base text-primary-200/90 mb-8 max-w-[20rem] sm:max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.62, duration: 0.7 }}
-          >
-            Best fit for automation, integrations, CRM systems, and end-to-end digital operations roles.
-          </motion.p>
-
-          <motion.div
-            className="flex max-w-[20rem] flex-wrap gap-2 justify-center mb-10 mx-auto sm:max-w-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.65, duration: 0.6 }}
-          >
-            {trustPoints.map((point) => (
-              <span
-                key={point}
-                className="inline-flex w-full max-w-full items-center justify-center break-words px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-center text-xs leading-snug text-gray-300 font-medium sm:w-auto"
-              >
-                {point}
-              </span>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className="flex max-w-[20rem] flex-wrap gap-2 justify-center mb-10 mx-auto sm:max-w-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.75, duration: 0.6 }}
-          >
-            {toolTags.map((tag) => (
-              <span
-                key={tag.label}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300 font-medium hover:border-primary-500/30 hover:text-primary-300 transition-all duration-200"
-              >
-                <span className="text-primary-400">{tag.icon}</span>
-                {tag.label}
-              </span>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.85, duration: 0.6 }}
-          >
-            <motion.button
-              onClick={() => scrollToSection('portfolio')}
-              className="group flex items-center gap-2 px-7 py-3.5 bg-primary-600 hover:bg-primary-500 text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-glow-blue"
-              whileHover={{ y: -3, boxShadow: '0 0 30px rgba(14, 165, 233, 0.5)' }}
-              whileTap={{ scale: 0.97 }}
-            >
-              View Case Studies
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-            <motion.a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-7 py-3.5 border border-white/15 hover:border-primary-500/40 text-gray-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/5"
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              See GitHub
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-            <motion.button
-              onClick={() => window.open(profile.resumeUrl, '_blank', 'noopener,noreferrer')}
-              className="group flex items-center gap-2 px-7 py-3.5 border border-white/15 hover:border-primary-500/40 text-gray-200 hover:text-white text-sm font-semibold rounded-xl transition-all duration-200 hover:bg-white/5"
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <Download size={16} />
-              Download Resume
-            </motion.button>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-[20rem] sm:max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
-          >
-            {heroStats.map((stat) => (
-              <CountUpStat
-                key={stat.label}
-                value={stat.value}
-                suffix={stat.suffix}
-                label={stat.label}
-              />
-            ))}
-          </motion.div>
-        </div>
+        </motion.div>
 
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 1, 0], y: [10, 0, 0, -10] }}
-          transition={{ duration: 3, repeat: Infinity, repeatDelay: 0.5, delay: 2 }}
+          className="mt-12 grid gap-3 border-t border-white/10 pt-7 sm:grid-cols-3 lg:mt-4"
+          variants={heroContainer}
+          initial="hidden"
+          animate="show"
         >
-          <span className="text-xs text-gray-500 font-mono tracking-wider uppercase">Scroll</span>
-          <ChevronDown className="text-gray-500 w-5 h-5 animate-bounce" />
+          {proofPoints.map((point, index) => (
+            <motion.div key={point} variants={heroItem} className="flex min-h-11 items-center gap-3 text-sm text-slate-300">
+              <span className="font-mono text-xs text-primary-400">0{index + 1}</span>
+              <span>{point}</span>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

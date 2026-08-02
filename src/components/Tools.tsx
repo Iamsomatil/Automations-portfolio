@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Cpu, Database, Globe, Layout, Layers, Server } from 'lucide-react';
 import SectionHeading from './shared/SectionHeading';
 import { platformGroups } from '../data/portfolio';
+import { cardItem, fadeUp, staggerContainer, viewportOnce } from '../lib/motion';
 
 const iconMap = {
   Automation: <Cpu size={20} />,
@@ -39,40 +40,27 @@ const colorMap = {
   },
 };
 
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
-  hover: { y: -5, transition: { duration: 0.18 } },
-};
-
 const Tools = () => {
-  return (
-    <section id="tools" className="py-24 bg-white dark:bg-dark-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-40 dark:opacity-20" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-600/5 rounded-full blur-[100px] pointer-events-none" />
+  const shouldReduceMotion = useReducedMotion();
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+  return (
+    <section id="tools" className="section bg-white dark:bg-dark-900 relative overflow-hidden">
+      <div className="container relative">
+        <div className="text-center mb-12">
           <SectionHeading
             align="center"
             eyebrow="Tech Stack"
             title="Tools and Technologies"
             description="The platforms I use daily to build websites, CRM systems, and automation infrastructure that can hold up under real business usage."
           />
-          <div className="section-divider mx-auto mt-5" />
         </div>
 
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
-          variants={container}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={viewportOnce}
         >
           {platformGroups.map((group) => {
             const styles = colorMap[group.title as keyof typeof colorMap];
@@ -80,12 +68,12 @@ const Tools = () => {
               <motion.div
                 key={group.title}
                 className="group relative"
-                variants={item}
-                whileHover="hover"
+                variants={cardItem}
+                whileHover={shouldReduceMotion ? undefined : 'hover'}
               >
-                <div className="relative h-full bg-white dark:bg-dark-800/60 rounded-2xl p-6 shadow-card border border-gray-100 dark:border-dark-700/50 hover:shadow-card-hover hover:border-primary-500/20 transition-all duration-300 backdrop-blur-sm">
+                <div className="relative h-full rounded-2xl border border-gray-200 bg-white p-6 transition-[background-color,border-color] duration-300 ease-out group-hover:border-primary-500/30 group-hover:bg-gray-50 dark:border-white/10 dark:bg-dark-900 dark:group-hover:bg-dark-800">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${styles.bgColor}`}>
+                    <div className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-105 ${styles.bgColor}`}>
                       <span className={styles.color}>{iconMap[group.title as keyof typeof iconMap]}</span>
                     </div>
                     <div>
@@ -117,18 +105,18 @@ const Tools = () => {
 
         <motion.div
           className="text-center mt-14"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true, margin: '-50px' }}
-          transition={{ delay: 0.2, duration: 0.5 }}
         >
           <p className="text-gray-500 dark:text-gray-400 mb-5 text-sm">
             Want help choosing the right stack for your business?
           </p>
           <motion.a
             href="#contact"
-            className="btn btn-primary"
-            whileHover={{ y: -2 }}
+            className="btn btn-primary group/cta"
+            whileHover={shouldReduceMotion ? undefined : { y: -2 }}
             whileTap={{ scale: 0.97 }}
           >
             Let&apos;s Talk Tech

@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Code2, Database, ShieldCheck, TrendingUp, Zap } from 'lucide-react';
 import SectionHeading from './shared/SectionHeading';
 import { expertiseAreas } from '../data/portfolio';
+import { cardItem, staggerContainer, transitions, viewportOnce } from '../lib/motion';
 
 const iconMap = {
   'Automation Systems': <Zap size={26} />,
@@ -13,61 +14,43 @@ const iconMap = {
 
 const styleMap = {
   'Automation Systems': {
-    gradient: 'from-primary-500/15 to-primary-500/5',
     iconBg: 'bg-primary-500/15 text-primary-400',
   },
   'API Integrations': {
-    gradient: 'from-emerald-500/15 to-emerald-500/5',
     iconBg: 'bg-emerald-500/15 text-emerald-400',
   },
   'CRM & Operational Systems': {
-    gradient: 'from-blue-500/15 to-blue-500/5',
     iconBg: 'bg-blue-500/15 text-blue-400',
   },
   'AI-Assisted Workflows': {
-    gradient: 'from-purple-500/15 to-purple-500/5',
     iconBg: 'bg-purple-500/15 text-purple-400',
   },
   'Reliability & Operations': {
-    gradient: 'from-orange-500/15 to-orange-500/5',
     iconBg: 'bg-orange-500/15 text-orange-400',
   },
 };
 
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
-  hover: { y: -6, transition: { duration: 0.2 } },
-};
-
 const Services = () => {
-  return (
-    <section id="services" className="py-24 bg-gray-50 dark:bg-dark-950/80 relative overflow-hidden">
-      <div className="absolute inset-0 bg-dot-pattern opacity-40 dark:opacity-20" />
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
+  const shouldReduceMotion = useReducedMotion();
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+  return (
+    <section id="services" className="section bg-gray-50 dark:bg-[#050b16] relative overflow-hidden">
+      <div className="container relative">
+        <div className="text-center mb-12">
           <SectionHeading
             align="center"
             eyebrow="Automation Strengths"
             title="What I Build in Production"
             description="My strongest work combines full-stack delivery, automation design, CRM workflows, and operational reliability so systems hold up beyond the demo."
           />
-          <div className="section-divider mx-auto mt-5" />
         </div>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={container}
+          className="grid gap-5 md:grid-cols-2 lg:grid-cols-3"
+          variants={staggerContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={viewportOnce}
         >
           {expertiseAreas.map((area) => {
             const styles = styleMap[area.title as keyof typeof styleMap];
@@ -75,13 +58,11 @@ const Services = () => {
               <motion.div
                 key={area.title}
                 className="group relative"
-                variants={item}
-                whileHover="hover"
+                variants={cardItem}
+                whileHover={shouldReduceMotion ? undefined : 'hover'}
               >
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${styles.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm`} />
-
-                <div className="relative h-full bg-white dark:bg-dark-800/70 rounded-2xl p-7 shadow-card border border-gray-100 dark:border-dark-700/50 group-hover:shadow-card-hover group-hover:border-primary-500/20 transition-all duration-300 flex flex-col backdrop-blur-sm">
-                  <div className={`w-12 h-12 rounded-xl ${styles.iconBg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-200`}>
+                <div className="relative flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-[background-color,border-color] duration-300 ease-out group-hover:border-primary-500/35 group-hover:bg-gray-50 dark:border-white/10 dark:bg-dark-900 dark:group-hover:bg-dark-800">
+                  <div className={`w-12 h-12 rounded-xl ${styles.iconBg} flex items-center justify-center mb-5 transition-transform duration-300 ease-out group-hover:scale-105 group-hover:-rotate-1`}>
                     {iconMap[area.title as keyof typeof iconMap]}
                   </div>
 
@@ -94,7 +75,7 @@ const Services = () => {
                   </p>
 
                   <ul className="space-y-2">
-                    {area.bullets.map((bullet) => (
+                    {area.bullets.slice(0, 3).map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2.5 text-sm text-gray-600 dark:text-gray-300">
                         <span className="mt-1.5 w-1.5 h-1.5 bg-primary-400 rounded-full flex-shrink-0" />
                         {bullet}
@@ -108,9 +89,9 @@ const Services = () => {
 
           <motion.div
             className="group relative md:col-span-2 lg:col-span-3"
-            variants={item}
+            variants={cardItem}
           >
-            <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-glow-blue">
+            <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-primary-500 bg-primary-700 p-7 sm:flex-row sm:p-8">
               <div>
                 <h3 className="text-xl font-heading font-bold text-white mb-1">
                   Looking for automation ownership?
@@ -121,12 +102,13 @@ const Services = () => {
               </div>
               <motion.a
                 href="#portfolio"
-                className="flex-shrink-0 flex items-center gap-2 px-7 py-3.5 bg-white text-primary-700 font-semibold text-sm rounded-xl hover:bg-primary-50 transition-colors whitespace-nowrap"
-                whileHover={{ scale: 1.03 }}
+                className="group/cta flex min-h-12 flex-shrink-0 items-center gap-2 whitespace-nowrap rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-primary-700 shadow-sm transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                whileHover={shouldReduceMotion ? undefined : { y: -2, boxShadow: '0 16px 34px -24px rgba(255,255,255,0.9)' }}
                 whileTap={{ scale: 0.97 }}
+                transition={transitions.quick}
               >
                 Explore My Work
-                <ArrowRight size={16} />
+                <ArrowRight size={16} className="transition-transform duration-200 ease-out group-hover/cta:translate-x-1" />
               </motion.a>
             </div>
           </motion.div>

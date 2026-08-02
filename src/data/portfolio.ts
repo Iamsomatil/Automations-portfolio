@@ -103,11 +103,10 @@ export const profile = {
 };
 
 export const navItems: NavItem[] = [
-  { label: 'Expertise', id: 'services' },
   { label: 'Projects', id: 'portfolio' },
+  { label: 'Expertise', id: 'services' },
   { label: 'About', id: 'about' },
   { label: 'Testimonials', id: 'testimonials' },
-  { label: 'FAQ', id: 'faq' },
   { label: 'Contact', id: 'contact' },
 ];
 
@@ -711,6 +710,233 @@ export const projects: Project[] = [
       {
         url: '/Sunlife-logo.jpeg',
         alt: 'SunLife GovCon Operations CRM private internal system visual using the SunLife logo',
+      },
+    ],
+    imageFit: 'contain',
+  },
+  {
+    title: 'New Lead Connect-Call Routing',
+    slug: 'new-lead-connect-call-routing',
+    category: 'automation',
+    categoryLabel: 'GoHighLevel Automation',
+    featured: true,
+    statusLabel: 'Private Client Workflow',
+    subtitle:
+      'A source-aware lead routing workflow that assigns call ownership, respects business hours, checks call outcomes, and coordinates voicemail, SMS, email, and cleanup paths.',
+    description:
+      'Built a GoHighLevel workflow that moves new paid-media leads from pipeline entry into the right connect-call path using source tags, business-hour rules, assignment logic, call-status checks, and multi-channel fallback actions.',
+    challenge:
+      'New leads from multiple acquisition sources needed fast follow-up without sending every contact through the same owner, time window, or call outcome path.',
+    solution:
+      'Used pipeline-stage enrollment, lead-source conditions, business-hour branches, owner assignment, call steps, timed status checks, and explicit connected, no-answer, voicemail, SMS, email, and cleanup paths.',
+    result:
+      'The workflow documents a controlled connect-call operating path with clear routing, fallback handling, and end-state cleanup instead of relying on manual lead triage.',
+    impactBullets: [
+      'Routes new leads by acquisition source and business-hour context',
+      'Assigns the appropriate call owner before initiating contact',
+      'Checks call status before selecting connected or no-answer follow-up paths',
+      'Coordinates voicemail, SMS, email, tag, assignment, and conversation cleanup actions',
+    ],
+    metrics: [
+      { label: 'Primary Platform', value: 'GoHighLevel' },
+      { label: 'Routing Context', value: 'Source + business hours' },
+      { label: 'Channels', value: 'Call + SMS + email' },
+    ],
+    roleSummary:
+      'Designed the workflow structure, routing branches, owner assignment, call-status checks, fallback messaging, and cleanup logic for a private client account.',
+    architectureSummary:
+      'A New Lead pipeline-stage trigger feeds a source check and business-hours decision. Contacts are assigned to the appropriate caller, routed through connect-call attempts, evaluated through call-status conditions, and sent to connected, no-answer, voicemail, SMS, email, or cleanup actions.',
+    detailSections: [
+      {
+        title: 'Workflow Controls',
+        points: [
+          'Pipeline-stage enrollment starts the workflow at the new-lead stage.',
+          'Source tags distinguish paid-media lead paths before assignment.',
+          'Business-hours conditions prevent every lead from following the same calling path.',
+          'Timed checks allow the call status to settle before downstream branching.',
+        ],
+      },
+      {
+        title: 'Fallback and Cleanup',
+        points: [
+          'Connected and unanswered calls follow separate conditions.',
+          'Voicemail, SMS, and email actions provide visible fallback paths.',
+          'Assignment and routing tags are removed at the end of the operating sequence.',
+          'Conversation state is updated so the contact does not remain in an ambiguous queue.',
+        ],
+      },
+    ],
+    tags: ['GoHighLevel', 'Lead Routing', 'Call Automation', 'SMS', 'Email', 'Pipeline Automation'],
+    cardBadges: ['Source-Aware Routing'],
+    images: [
+      {
+        url: '/projects/ghl-new-lead-connect-call.png',
+        alt: 'GoHighLevel new lead connect-call workflow with source, business-hours, assignment, call-status, and follow-up branches',
+      },
+    ],
+    imageFit: 'contain',
+  },
+  {
+    title: 'Estimate-Sent Follow-Up Guard',
+    slug: 'estimate-sent-follow-up-guard',
+    category: 'automation',
+    categoryLabel: 'GoHighLevel Automation',
+    statusLabel: 'Private Client Workflow',
+    subtitle:
+      'A pipeline-triggered estimate follow-up workflow with a tag-based duplicate guard, client email, and internal team notifications.',
+    description:
+      'Built a GoHighLevel follow-up workflow that starts when an opportunity enters Estimate Sent, checks whether follow-up was already issued, and then sends the appropriate client or internal action.',
+    challenge:
+      'Estimate follow-up needed to happen consistently without sending the same consultation email more than once or leaving the team unaware of the contact state.',
+    solution:
+      'Connected the Estimate Sent pipeline stage to a sent-tag condition, client follow-up email, follow-up tag, and internal notification paths.',
+    result:
+      'The workflow provides a clear idempotent path: send and mark the follow-up once, or alert the team when the guard condition is already present.',
+    impactBullets: [
+      'Enrolls opportunities from the Estimate Sent pipeline stage',
+      'Uses a sent tag as a duplicate-prevention guard',
+      'Sends the consultation follow-up only on the eligible branch',
+      'Keeps the team informed through internal notifications',
+    ],
+    metrics: [
+      { label: 'Trigger', value: 'Estimate Sent stage' },
+      { label: 'Duplicate Guard', value: 'Follow-up sent tag' },
+      { label: 'Team Visibility', value: 'Internal notification' },
+    ],
+    roleSummary:
+      'Mapped and built the stage trigger, duplicate guard, client email action, tag update, and internal notification logic.',
+    architectureSummary:
+      'An Estimate Sent pipeline change triggers a tag check. Contacts without the follow-up marker receive the consultation email, are tagged as sent, and generate an internal alert. Contacts already marked follow the notification-only branch.',
+    tags: ['GoHighLevel', 'Pipeline Automation', 'Email Follow-Up', 'Tags', 'Internal Notifications'],
+    cardBadges: ['Duplicate Guard'],
+    images: [
+      {
+        url: '/projects/ghl-estimate-followup.png',
+        alt: 'GoHighLevel estimate-sent workflow with follow-up tag check, email, and internal notification branches',
+      },
+    ],
+    imageFit: 'contain',
+  },
+  {
+    title: 'SMS Reply Exit & AI Handoff',
+    slug: 'sms-reply-exit-ai-handoff',
+    category: 'automation',
+    categoryLabel: 'GoHighLevel Automation',
+    statusLabel: 'Private Client Workflow',
+    subtitle:
+      'A reply-detection workflow that exits active cadence contacts and sends eligible conversations to AI intake or a human response queue.',
+    description:
+      'Built a GoHighLevel SMS reply workflow that removes contacts from an active cadence, records the exit state, evaluates AI eligibility, and routes the conversation to either intake automation or human follow-up.',
+    challenge:
+      'Contacts who replied needed to stop receiving the standard cadence immediately while preserving a safe path for AI intake and human ownership.',
+    solution:
+      'Used an SMS Customer Replied trigger, cadence removal, tag cleanup, an exit marker, an eligibility condition, opportunity updates, conversation movement, and a human reply task.',
+    result:
+      'The workflow makes reply handling explicit and prevents the normal cadence from competing with an active AI or human conversation path.',
+    impactBullets: [
+      'Stops the active follow-up cadence after an SMS reply',
+      'Removes the cadence-active tag and records an exit-reply state',
+      'Routes eligible contacts into an AI intake request path',
+      'Moves non-eligible contacts into human conversation and creates a reply task',
+    ],
+    metrics: [
+      { label: 'Trigger', value: 'Customer replied by SMS' },
+      { label: 'Exit Control', value: 'Cadence removal + tags' },
+      { label: 'Handoff', value: 'AI intake or human reply' },
+    ],
+    roleSummary:
+      'Designed the reply stop condition, cadence cleanup, AI eligibility branch, opportunity update, and human handoff path.',
+    architectureSummary:
+      'An SMS reply trigger removes the contact from the 13-day cadence and clears its active marker. A condition then routes the contact toward AI intake and opportunity updates or toward a human-handoff tag, conversation queue, and response task.',
+    tags: ['GoHighLevel', 'SMS Automation', 'AI Intake', 'Human Handoff', 'Opportunity Management'],
+    cardBadges: ['AI + Human Handoff'],
+    images: [
+      {
+        url: '/projects/ghl-sms-reply-handoff.png',
+        alt: 'GoHighLevel SMS reply workflow that exits a cadence and branches to AI intake or human handoff',
+      },
+    ],
+    imageFit: 'contain',
+  },
+  {
+    title: 'IVR & Call Outcome Routing',
+    slug: 'ivr-call-outcome-routing',
+    category: 'automation',
+    categoryLabel: 'GoHighLevel Automation',
+    featured: true,
+    statusLabel: 'Private Client Workflow',
+    subtitle:
+      'An IVR workflow that separates referral-partner calls, checks business hours, evaluates connected and no-answer outcomes, and forwards qualified paths to AI intake.',
+    description:
+      'Built a GoHighLevel IVR and call-routing workflow with referral-partner handling, business-hours logic, assigned calling, connected-status checks, voicemail recording, and AI intake fallback.',
+    challenge:
+      'Inbound call paths needed different handling for referral partners, working hours, completed calls, unanswered calls, and contacts already marked for automated dialing.',
+    solution:
+      'Mapped the IVR trigger through referral-tag conditions, assignment cleanup, business-hour branches, call actions, status checks, voicemail, system-tag checks, and AI intake forwarding.',
+    result:
+      'The workflow presents a structured call journey with defined connected, no-answer, after-hours, voicemail, and AI handoff destinations.',
+    impactBullets: [
+      'Separates referral-partner calls from the default operating path',
+      'Checks business hours before assigning the primary call action',
+      'Evaluates connected and no-answer outcomes explicitly',
+      'Uses voicemail and AI intake as controlled fallback destinations',
+    ],
+    metrics: [
+      { label: 'Entry', value: 'IVR trigger' },
+      { label: 'Routing', value: 'Partner + hours + outcome' },
+      { label: 'Fallback', value: 'Voicemail + AI intake' },
+    ],
+    roleSummary:
+      'Built the IVR branches, business-hour rules, call outcome conditions, voicemail path, and AI intake fallback logic.',
+    architectureSummary:
+      'The IVR trigger first checks referral-partner tags. The default path removes stale assignment, evaluates business hours, initiates the assigned call, and branches on connected status. No-answer paths inspect system dialing tags before forwarding to AI intake.',
+    tags: ['GoHighLevel', 'IVR', 'Call Routing', 'Business Hours', 'Voicemail', 'AI Intake'],
+    cardBadges: ['Advanced Call Flow'],
+    images: [
+      {
+        url: '/projects/ghl-ivr-call-routing.png',
+        alt: 'GoHighLevel IVR call flow with referral, business-hours, connected, no-answer, voicemail, and AI intake paths',
+      },
+    ],
+    imageFit: 'contain',
+  },
+  {
+    title: 'Lead Magnet Email Drip Campaign',
+    slug: 'lead-magnet-email-drip-campaign',
+    category: 'automation',
+    categoryLabel: 'GoHighLevel Automation',
+    statusLabel: 'Private Client Workflow',
+    subtitle:
+      'A form-triggered nurture sequence that delivers the requested asset and develops the sales narrative through timed educational emails.',
+    description:
+      'Built a GoHighLevel email campaign that starts with lead-magnet delivery and sequences problem-and-solution, testimonial, objection, paradigm-shift, and sales-letter content through timed waits.',
+    challenge:
+      'A lead generator needed more than a one-off asset email. The follow-up had to develop trust and move the reader through a structured sales narrative over time.',
+    solution:
+      'Connected the form submission to immediate asset delivery, then arranged timed email steps around education, proof, objection handling, perspective shift, and the final sales message.',
+    result:
+      'The workflow documents a complete nurture path from initial value delivery through staged follow-up instead of leaving the lead after a single email.',
+    impactBullets: [
+      'Delivers the requested asset immediately after form submission',
+      'Sequences educational and proof-oriented messages with wait steps',
+      'Includes objection-handling and paradigm-shift content',
+      'Maintains one visible campaign path from entry through the sales message',
+    ],
+    metrics: [
+      { label: 'Entry', value: 'Lead generator form' },
+      { label: 'Sequence', value: 'Timed nurture emails' },
+      { label: 'Content Path', value: 'Value → proof → offer' },
+    ],
+    roleSummary:
+      'Structured the form trigger, asset delivery, wait cadence, email sequence, and narrative progression inside GoHighLevel.',
+    architectureSummary:
+      'The lead-generator form triggers the asset delivery email. Timed waits then separate problem-and-solution, testimonial, objection, paradigm-shift, and sales-letter messages into a readable nurture cadence.',
+    tags: ['GoHighLevel', 'Email Automation', 'Lead Magnet', 'Nurture Campaign', 'Form Automation'],
+    cardBadges: ['Lifecycle Nurture'],
+    images: [
+      {
+        url: '/projects/ghl-email-drip-campaign.png',
+        alt: 'GoHighLevel email drip campaign with asset delivery, timed waits, educational emails, proof, objection handling, and sales follow-up',
       },
     ],
     imageFit: 'contain',
