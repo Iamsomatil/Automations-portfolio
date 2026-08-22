@@ -24,6 +24,7 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('');
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem('portfolio-theme') !== 'light');
   const shouldReduceMotion = useReducedMotion();
+  const isBlogRoute = window.location.pathname.startsWith('/blog');
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
@@ -67,6 +68,8 @@ const Header = () => {
       window.scrollTo({ top: destination, behavior: shouldReduceMotion || longJump ? 'auto' : 'smooth' });
       window.history.replaceState(null, '', `#${sectionId}`);
       setActiveSection(sectionId);
+    } else {
+      window.location.assign(`/#${sectionId}`);
     }
     setIsMenuOpen(false);
   };
@@ -125,6 +128,16 @@ const Header = () => {
                   </button>
                 );
               })}
+              <a
+                href="/blog"
+                aria-current={isBlogRoute ? 'page' : undefined}
+                className={`relative inline-flex min-h-11 items-center rounded-lg px-3.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 ${
+                  isBlogRoute ? 'text-white' : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                }`}
+              >
+                Blog
+                {isBlogRoute ? <span className="absolute inset-x-3 bottom-1.5 h-0.5 rounded-full bg-primary-400" /> : null}
+              </a>
             </nav>
             <span className="mx-1 h-6 w-px bg-white/10" />
             <button
@@ -186,6 +199,17 @@ const Header = () => {
                   <span className="font-mono text-[10px] text-slate-600">/{item.id}</span>
                 </motion.button>
               ))}
+              <motion.a
+                href="/blog"
+                variants={mobileLinkVariants}
+                aria-current={isBlogRoute ? 'page' : undefined}
+                className={`flex min-h-12 w-full items-center justify-between rounded-xl px-4 text-left text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 ${
+                  isBlogRoute ? 'bg-primary-400/10 text-primary-300' : 'text-slate-300 hover:bg-white/5'
+                }`}
+              >
+                Blog
+                <span className="font-mono text-[10px] text-slate-600">/blog</span>
+              </motion.a>
             </div>
           </motion.nav>
         ) : null}

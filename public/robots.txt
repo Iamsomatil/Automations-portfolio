@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samakinsanya.vercel.app/sitemap.xml

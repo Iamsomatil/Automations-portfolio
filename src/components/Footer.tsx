@@ -79,7 +79,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {expertiseAreas.map((area) => (
                 <li key={area.title}>
-                  <a href="#services" className="group flex min-h-11 items-center gap-2 text-sm text-gray-400 transition-colors hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
+                  <a href="/#services" className="group flex min-h-11 items-center gap-2 text-sm text-gray-400 transition-colors hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary-600 group-hover:bg-primary-400 transition-colors" />
                     {area.title}
                   </a>
@@ -95,12 +95,18 @@ const Footer = () => {
             <ul className="space-y-3">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <a href={`#${item.id}`} className="group flex min-h-11 items-center gap-2 text-sm text-gray-400 transition-colors hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
+                  <a href={`/#${item.id}`} className="group flex min-h-11 items-center gap-2 text-sm text-gray-400 transition-colors hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary-600 group-hover:bg-primary-400 transition-colors" />
                     {item.label}
                   </a>
                 </li>
               ))}
+              <li>
+                <a href="/blog" className="group flex min-h-11 items-center gap-2 text-sm text-gray-400 transition-colors hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary-600 transition-colors group-hover:bg-primary-400" />
+                  Blog
+                </a>
+              </li>
             </ul>
           </motion.div>
 

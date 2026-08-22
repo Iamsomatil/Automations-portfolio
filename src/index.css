@@ -94,6 +94,95 @@
   .glow-dot {
     @apply h-2 w-2 rounded-full bg-emerald-400;
   }
+
+  .blog-prose {
+    @apply mx-auto max-w-[760px] text-[1.0625rem] leading-8 text-slate-300;
+  }
+
+  .blog-prose > :first-child {
+    @apply mt-0;
+  }
+
+  .blog-prose h2 {
+    @apply mb-5 mt-14 scroll-mt-28 text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl;
+  }
+
+  .blog-prose h3 {
+    @apply mb-4 mt-10 scroll-mt-28 text-balance text-2xl font-semibold leading-tight text-white;
+  }
+
+  .blog-prose p {
+    @apply my-6;
+  }
+
+  .blog-prose a {
+    @apply rounded-sm font-medium text-primary-300 underline decoration-primary-400/40 decoration-1 underline-offset-4 transition-colors hover:text-primary-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300;
+  }
+
+  .blog-prose strong {
+    @apply font-semibold text-white;
+  }
+
+  .blog-prose ul,
+  .blog-prose ol {
+    @apply my-6 space-y-3 pl-6;
+  }
+
+  .blog-prose ul {
+    @apply list-disc marker:text-primary-400;
+  }
+
+  .blog-prose ol {
+    @apply list-decimal marker:font-mono marker:text-primary-400;
+  }
+
+  .blog-prose blockquote {
+    @apply my-8 border-l-2 border-primary-400 bg-primary-400/[0.06] px-5 py-1 text-slate-300;
+  }
+
+  .blog-prose blockquote p {
+    @apply my-4;
+  }
+
+  .blog-prose :not(pre) > code {
+    @apply rounded border border-white/10 bg-dark-900 px-1.5 py-0.5 font-mono text-[0.9em] text-primary-200;
+  }
+
+  .blog-prose img {
+    @apply my-9 h-auto max-w-full rounded-xl border border-white/10;
+  }
+
+  .blog-prose table {
+    @apply my-8 block w-full overflow-x-auto border-collapse text-left text-sm;
+  }
+
+  .blog-prose th {
+    @apply border-b border-white/20 px-4 py-3 font-semibold text-white;
+  }
+
+  .blog-prose td {
+    @apply border-b border-white/10 px-4 py-3 align-top;
+  }
+
+  .blog-code {
+    @apply my-8 overflow-hidden rounded-xl border border-white/10 bg-[#080d18];
+  }
+
+  .blog-code__toolbar {
+    @apply flex min-h-11 items-center justify-between border-b border-white/10 px-4 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500;
+  }
+
+  .blog-code__toolbar button {
+    @apply min-h-9 rounded-md px-3 text-slate-400 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300;
+  }
+
+  .blog-code pre {
+    @apply max-w-full overflow-x-auto p-5 text-[0.86rem] leading-7;
+  }
+
+  .blog-code code {
+    @apply font-mono;
+  }
 }
 
 @layer utilities {
@@ -125,6 +214,30 @@
   background: rgba(14, 165, 233, 0.3);
   color: #fff;
 }
+
+.hljs-comment,
+.hljs-quote { color: #64748b; }
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-type { color: #c4b5fd; }
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute { color: #86efac; }
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet { color: #fda4af; }
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class { color: #7dd3fc; }
+.hljs-variable,
+.hljs-template-variable,
+.hljs-params { color: #fde68a; }
+.hljs-built_in,
+.hljs-meta { color: #67e8f9; }
 
 @media (prefers-reduced-motion: reduce) {
   html {
