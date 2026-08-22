@@ -24,7 +24,7 @@ const Contact = () => {
 
   useEffect(() => {
     if (state.succeeded) {
-      setSubmitStatus({ success: true, message: "Message received! I'll respond within 24 hours." });
+      setSubmitStatus({ success: true, message: "Message received. I'll respond within 24 hours." });
       setFormData({ name: '', email: '', company: '', opportunityType: 'Automation / Integrations Role', message: '' });
       const timeout = setTimeout(() => setSubmitStatus(null), 6000);
       return () => clearTimeout(timeout);
@@ -58,7 +58,7 @@ const Contact = () => {
   const contactMethods = [
     {
       icon: <Mail className="text-primary-400" size={22} />,
-      title: 'Email Me Directly',
+      title: 'Email me directly',
       description: 'Best for recruiter outreach, hiring conversations, and end-to-end systems or automation-focused opportunities.',
       cta: profile.email,
       href: `mailto:${profile.email}`,
@@ -67,12 +67,12 @@ const Contact = () => {
       icon: <MessageSquare className="text-primary-400" size={22} />,
       title: 'WhatsApp',
       description: 'Useful for quick follow-up and lightweight async communication during business hours.',
-      cta: 'Start a Chat',
+      cta: 'Start a chat',
       href: profile.whatsapp,
     },
     {
       icon: <Calendar className="text-primary-400" size={22} />,
-      title: 'Schedule a Call',
+      title: 'Schedule a call',
       description: 'If a live conversation is useful, you can book time directly on my calendar.',
       cta: 'Book on Calendly',
       href: profile.calendly,
@@ -85,8 +85,8 @@ const Contact = () => {
         <div className="text-center mb-12">
           <SectionHeading
             align="center"
-            eyebrow="Opportunities"
-            title="Interested in Working Together?"
+            eyebrow="Get in touch"
+            title="Tell me what you&apos;re working on"
             titleClassName="text-white"
             description="I&apos;m open to automation, integrations, CRM systems, and end-to-end digital operations opportunities where website, backend logic, and workflow ownership all matter."
           />
@@ -133,7 +133,7 @@ const Contact = () => {
               <div className="flex items-start gap-3">
                 <Zap className="text-yellow-400 mt-0.5 flex-shrink-0" size={18} />
                 <div>
-                  <h3 className="font-semibold text-white text-sm mb-1">Quick Response</h3>
+                  <h3 className="font-semibold text-white text-sm mb-1">Response time</h3>
                   <p className="text-xs text-gray-400 leading-relaxed">{profile.responseTime}</p>
                   <div className="mt-2 flex items-center gap-1.5 text-xs text-gray-500">
                     <Clock size={12} />
@@ -156,8 +156,8 @@ const Contact = () => {
             viewport={viewportOnce}
           >
             <div className="rounded-xl border border-white/10 bg-dark-900 p-7">
-              <h3 className="text-lg font-heading font-bold text-white mb-1">Start the Conversation</h3>
-              <p className="text-sm text-gray-400 mb-6">Tell me about the role, team, workflow, or systems challenge and I&apos;ll get back to you shortly.</p>
+              <h3 className="text-lg font-heading font-bold text-white mb-1">Send a message</h3>
+              <p className="text-sm text-gray-400 mb-6">Share the role, team, workflow, or systems problem you want to discuss.</p>
 
               {submitStatus ? (
                 <motion.div
@@ -201,7 +201,7 @@ const Contact = () => {
                       <select id="opportunityType" name="opportunityType" value={formData.opportunityType} onChange={handleChange} className={inputClasses} required>
                         <option>Automation / Integrations Role</option>
                         <option>Contract Automation Work</option>
-                        <option>Integrations / Automation Role</option>
+                        <option>CRM / Systems Role</option>
                         <option>Collaboration</option>
                         <option>General Question</option>
                       </select>

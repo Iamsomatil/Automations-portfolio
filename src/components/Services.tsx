@@ -39,9 +39,9 @@ const Services = () => {
         <div className="text-center mb-12">
           <SectionHeading
             align="center"
-            eyebrow="Automation Strengths"
-            title="What I Build in Production"
-            description="My strongest work combines full-stack delivery, automation design, CRM workflows, and operational reliability so systems hold up beyond the demo."
+            eyebrow="Areas of work"
+            title="Systems I build and connect"
+            description="I combine full-stack development, automation design, CRM workflows, and reliability work so the finished system is useful after the demo."
           />
         </div>
 
@@ -94,10 +94,10 @@ const Services = () => {
             <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-primary-500 bg-primary-700 p-7 sm:flex-row sm:p-8">
               <div>
                 <h3 className="text-xl font-heading font-bold text-white mb-1">
-                  Looking for automation ownership?
+                  Need one person to own the workflow?
                 </h3>
                 <p className="text-primary-100 text-sm">
-                  I&apos;m strongest where the website, CRM, automations, and operations all need to work together.
+                  I work across the website, CRM, automation logic, and operational handoffs that connect them.
                 </p>
               </div>
               <motion.a
@@ -107,7 +107,7 @@ const Services = () => {
                 whileTap={{ scale: 0.97 }}
                 transition={transitions.quick}
               >
-                Explore My Work
+                View selected work
                 <ArrowRight size={16} className="transition-transform duration-200 ease-out group-hover/cta:translate-x-1" />
               </motion.a>
             </div>

@@ -129,8 +129,8 @@ const Portfolio = () => {
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <SectionHeading
             eyebrow="Selected systems"
-            title="Work that shows the whole operating path"
-            description="Real implementations across CRM, automation, web, routing, billing, AI handoffs, and internal operations. Private client work is documented through system logic and architecture."
+            title="Work across the full operating path"
+            description="These projects cover CRM, automation, web, routing, billing, AI handoffs, and internal operations. For private client work, I document the system logic and architecture without exposing the codebase."
             className="max-w-3xl"
             titleClassName="text-white"
           />
@@ -478,8 +478,8 @@ const Portfolio = () => {
 
               <div className="mt-16 flex flex-col items-start justify-between gap-5 rounded-[1.75rem] border border-primary-400/20 bg-primary-400/[0.07] p-7 sm:flex-row sm:items-center sm:p-9">
                 <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.16em] text-primary-300">Have a similar system?</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">Let’s map the trigger, logic, and outcome.</h3>
+                  <p className="font-mono text-xs uppercase tracking-[0.16em] text-primary-300">Have a similar workflow?</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-white">We can map the trigger, logic, handoffs, and expected outcome.</h3>
                 </div>
                 <button type="button" onClick={scrollToContact} className="btn btn-primary min-h-12 shrink-0 gap-2">
                   Start a conversation <ArrowRight size={17} />

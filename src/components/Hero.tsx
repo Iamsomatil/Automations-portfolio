@@ -17,7 +17,7 @@ import { heroContainer, heroItem, transitions } from '../lib/motion';
 const proofPoints = [
   'CRM and lifecycle architecture',
   'APIs, webhooks, and orchestration',
-  'Production-ready handoffs and fallbacks',
+  'Validation, handoffs, and fallback paths',
 ];
 
 const flowNodes = [
@@ -65,7 +65,7 @@ const Hero = () => {
               </span>
             </motion.h1>
             <motion.p variants={heroItem} className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-              Websites, CRM workflows, APIs, and automation logic designed as one dependable operating system, not a pile of disconnected tools.
+              I build websites, CRM workflows, API integrations, and automation logic that work as one operating system instead of a stack of disconnected tools.
             </motion.p>
 
             <motion.div variants={heroItem} className="mt-8 flex flex-col gap-3 sm:flex-row">

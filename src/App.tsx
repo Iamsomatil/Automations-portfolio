@@ -29,8 +29,8 @@ const useLocation = () => {
 
 const HomePage = () => {
   usePageMetadata({
-    title: 'Samson Akinsanya — Automation Engineer & Full-Stack Systems Builder',
-    description: 'Portfolio of Samson Akinsanya, building websites, CRM workflows, APIs, and automation systems for dependable operations.',
+    title: 'Samson Akinsanya | Automation Engineer and Full-Stack Systems Builder',
+    description: 'Samson Akinsanya builds websites, CRM workflows, APIs, and automation systems for dependable operations.',
     path: '/',
   });
 

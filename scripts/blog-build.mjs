@@ -114,11 +114,11 @@ export const generateBlogArtifacts = async (outDir = 'dist') => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries.map((entry) => `  <url><loc>${xmlEscape(`${SITE_URL}${entry.path}`)}</loc><lastmod>${entry.lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`;
   await writeFile(path.join(outDir, 'sitemap.xml'), sitemap);
 
-  const rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Samson Akinsanya — Technical Blog</title><link>${SITE_URL}/blog</link><description>Writing on web development, AI automation, CRM integrations, and connected systems.</description>${posts.map((post) => `<item><title>${xmlEscape(post.title)}</title><link>${SITE_URL}/blog/${post.slug}</link><guid>${SITE_URL}/blog/${post.slug}</guid><description>${xmlEscape(post.description)}</description><pubDate>${new Date(`${post.publishedAt}T00:00:00Z`).toUTCString()}</pubDate><category>${xmlEscape(post.category)}</category></item>`).join('')}</channel></rss>\n`;
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Samson Akinsanya Technical Blog</title><link>${SITE_URL}/blog</link><description>Writing on web development, AI automation, CRM integrations, and connected systems.</description>${posts.map((post) => `<item><title>${xmlEscape(post.title)}</title><link>${SITE_URL}/blog/${post.slug}</link><guid>${SITE_URL}/blog/${post.slug}</guid><description>${xmlEscape(post.description)}</description><pubDate>${new Date(`${post.publishedAt}T00:00:00Z`).toUTCString()}</pubDate><category>${xmlEscape(post.category)}</category></item>`).join('')}</channel></rss>\n`;
   await writeFile(path.join(outDir, 'rss.xml'), rss);
 
   await writeRoute(outDir, '/blog', pageHtml(template, {
-    title: 'Blog | Samson Akinsanya — Web Development & AI Automation',
+    title: 'Technical Blog | Samson Akinsanya',
     description: 'Technical writing on web development, AI automation, CRM integrations, workflow architecture, and dependable connected systems.',
     url: `${SITE_URL}/blog`,
   }));

@@ -99,7 +99,7 @@ export const profile = {
   resumeUrl: '/cv/Samson-AI-GHL-cv.pdf',
   availability: 'Open to opportunities',
   responseTime: 'I typically respond within a few hours during business days.',
-  markets: 'Serving U.S., UK, and global remote clients',
+  markets: 'Available for remote work with U.S., UK, and global teams',
 };
 
 export const navItems: NavItem[] = [
@@ -120,7 +120,7 @@ export const heroStats: HeroStat[] = [
 export const trustPoints = [
   'Workflow automation across n8n, Make.com, Zapier, HubSpot, GoHighLevel, and Stripe',
   'Websites, CRM, intake, billing, routing, and reporting systems connected end to end',
-  'Built for U.S.-based businesses, distributed teams, and real operational complexity',
+  'Built for U.S.-based businesses and distributed teams with multi-step operations',
 ];
 
 export const expertiseAreas: ExpertiseArea[] = [
@@ -285,9 +285,9 @@ export const projects: Project[] = [
       {
         title: 'Overview',
         intro:
-          'SunLife needed a Base44-built GovCon Operations CRM to replace its Excel / Google Sheet operating system. The workbook was not just storage; it represented the team process across multiple tabs.',
+          'SunLife needed a Base44-built GovCon Operations CRM to replace its Excel / Google Sheet operating system. The workbook stored data and represented the team process across multiple tabs.',
         points: [
-          'The product metaphor was GovCon Operations Command Center, not just a generic CRM.',
+          'The product was designed as a GovCon Operations Command Center rather than a generic CRM.',
           'The build centralized opportunity tracking, vendor activity, quote readiness, pricing, proposal flow, submission status, results, tasks, notes, permissions, and lightweight intelligence.',
           'The goal was not a large enterprise CRM. The goal was the simplest working Base44 operating system the team would actually use daily.',
         ],
@@ -1015,9 +1015,9 @@ export const projects: Project[] = [
     result:
       'Advisor and traveler operations stayed coordinated without relying on manual record updates across multiple tools.',
     impactBullets: [
-      'Seamless traveler and advisor data management',
+      'Traveler and advisor records managed in one Airtable workflow',
       'Automated advisor onboarding and workflow routing',
-      'Higher-converting traveler inquiry funnels',
+      'Traveler inquiry funnel connected to backend operations',
       'Airtable CRM with Make.com automation bridges',
     ],
     metrics: [
@@ -1168,9 +1168,9 @@ export const projects: Project[] = [
       {
         title: 'Technical Decisions',
         points: [
-          'Used AI classification only as one step in a broader routing workflow, not as the entire system.',
+          'Used AI classification for one step within a broader deterministic routing workflow.',
           'Mapped message intent to deterministic branches so each class triggered known downstream actions.',
-          'Connected email handling to tasking and CRM tools so routing resulted in actual follow-through, not just labels.',
+          'Connected email handling to tasking and CRM tools so each classification led to a downstream action instead of stopping at a label.',
         ],
       },
       {
@@ -1195,7 +1195,7 @@ export const projects: Project[] = [
     solution:
       'Built a Make.com workflow that triggered welcome emails, created tasks, notified the team, and logged each lead automatically.',
     result:
-      'Every lead is captured, nurtured, and handed off instantly with clear team visibility.',
+      'Each new lead moves through capture, acknowledgement, assignment, and tracking with the handoff visible to the team.',
     impactBullets: [
       'Instant lead follow-up across tools',
       'Consistent team visibility on new leads',
@@ -1229,7 +1229,7 @@ export const projects: Project[] = [
         points: [
           'Used Make.com as the orchestration layer so one intake event could fan out into email, tasking, messaging, and tracking actions.',
           'Kept HubSpot as the lead source while using downstream tools only for the actions they handled best.',
-          'Structured the workflow so each automation step created a visible artifact, not just a background state change.',
+          'Structured the workflow so each automation step created a visible artifact rather than an invisible background state change.',
         ],
       },
       {
@@ -1254,7 +1254,7 @@ export const projects: Project[] = [
     solution:
       'Automated recurring API pulls, filtering, deduplication, and logging into a Google Sheets tracking flow.',
     result:
-      'The client now receives a daily, hands-free stream of qualified federal opportunities with no manual research process.',
+      'Qualified matches are added to a daily review sheet, replacing the previous manual search and logging routine.',
     impactBullets: [
       'Cut manual research by 90%',
       'Maintained daily coverage of target opportunities',
@@ -1314,7 +1314,7 @@ export const projects: Project[] = [
     solution:
       'Implemented attendance tagging, cleanup logic, segmented follow-up, and contact organization inside GoHighLevel.',
     result:
-      'The client gained reliable seminar tracking with fully automated follow-up and no missed contacts.',
+      'Attendance tags and segmented sequences now handle post-event tracking and follow-up in GoHighLevel.',
     impactBullets: [
       'Saved 4+ hours per seminar',
       'Standardized follow-up for every tracked attendee',
@@ -1373,7 +1373,7 @@ export const projects: Project[] = [
     solution:
       'Built an n8n workflow that set the reporting window, normalized API data, and generated a ready-to-use script automatically.',
     result:
-      'The client receives a complete weekly regulation package in minutes, with no repetitive manual prep.',
+      'The weekly regulation package is assembled in minutes instead of requiring repeated manual research and preparation.',
     impactBullets: [
       'Reduced manual writing time by 85%',
       'Cut content prep time by 90%',
@@ -1399,7 +1399,7 @@ export const projects: Project[] = [
         title: 'Constraints',
         points: [
           'The report relied on multiple source types that needed to be aligned to the same weekly reporting window.',
-          'Generated output had to feel usable, not just technically complete.',
+          'Generated output had to be usable as delivered, beyond passing a technical completeness check.',
           'Manual research and packaging time was the main operational bottleneck the client wanted to remove.',
         ],
       },
@@ -1433,7 +1433,7 @@ export const projects: Project[] = [
     solution:
       'Built an Airtable-driven automation that aggregated content, routed it into Buffer, and notified the team in Slack.',
     result:
-      'Publishing became faster, more reliable, and far easier for the team to coordinate.',
+      'The team plans in Airtable, publishes through Buffer, and receives Slack updates without coordinating each step by hand.',
     impactBullets: [
       'Saved 8+ hours per week',
       'Reduced publishing errors by 90%',

@@ -49,9 +49,9 @@ const Tools = () => {
         <div className="text-center mb-12">
           <SectionHeading
             align="center"
-            eyebrow="Tech Stack"
-            title="Tools and Technologies"
-            description="The platforms I use daily to build websites, CRM systems, and automation infrastructure that can hold up under real business usage."
+            eyebrow="Tech stack"
+            title="Tools I use"
+            description="My stack covers websites, CRM systems, APIs, automation, billing, and team operations. I choose tools based on the workflow and the people maintaining it."
           />
         </div>
 
@@ -111,7 +111,7 @@ const Tools = () => {
           viewport={{ once: true, margin: '-50px' }}
         >
           <p className="text-gray-500 dark:text-gray-400 mb-5 text-sm">
-            Want help choosing the right stack for your business?
+            Choosing tools for a workflow?
           </p>
           <motion.a
             href="#contact"
@@ -119,7 +119,7 @@ const Tools = () => {
             whileHover={shouldReduceMotion ? undefined : { y: -2 }}
             whileTap={{ scale: 0.97 }}
           >
-            Let&apos;s Talk Tech
+            Discuss your stack
           </motion.a>
         </motion.div>
       </div>

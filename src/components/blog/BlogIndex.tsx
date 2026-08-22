@@ -14,8 +14,8 @@ const BlogIndex = () => {
   const visiblePosts = activeCategory ? blogPosts.filter((post) => post.category === activeCategory) : blogPosts;
 
   usePageMetadata({
-    title: 'Blog | Samson Akinsanya — Web Development & AI Automation',
-    description: 'Technical writing on web development, AI automation, CRM integrations, workflow architecture, and the systems behind reliable operations.',
+    title: 'Technical Blog | Samson Akinsanya',
+    description: 'Technical articles on web development, AI automation, CRM integrations, workflow architecture, and reliable operations.',
     path: '/blog',
   });
 
@@ -35,7 +35,7 @@ const BlogIndex = () => {
               Notes from building connected systems.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-              Practical breakdowns on web engineering, AI automation, CRM integrations, and emerging tools—focused on decisions, tradeoffs, and dependable execution.
+              Practical breakdowns of web engineering, AI automation, CRM integrations, and emerging tools. Each article focuses on the decisions and tradeoffs behind dependable systems.
             </p>
           </div>
           <a href="/rss.xml" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-slate-400 transition-colors hover:text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">

@@ -70,8 +70,8 @@ const About = () => {
           <div>
             <SectionHeading
               eyebrow="How I work"
-              title="Systems thinking from the first trigger to the final handoff"
-              description="I work across interfaces, CRM structure, automation logic, and backend integrations. The goal is a system the team understands, trusts, and uses every day."
+              title="I follow the workflow from the first trigger to the final handoff"
+              description="I work across interfaces, CRM structure, automation logic, and backend integrations. Each part should be understandable to the people who use and maintain it."
             />
             <motion.p
               className="mt-6 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300"
@@ -80,7 +80,7 @@ const About = () => {
               whileInView="show"
               viewport={viewportOnce}
             >
-              My strongest projects involve operational complexity: leads arriving from several sources, records moving between tools, ownership changing by context, and follow-up that needs clear stop conditions. I turn that complexity into a visible, maintainable operating path.
+              The work often starts with leads arriving from several sources, records moving between tools, ownership changing by context, and follow-up that needs clear stop conditions. I map those moving parts into a workflow the team can see, maintain, and use.
             </motion.p>
 
             <motion.div

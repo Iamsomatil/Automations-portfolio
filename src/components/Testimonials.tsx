@@ -15,7 +15,7 @@ const Testimonials = () => {
             align="center"
             eyebrow="References"
             title="Selected Client Feedback"
-            description="A few representative comments from client work. The strongest proof on this site is in the case studies and systems detail above."
+            description="A few comments from client work. The case studies above provide the implementation detail behind them."
           />
         </div>
 
@@ -81,8 +81,8 @@ const Testimonials = () => {
           viewport={{ once: true }}
         >
           <div className="text-center sm:text-left">
-            <h3 className="text-lg font-heading font-bold text-white">Open to new opportunities?</h3>
-            <p className="text-primary-100 text-sm mt-1">If the systems work is relevant, I&apos;d be glad to talk through role fit or project needs.</p>
+            <h3 className="text-lg font-heading font-bold text-white">Need someone who can own the system?</h3>
+            <p className="text-primary-100 text-sm mt-1">I&apos;m available to discuss automation roles, integration work, and systems-focused projects.</p>
           </div>
           <motion.a
             href="#contact"

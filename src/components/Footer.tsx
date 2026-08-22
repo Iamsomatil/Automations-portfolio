@@ -35,7 +35,7 @@ const Footer = () => {
               <span className="text-xl font-heading font-bold text-white">{profile.name}</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              Automation engineer and full-stack systems builder focused on websites, CRM, integrations, and internal tools that reduce operational complexity.
+              I build websites, CRM workflows, integrations, and internal tools that make operations easier to run and maintain.
             </p>
             <div className="space-y-2.5 text-sm text-gray-500">
               <div className="flex items-center gap-2">

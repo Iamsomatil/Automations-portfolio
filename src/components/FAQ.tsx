@@ -16,8 +16,8 @@ const FAQ = () => {
           <SectionHeading
             align="center"
             eyebrow="FAQ"
-            title="Frequently Asked Questions"
-            description="Common questions from recruiters and hiring managers evaluating my fit for automation, integrations, and systems-focused roles."
+            title="Questions about my work"
+            description="What I usually own, how I use code, and the roles and projects that fit my background."
           />
         </div>
 
@@ -95,7 +95,7 @@ const FAQ = () => {
           viewport={{ once: true }}
         >
           <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
-            Don&apos;t see your question? I&apos;m happy to chat.
+            Have another question?
           </p>
           <motion.a
             href="#contact"

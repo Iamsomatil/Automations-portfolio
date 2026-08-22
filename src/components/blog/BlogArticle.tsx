@@ -12,7 +12,7 @@ const ctaByCategory = {
   'Web Development': 'Building a web product and need engineering support?',
   'AI Automation': 'Need help designing a reliable automation workflow?',
   'CRM & Integrations': 'Need your CRM, lead routing, and follow-up systems connected?',
-  'AI & Emerging Tech': 'Exploring where emerging AI can create practical value?',
+  'AI & Emerging Tech': 'Need to decide where AI fits in an existing workflow?',
   'Case Studies': 'Have a systems problem that needs a clear technical plan?',
 } as const;
 
@@ -121,11 +121,11 @@ const BlogArticle = ({ slug }: BlogArticleProps) => {
 
             <section className="mt-14 grid gap-6 rounded-xl border border-white/10 bg-dark-900 p-6 sm:grid-cols-[auto_1fr] sm:p-8" aria-labelledby="about-author">
               <img src="/samson-avatar.jpg" alt="Samson Akinsanya" width="72" height="72" loading="lazy" className="h-[72px] w-[72px] rounded-xl object-cover" />
-              <div><p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-300">About the author</p><h2 id="about-author" className="mt-2 text-2xl font-semibold text-white">{profile.name}</h2><p className="mt-2 max-w-2xl text-sm leading-7 text-slate-400">{profile.title}. I build websites, CRM workflows, APIs, and automation logic as dependable connected systems.</p><div className="mt-4 flex flex-wrap gap-5"><a href="/#portfolio" className="min-h-11 py-3 text-sm font-semibold text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">View my work</a><a href="/#contact" className="min-h-11 py-3 text-sm font-semibold text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">Work with me</a></div></div>
+              <div><p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-300">About the author</p><h2 id="about-author" className="mt-2 text-2xl font-semibold text-white">{profile.name}</h2><p className="mt-2 max-w-2xl text-sm leading-7 text-slate-400">{profile.title}. I build websites, CRM workflows, APIs, and automation systems that connect user actions to day-to-day operations.</p><div className="mt-4 flex flex-wrap gap-5"><a href="/#portfolio" className="min-h-11 py-3 text-sm font-semibold text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">View my work</a><a href="/#contact" className="min-h-11 py-3 text-sm font-semibold text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">Work with me</a></div></div>
             </section>
 
             <section className="mt-14 border-l-2 border-primary-400 bg-primary-400/[0.06] p-6 sm:p-8" aria-labelledby="article-cta-heading">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary-300">Let&apos;s build</p><h2 id="article-cta-heading" className="mt-3 max-w-2xl text-3xl font-semibold text-white">{ctaByCategory[post.category]}</h2><p className="mt-4 max-w-2xl leading-7 text-slate-400">Tell me what the system needs to accomplish, where it breaks today, and what a dependable outcome looks like.</p><a href="/#contact" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">Start a conversation <ArrowRight size={16} /></a>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary-300">Discuss the system</p><h2 id="article-cta-heading" className="mt-3 max-w-2xl text-3xl font-semibold text-white">{ctaByCategory[post.category]}</h2><p className="mt-4 max-w-2xl leading-7 text-slate-400">Tell me what the system needs to accomplish, where it breaks today, and what a dependable outcome looks like.</p><a href="/#contact" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">Start a conversation <ArrowRight size={16} /></a>
             </section>
 
             {relatedPosts.length ? <section className="mt-16" aria-labelledby="related-articles-heading"><p className="font-mono text-xs uppercase tracking-[0.2em] text-primary-300">Continue reading</p><h2 id="related-articles-heading" className="mt-3 text-3xl font-semibold text-white">Related articles</h2><div className="mt-5">{relatedPosts.map((related) => <BlogCard key={related.slug} post={related} compact />)}</div></section> : null}
