@@ -87,6 +87,7 @@ const pageHtml = (template, { title, description, url, type = 'website', image =
   html = replaceTag(html, /<meta\s+property="og:title"[\s\S]*?>/i, `<meta property="og:title" content="${htmlEscape(title)}" />`);
   html = replaceTag(html, /<meta\s+property="og:description"[\s\S]*?>/i, `<meta property="og:description" content="${htmlEscape(description)}" />`);
   html = replaceTag(html, /<meta\s+property="og:image"[\s\S]*?>/i, `<meta property="og:image" content="${image}" />`);
+  html = replaceTag(html, /<meta\s+(?:property|name)="twitter:url"[\s\S]*?>/i, `<meta name="twitter:url" content="${url}" />`);
   html = replaceTag(html, /<meta\s+(?:property|name)="twitter:title"[\s\S]*?>/i, `<meta name="twitter:title" content="${htmlEscape(title)}" />`);
   html = replaceTag(html, /<meta\s+(?:property|name)="twitter:description"[\s\S]*?>/i, `<meta name="twitter:description" content="${htmlEscape(description)}" />`);
   html = replaceTag(html, /<meta\s+(?:property|name)="twitter:image"[\s\S]*?>/i, `<meta name="twitter:image" content="${image}" />`);
